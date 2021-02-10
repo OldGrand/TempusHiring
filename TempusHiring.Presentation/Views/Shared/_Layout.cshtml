@@ -1,0 +1,317 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css'>
+    <link asp-href-include="~/css/*.css" rel="stylesheet" />
+</head>
+<body class="loading">
+    <header class="header">
+        <div class="header__container">
+            <div class="topbar">
+                <div class="topbar__container">
+                    <div class="topbar__list-left">
+                        <ul class="list">
+                            <li class="list__item">
+                                <a href="" class="list__link">About</a>
+                            </li>
+                            <li class="list__item">
+                                <a href="" class="list__link">Contact us</a>
+                            </li>
+                            <li class="list__item">
+                                <a href="" class="list__link">Site help</a>
+                            </li>
+                            <li class="list__item">
+                                <a href="" class="list__link">Features</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="topbar__list-right">
+                        <ul class="list">
+                            <li class="list__item">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <ul class="user__list">
+                                        <li class="user__item">
+                                            <a class="user__link arrow-down">@User.Identity.Name</a>
+                                            <ul class="sub-user__list">
+                                                <li class="sub-user__item">
+                                                    <a asp-controller="ShoppingCart" asp-action="Items" class="sub-user__link">Shoping cart</a>
+                                                </li>
+                                                <li class="sub-user__item">
+                                                    <a asp-controller="Orders" asp-action="Items" class="sub-user__link">Orders</a>
+                                                </li>
+                                                <li class="sub-user__item">
+                                                    <form asp-controller="Account" asp-action="Logout" method="post">
+                                                        <input type="submit" value="Exit" class="user-exit__link" />
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <a asp-controller="Account" asp-action="Login" class="list__link">
+                                        <svg class="login-svg svg" viewBox="0 0 512 512">
+                                            <use xlink:href="/images/icons/login.svg#login"></use>
+                                        </svg>
+                                        LOGIN
+                                    </a>
+                                    <a asp-controller="Account" asp-action="Registration" class="list__link">
+                                        REGISTER
+                                    </a>
+                                }
+                            </li>
+                            <li class="list__item">
+                                <a href="" class="list__link">
+                                    <svg class="wish-svg svg" viewBox="0 0 511.626 511.626">
+                                        <use xlink:href="/images/icons/wishlist.svg#wishlist"></use>
+                                    </svg>
+                                    WISHLIST
+                                </a>
+                            </li>
+                            <li class="list__item">
+                                <a href="" class="svg__link">
+                                    <svg class="facebook-svg svg" viewBox="0 0 97.75 97.75">
+                                        <use xlink:href="/images/icons/facebook.svg#facebook"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="list__item">
+                                <a href="" class="svg__link">
+                                    <svg class="vk-svg svg" viewBox="0 0 97.75 97.75">
+                                        <use xlink:href="/images/icons/vk.svg#vk"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="list__item">
+                                <a href="" class="svg__link">
+                                    <svg class="google-svg svg" viewBox="0 0 24 24">
+                                        <use xlink:href="/images/icons/google.svg#google"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header__main">
+                <div class="header__main__container">
+                    <div class="search">
+                        <form action="post" class="search__form">
+                            <input type="text" class="search__input" placeholder="Search for products">
+                            <button type="submit" class="search__submit">
+                                <svg class="search-svg svg" viewBox="0 0 512 512">
+                                    <use xlink:href="/images/icons/search.svg#search"></use>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="logo">
+                        <a asp-controller="Home" asp-action="Index" class="logo__link">
+                            <img src="/images/woodstock-logo.png" alt="Logo" class="logo__img">
+                        </a>
+                    </div>
+
+                    <div class="tools">
+                        <div class="contact__area">
+                            <div class="contact__info">
+                                <div class="contact__info__icon">
+                                    <svg class="hours-svg svg" viewBox="0 0 507.947 507.947">
+                                        <use xlink:href="/images/icons/24-hours.svg#hours"></use>
+                                    </svg>
+                                </div>
+                                <div class="contact__info__title">
+                                    <span class="contact__info__subtitle">Customer Support</span>
+                                    <p class="contact__info__phone">1-800-123-45-67</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a asp-controller="ShoppingCart" asp-action="Items">
+                            <div class="shop__bag">
+                                <svg class="shopping-bag-svg svg" viewBox="0 0 512 512">
+                                    <use xlink:href="/images/icons/shopping-bag.svg#bag"></use>
+                                </svg>
+                                <div class="shop__details">
+                                    <p class="product__count">Shopping</p>
+                                    <p class="product__price">Cart</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header__nav">
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a asp-controller="Home" asp-action="Index" class="nav__link nav__link__active">Home</a>
+                        </li>
+                        <li class="nav__item">
+                            <a asp-controller="Catalog" asp-action="Index" class="nav__link">Catalog</a>
+                        </li>
+                        <li class="nav__item">
+                            <a asp-controller="Catalog" asp-action="MensWatches" class="nav__link">Men watches</a>
+                        </li>
+                        <li class="nav__item">
+                            <a asp-controller="Catalog" asp-action="WomensWatches" class="nav__link">Ladies watches</a>
+                        </li>
+                        <li class="nav__item">
+                            <a class="nav__link arrow-down">shop by brand</a>
+                            <ul class="sub-nav__list">
+                                <li class="sub-nav__item">
+                                    <a class="sub-nav__link">Brand One</a>
+                                </li>
+                                <li class="sub-nav__item">
+                                    <a class="sub-nav__link">Brand Two</a>
+                                </li>
+                                <li class="sub-nav__item">
+                                    <a href="#" class="sub-nav__link">Brand Three</a>
+                                </li>
+                                <li class="sub-nav__item">
+                                    <a href="#" class="sub-nav__link">Other</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__widget">
+                <div class="footer__logo">
+                    <a href="" class="footer__logo__link">
+                        <img src="/images/woodstock-logo.png" alt="Logo" class="footer__logo">
+                    </a>
+                </div>
+
+                <div class="footer__text">
+                    TempusHiring is a Modern Fully Responsive Retina
+                    Ready Woocommerce theme.
+                </div>
+            </div>
+
+            <div class="column">
+                <h3 class="column__title">
+                    CUSTOMER INFO
+                </h3>
+                <ul class="column__list">
+                    <li class="column__list-item">
+                        <a href="">Warranties</a>
+                    </li>
+                    <li class="column__list-item">
+                        <a href="">Returns Policy</a>
+                    </li>
+                    <li class="column__list-item">
+                        <a href="">Payment</a>
+                    </li>
+                    <li class="column__list-item">
+                        <a href="">Terms & Conditions</a>
+                    </li>
+                    <li class="column__list-item">
+                        <a href="">Card Holders</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3 class="column__title">
+                    SITE HELP
+                </h3>
+                <ul class="column__list">
+                    <li class="column__list-item">
+                        <a href="">ATM Explanation</a>
+                    </li>
+                    <li class="column__list-item">
+                        <a href="">About Us</a>
+                    </li>
+                    <li class="column__list-item">
+                        <a href="">My Account</a>
+                    </li>
+                    <li class="column__list-item">
+                        <a href="">Site Map</a>
+                    </li>
+                    <li class="column__list-item">
+                        <a href="">Affiliate Program</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3 class="column__title">
+                    TOP BRANDS
+                </h3>
+                <ul class="column__list">
+                    <li class="column__list-item">
+                        <a href="">Seven Friday</a>
+                    </li>
+                    <li class="column__list-item">
+                        <a href="">Daniel Wellington</a>
+                    </li>
+                    <li class="column__list-item">
+                        <a href="">Michael Kors</a>
+                    </li>
+                    <li class="column__list-item">
+                        <a href="">Olivia Burton</a>
+                    </li>
+                    <li class="column__list-item">
+                        <a href="">Rosefield</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3 class="column__title">
+                    FEATURES
+                </h3>
+                <ul class="column__list">
+                    <li class="column__list-item">
+                        <a href="">Gift Vouchers</a>
+                    </li>
+                    <li class="column__list-item">
+                        <a href="">Press</a>
+                    </li>
+                    <li class="column__list-item">
+                        <a href="">Celebrities</a>
+                    </li>
+                    <li class="column__list-item">
+                        <a href="">Blog</a>
+                    </li>
+                    <li class="column__list-item">
+                        <a href="">Infographics</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p class="copyright__text">
+                © 2021 - TempusHiring MVP Project. Created by Sergey Sipov
+            </p>
+
+            <div class="copyright__addition">
+                <img src="~/images/payment_cards.png" alt="payment cards">
+            </div>
+        </div>
+    </footer>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.js'></script>
+    <script src="~/js/script.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

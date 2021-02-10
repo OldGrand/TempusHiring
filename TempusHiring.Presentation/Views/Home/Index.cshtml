@@ -1,0 +1,165 @@
+﻿@{
+    ViewBag.Title = "Woodstock Home";
+}
+
+<div class="slider__wrapper">
+    <div id="slider">
+        <div class="slider-inner">
+            <div id="slider-content">
+                <div class="meta">Species</div>
+                <h2 id="slide-title">Ferrari <br>1000 GP</h2>
+                <span data-slide-title="0">Ferrari <br>1000 GP</span>
+                <span data-slide-title="1">Ferrari <br>1000 GP</span>
+                <span data-slide-title="2">Unico <br>King</span>
+                <span data-slide-title="3">Classic <br>Fusion</span>
+                <div class="meta">Material</div>
+                <div id="slide-status">White Gold</div>
+                <span data-slide-status="0">White Gold</span>
+                <span data-slide-status="1">Carbon Ceramic</span>
+                <span data-slide-status="2">Gold Blue</span>
+                <span data-slide-status="3">Titanium</span>
+            </div>
+        </div>
+
+        <img src="/images/watches/1.png" class="image" />
+        <img src="/images/watches/2.png" class="image" />
+        <img src="/images/watches/3.png" class="image" />
+        <img src="/images/watches/4.png" class="image" />
+
+        <div id="pagination">
+            <button class="active" data-slide="0"></button>
+            <button data-slide="1"></button>
+            <button data-slide="2"></button>
+            <button data-slide="3"></button>
+        </div>
+
+    </div>
+</div>
+
+<div class="intro">
+    <div class="intro__media">
+        <video class="intro__media-video" src="./images/video.mp4" autoplay muted loop></video>
+    </div>
+    <div class="intro__content">
+        <div class="content__title">
+            <h2>Why Us</h2>
+        </div>
+        <div class="content__container">
+            <div class="content">
+                <div class="content__wrapper">
+                    <h2 class="content__name">Lorem ipsum</h2>
+                    <p class="content__descr">Lorem ipsum dolor sit amet, orci libero suspendisse lacus, feugiat lacus quo at vel, quam at lorem vel metus massa</p>
+                </div>
+
+                <div class="author">
+                    <img src="/images/author.jpg" alt="author" class="author__portrait">
+                    <div class="author__info">
+                        <span class="author__name">
+                            Random Name
+                        </span>
+                        <span class="author__position">
+                            C.E.O. - Up Solution
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content__wrapper">
+                    <h2 class="content__name">Lorem ipsum</h2>
+                    <p class="content__descr">Lorem ipsum dolor sit amet, orci libero suspendisse lacus, feugiat lacus quo at vel, quam at lorem vel metus massa</p>
+                </div>
+
+                <div class="author">
+                    <img src="/images/author.jpg" alt="author" class="author__portrait">
+                    <div class="author__info">
+                        <span class="author__name">
+                            Random Name
+                        </span>
+                        <span class="author__position">
+                            C.F.O. - Up Solution
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content__wrapper">
+                    <h2 class="content__name">Lorem ipsum</h2>
+                    <p class="content__descr">Lorem ipsum dolor sit amet, orci libero suspendisse lacus, feugiat lacus quo at vel, quam at lorem vel metus massa</p>
+                </div>
+
+                <div class="author">
+                    <img src="/images/author.jpg" alt="author" class="author__portrait">
+                    <div class="author__info">
+                        <span class="author__name">
+                            Random Billy
+                        </span>
+                        <span class="author__position">
+                            C.V.O. - Up Solution
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="news">
+    <div class="news__container">
+        <div class="news__content">
+            <div class="Modern-Slider">
+                <div class="item">
+                    <div class="img-fill">
+                        <video class="intro__media-video" src="./images/watches/Новая папка/1.mp4" autoplay muted loop></video>
+                        <div class="info">
+                            <div>
+                                <h3>UNICO</h3>
+                                <h5>The first 100% Hublot “House” movement, the Unico caliber has designed a new face for the automatic chronograph</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="img-fill">
+                        <video class="intro__media-video" src="./images/watches/Новая папка/2.mp4" autoplay muted loop></video>
+                        <div class="info">
+                            <div>
+                                <h3>UNICO 2</h3>
+                                <h5>A flatter version of Hublot’s famous 100% automatic chronograph movement with a reinvented design</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="img-fill">
+                        <video class="intro__media-video" src="./images/watches/Новая папка/3.mp4" autoplay muted loop></video>
+                        <div class="info">
+                            <div>
+                                <h3>MECA-10 10 DAY POWER RESERVE</h3>
+                                <h5>A 10-day power reserve and atypical display with rack and pinion</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="img-fill">
+                        <video class="intro__media-video" src="./images/watches/Новая папка/4.mp4" autoplay muted loop></video>
+                        <div class="info">
+                            <div>
+                                <h3>MP-11</h3>
+                                <h5>An unrivaled 14-day power reserve supported by seven in-line barrels visible on the dial side</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='https://kenwheeler.github.io/slick/slick/slick.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js'></script>
+    <script src="~/js/footerSlider.js"></script>
+}
