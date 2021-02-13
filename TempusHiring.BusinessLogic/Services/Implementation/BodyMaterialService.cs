@@ -1,9 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using TempusHiring.BusinessLogic.DataTransferObjects.Admin;
-using TempusHiring.BusinessLogic.Pagination;
 using TempusHiring.BusinessLogic.Services.Implementation.Common;
 using TempusHiring.BusinessLogic.Services.Interfaces;
 using TempusHiring.DataAccess.Entities;
