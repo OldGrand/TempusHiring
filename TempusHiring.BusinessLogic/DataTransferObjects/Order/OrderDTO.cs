@@ -14,6 +14,6 @@ namespace TempusHiring.BusinessLogic.DataTransferObjects.Order
 
         public int UserId { get; set; }
         public UserDTO User { get; set; }
-        public ICollection<OrderWatchLinkDTO> OrderWatchLinks { get; set; }
+        public IEnumerable<OrderWatchLinkDTO> OrderWatchLinks { get; set; }
     }
 }
