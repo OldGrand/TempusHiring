@@ -2,8 +2,8 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using TempusHiring.BusinessLogic.Interfaces;
 using TempusHiring.BusinessLogic.Pagination;
+using TempusHiring.BusinessLogic.Services.Interfaces;
 using TempusHiring.Presentation.Models.ViewModels;
 
 namespace TempusHiring.Presentation.Controllers

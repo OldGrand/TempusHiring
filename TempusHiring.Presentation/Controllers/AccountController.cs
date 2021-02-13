@@ -4,7 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using TempusHiring.BusinessLogic.DataTransferObjects;
 using TempusHiring.BusinessLogic.DataTransferObjects.Account;
-using TempusHiring.BusinessLogic.Interfaces;
+using TempusHiring.BusinessLogic.Services.Interfaces;
 using TempusHiring.Common;
 using TempusHiring.Presentation.Models.AccountViewModels;
 

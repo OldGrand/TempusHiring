@@ -14,6 +14,6 @@ namespace TempusHiring.DataAccess.Entities
 
         public int UserId { get; set; }
         public virtual User User { get; set; }
-        public virtual IEnumerable<OrderWatchLink> OrderWatchLinks { get; set; }
+        public virtual ICollection<OrderWatchLink> OrderWatchLinks { get; set; }
     }
 }

@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 using MailKit.Net.Smtp;
 using Microsoft.Extensions.Configuration;
 using MimeKit;
-using TempusHiring.BusinessLogic.Interfaces;
+using TempusHiring.BusinessLogic.Services.Interfaces;
 
-namespace TempusHiring.BusinessLogic.Services
+namespace TempusHiring.BusinessLogic.Services.Implementation
 {
     public class EmailService : IEmailService
     {

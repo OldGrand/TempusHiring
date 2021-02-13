@@ -4,11 +4,11 @@ using TempusHiring.BusinessLogic.DataTransferObjects.Account;
 using TempusHiring.Presentation.Models.AccountViewModels;
 using TempusHiring.Presentation.Models.ViewModels;
 
-namespace TempusHiring.Presentation
+namespace TempusHiring.Presentation.AutoMapper
 {
-    public class ProfilePL : Profile
+    public class PresentationLayerModelsProfile : Profile
     {
-        public ProfilePL()
+        public PresentationLayerModelsProfile()
         {
             CreateMap<ResetPasswordDTO, ResetPasswordViewModel>().ReverseMap();
             CreateMap<ExternalRegisterViewModel, UserDTO>()

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using TempusHiring.BusinessLogic.DataTransferObjects;
 using TempusHiring.Common;
 
-namespace TempusHiring.BusinessLogic.Interfaces
+namespace TempusHiring.BusinessLogic.Services.Interfaces
 {
     public interface IShoppingCartService
     {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using TempusHiring.BusinessLogic.Interfaces;
 using TempusHiring.BusinessLogic.Services;
+using TempusHiring.BusinessLogic.Services.Implementation;
+using TempusHiring.BusinessLogic.Services.Interfaces;
 
 namespace TempusHiring.Presentation.Extensions
 {

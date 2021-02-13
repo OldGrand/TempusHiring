@@ -1,6 +1,6 @@
-﻿namespace TempusHiring.DataAccess.Entities
+﻿namespace TempusHiring.BusinessLogic.DataTransferObjects.Admin
 {
-    public class WristSize 
+    public class WristSizeDTO
     {
         public int Id { get; set; }
         public string Title { get; set; }

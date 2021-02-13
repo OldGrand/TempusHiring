@@ -2,18 +2,18 @@
 using System.Threading.Tasks;
 using TempusHiring.BusinessLogic.DataTransferObjects;
 using TempusHiring.BusinessLogic.Extensions;
-using TempusHiring.BusinessLogic.Interfaces;
+using TempusHiring.BusinessLogic.Services.Interfaces;
 using TempusHiring.Common;
-using TempusHiring.DataAccess;
+using TempusHiring.DataAccess.Core;
 using TempusHiring.DataAccess.Entities;
 
-namespace TempusHiring.BusinessLogic.Services
+namespace TempusHiring.BusinessLogic.Services.Implementation
 {
     public class ShoppingCartService : IShoppingCartService
     {
-        private readonly WoodstockDbContext _context;
+        private readonly TempusHiringDbContext _context;
 
-        public ShoppingCartService(WoodstockDbContext context) =>
+        public ShoppingCartService(TempusHiringDbContext context) =>
             _context = context;
 
         private IQueryable<ShoppingCart> ReadAll(int userId)

@@ -8,11 +8,11 @@ using Microsoft.AspNetCore.Identity;
 using TempusHiring.BusinessLogic.DataTransferObjects;
 using TempusHiring.BusinessLogic.DataTransferObjects.Account;
 using TempusHiring.BusinessLogic.Extensions;
-using TempusHiring.BusinessLogic.Interfaces;
+using TempusHiring.BusinessLogic.Services.Interfaces;
 using TempusHiring.Common;
 using TempusHiring.DataAccess.Entities;
 
-namespace TempusHiring.BusinessLogic.Services
+namespace TempusHiring.BusinessLogic.Services.Implementation
 {
     public class AccountService : IAccountService
     {

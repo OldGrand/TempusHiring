@@ -1,18 +1,18 @@
 ﻿using System.Linq;
 using TempusHiring.BusinessLogic.DataTransferObjects;
 using TempusHiring.BusinessLogic.Extensions;
-using TempusHiring.BusinessLogic.Interfaces;
-using TempusHiring.DataAccess;
+using TempusHiring.BusinessLogic.Services.Interfaces;
+using TempusHiring.DataAccess.Core;
 using TempusHiring.DataAccess.EntityEnums;
 
-namespace TempusHiring.BusinessLogic.Services
+namespace TempusHiring.BusinessLogic.Services.Implementation
 {
     public class CatalogService : ICatalogService
     {
-        private readonly WoodstockDbContext _context;
+        private readonly TempusHiringDbContext _context;
         private static PriceRangeDTO _priceRange;
 
-        public CatalogService(WoodstockDbContext context)
+        public CatalogService(TempusHiringDbContext context)
         {
             _context = context;
             _priceRange ??= InitRange();

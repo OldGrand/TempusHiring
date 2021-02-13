@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using TempusHiring.DataAccess.Entities;
 
-namespace TempusHiring.DataAccess
+namespace TempusHiring.DataAccess.Core
 {
-    public class WoodstockDbContext : IdentityDbContext<User, IdentityRole<int>, int>
+    public class TempusHiringDbContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
         public DbSet<Manufacturer> Manufacturers { get; set; }
         public DbSet<BodyMaterial> BodyMaterials { get; set; }
@@ -21,10 +21,11 @@ namespace TempusHiring.DataAccess
         public DbSet<Color> Colors { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<OrderWatchLink> OrderWatchLinks { get; set; }
+        public DbSet<WristSize> WristSizes { get; set; }
 
-        public WoodstockDbContext(DbContextOptions options) : base(options)
+        public TempusHiringDbContext(DbContextOptions options) : base(options)
         {
-            Database.EnsureDeleted();
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 

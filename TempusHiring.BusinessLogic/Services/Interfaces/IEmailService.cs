@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace TempusHiring.BusinessLogic.Interfaces
+namespace TempusHiring.BusinessLogic.Services.Interfaces
 {
     public interface IEmailService
     {

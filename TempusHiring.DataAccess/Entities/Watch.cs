@@ -24,7 +24,7 @@ namespace TempusHiring.DataAccess.Entities
         public virtual BodyMaterial BodyMaterial { get; set; }
         public int StrapId { get; set; }
         public virtual Strap Strap { get; set; }
-        public virtual IEnumerable<OrderWatchLink> OrderWatchLinks { get; set; }
-        public virtual IEnumerable<ShoppingCart> CartWatchLinks { get; set; }
+        public virtual ICollection<OrderWatchLink> OrderWatchLinks { get; set; }
+        public virtual ICollection<ShoppingCart> CartWatchLinks { get; set; }
     }
 }

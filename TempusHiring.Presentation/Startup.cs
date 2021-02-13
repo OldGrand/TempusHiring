@@ -6,8 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TempusHiring.Common;
-using TempusHiring.DataAccess;
+using TempusHiring.DataAccess.Core;
 using TempusHiring.DataAccess.Entities;
+using TempusHiring.Presentation.AutoMapper;
 using TempusHiring.Presentation.Extensions;
 
 namespace TempusHiring.Presentation
@@ -23,7 +24,7 @@ namespace TempusHiring.Presentation
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<WoodstockDbContext>(options =>
+            services.AddDbContext<TempusHiringDbContext>(options =>
             {
                 options.UseLazyLoadingProxies();
                 options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"));
@@ -35,7 +36,7 @@ namespace TempusHiring.Presentation
                 //option.LowercaseUrls = true;
             });
 
-            services.AddAutoMapper(typeof(ProfilePL));
+            services.AddAutoMapper(typeof(PresentationLayerModelsProfile));
             services.AddBusinessLogicLayerServices();
 
             services.AddIdentity<User, IdentityRole<int>>(config =>
@@ -49,7 +50,7 @@ namespace TempusHiring.Presentation
                 config.User.RequireUniqueEmail = true;
                 config.SignIn.RequireConfirmedEmail = false;
             })
-                .AddEntityFrameworkStores<WoodstockDbContext>()
+                .AddEntityFrameworkStores<TempusHiringDbContext>()
                 .AddDefaultTokenProviders();
 
             services.ConfigureApplicationCookie(config =>

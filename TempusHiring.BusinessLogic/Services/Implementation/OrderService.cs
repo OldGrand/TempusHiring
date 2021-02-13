@@ -2,17 +2,17 @@
 using System.Linq;
 using TempusHiring.BusinessLogic.DataTransferObjects;
 using TempusHiring.BusinessLogic.Extensions;
-using TempusHiring.BusinessLogic.Interfaces;
-using TempusHiring.DataAccess;
+using TempusHiring.BusinessLogic.Services.Interfaces;
+using TempusHiring.DataAccess.Core;
 using TempusHiring.DataAccess.Entities;
 
-namespace TempusHiring.BusinessLogic.Services
+namespace TempusHiring.BusinessLogic.Services.Implementation
 {
     public class OrderService : IOrderService
     {
-        private readonly WoodstockDbContext _context;
+        private readonly TempusHiringDbContext _context;
 
-        public OrderService(WoodstockDbContext context)
+        public OrderService(TempusHiringDbContext context)
         {
             _context = context;
         }

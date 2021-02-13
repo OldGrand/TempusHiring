@@ -4,7 +4,6 @@
     {
         public int Id { get; set; }
         public double Weight { get; set; }
-        
 
         public int WristSizeId { get; set; }
         public virtual WristSize WristSize { get; set; }

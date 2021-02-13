@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using TempusHiring.BusinessLogic.DataTransferObjects;
 
-namespace TempusHiring.BusinessLogic.Interfaces
+namespace TempusHiring.BusinessLogic.Services.Interfaces
 {
     public interface IOrderService
     {

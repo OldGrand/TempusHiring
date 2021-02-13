@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using TempusHiring.BusinessLogic.DataTransferObjects;
 using TempusHiring.BusinessLogic.DataTransferObjects.Account;
 
-namespace TempusHiring.BusinessLogic.Interfaces
+namespace TempusHiring.BusinessLogic.Services.Interfaces
 {
     public interface IAccountService
     {

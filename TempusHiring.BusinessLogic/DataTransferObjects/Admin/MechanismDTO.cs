@@ -1,8 +1,8 @@
 ﻿using TempusHiring.DataAccess.EntityEnums;
 
-namespace TempusHiring.DataAccess.Entities
+namespace TempusHiring.BusinessLogic.DataTransferObjects.Admin
 {
-    public class Mechanism 
+    public class MechanismDTO
     {
         public int Id { get; set; }
         public string Title { get; set; }

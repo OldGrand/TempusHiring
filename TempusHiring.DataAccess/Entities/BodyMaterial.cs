@@ -1,8 +1,8 @@
-﻿using TempusHiring.DataAccess.AbstractEntities;
-
-namespace TempusHiring.DataAccess.Entities
+﻿namespace TempusHiring.DataAccess.Entities
 {
-    public class BodyMaterial : IdTitleBased
+    public class BodyMaterial
     {
+        public int Id { get; set; }
+        public string Title { get; set; }
     }
 }

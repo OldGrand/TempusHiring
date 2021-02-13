@@ -4,7 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TempusHiring.BusinessLogic.Extensions;
-using TempusHiring.BusinessLogic.Interfaces;
+using TempusHiring.BusinessLogic.Services.Interfaces;
 using TempusHiring.Common;
 using TempusHiring.Presentation.Models.ViewModels;
 
