@@ -1,26 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using TempusHiring.BusinessLogic.DataTransferObjects.Admin;
+﻿using TempusHiring.BusinessLogic.DataTransferObjects.Admin;
+using TempusHiring.BusinessLogic.Services.Interfaces.Common;
 
 namespace TempusHiring.BusinessLogic.Services.Interfaces
 {
-    public interface IStrapService
+    public interface IStrapService : ICrudService<StrapDTO>
     {
-        Task AddAsync(StrapDTO item);
-        Task AddRangeAsync(IEnumerable<StrapDTO> items);
-
-        ValueTask<StrapDTO> ReadAsync(int id);
-        Task<StrapDTO> ReadAsync(Func<StrapDTO, bool> predicate);
-        IEnumerable<StrapDTO> ReadAll(Func<StrapDTO, bool> predicate);
-
-        void Update(StrapDTO item);
-        void UpdateRange(IEnumerable<StrapDTO> items);
-
-        void Delete(StrapDTO item);
-        void DeleteRange(IEnumerable<StrapDTO> items);
-
-        void SaveChanges();
-        Task SaveChangesAsync();
     }
 }
