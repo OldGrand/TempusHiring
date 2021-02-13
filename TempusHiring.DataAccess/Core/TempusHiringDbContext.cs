@@ -22,11 +22,13 @@ namespace TempusHiring.DataAccess.Core
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<OrderWatchLink> OrderWatchLinks { get; set; }
         public DbSet<WristSize> WristSizes { get; set; }
+        public DbSet<Lease> Leases { get; set; }
+        public DbSet<Rent> Rents { get; set; }
 
         public TempusHiringDbContext(DbContextOptions options) : base(options)
         {
             //Database.EnsureDeleted();
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
