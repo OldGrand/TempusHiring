@@ -6,7 +6,7 @@ namespace TempusHiring.BusinessLogic.Pagination
 {
     public class PagedResult<T> : PagedResultBase where T : class
     {
-        public IEnumerable<T> Results { get; set; }
-        public PagedResult() => Results = Enumerable.Empty<T>();
+        public IEnumerable<T> Result { get; set; }
+        public PagedResult() => Result = Enumerable.Empty<T>();
     }
 }

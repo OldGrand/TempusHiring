@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using TempusHiring.BusinessLogic.DataTransferObjects;
+using TempusHiring.BusinessLogic.DataTransferObjects.Order;
 using TempusHiring.BusinessLogic.Extensions;
 using TempusHiring.BusinessLogic.Services.Interfaces;
 using TempusHiring.Common;

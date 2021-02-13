@@ -13,6 +13,7 @@ namespace TempusHiring.DataAccess.Repository.Interfaces
         ValueTask<TSource> ReadAsync(int id);
         Task<TSource> ReadAsync(Func<TSource, bool> predicate);
         IQueryable<TSource> ReadAll(Func<TSource, bool> predicate);
+        IQueryable<TSource> ReadAll();
 
         void Update(TSource item);
         void UpdateRange(IEnumerable<TSource> items);

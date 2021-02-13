@@ -17,7 +17,7 @@ namespace TempusHiring.BusinessLogic.Pagination
                 ItemsTotal = count,
                 SkippedItems = skippedItems,
                 PagesTotal = (int)Math.Ceiling((double)count / itemsOnPage),
-                Results = source.Skip(skippedItems).Take(itemsOnPage).ToList()
+                Result = source.Skip(skippedItems).Take(itemsOnPage).ToList()
             };
 
             return result;

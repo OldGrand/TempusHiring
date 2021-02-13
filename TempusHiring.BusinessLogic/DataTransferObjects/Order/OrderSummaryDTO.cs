@@ -1,4 +1,4 @@
-﻿namespace TempusHiring.BusinessLogic.DataTransferObjects
+﻿namespace TempusHiring.BusinessLogic.DataTransferObjects.Order
 {
     public class OrderSummaryDTO
     {

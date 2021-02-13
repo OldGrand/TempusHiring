@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TempusHiring.BusinessLogic.DataTransferObjects
+namespace TempusHiring.BusinessLogic.DataTransferObjects.Order
 {
     public class OrderDTO
     {
@@ -14,6 +14,6 @@ namespace TempusHiring.BusinessLogic.DataTransferObjects
 
         public int UserId { get; set; }
         public UserDTO User { get; set; }
-        public IEnumerable<OrderWatchLinkDTO> OrderWatchLinks { get; set; }
+        public ICollection<OrderWatchLinkDTO> OrderWatchLinks { get; set; }
     }
 }

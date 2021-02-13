@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using TempusHiring.BusinessLogic.DataTransferObjects;
 using TempusHiring.BusinessLogic.DataTransferObjects.Account;
+using TempusHiring.BusinessLogic.DataTransferObjects.Order;
 using TempusHiring.Presentation.Models.AccountViewModels;
 using TempusHiring.Presentation.Models.ViewModels;
 

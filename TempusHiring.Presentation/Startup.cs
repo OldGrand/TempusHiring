@@ -15,7 +15,7 @@ namespace TempusHiring.Presentation
 {
     public class Startup
     {
-        private IConfiguration _configuration { get; set; }
+        private readonly IConfiguration _configuration;
 
         public Startup(IConfiguration configuration)
         {
@@ -37,6 +37,7 @@ namespace TempusHiring.Presentation
             });
 
             services.AddAutoMapper(typeof(PresentationLayerModelsProfile));
+            services.AddUnitOfWorkAndRepository();
             services.AddBusinessLogicLayerServices();
 
             services.AddIdentity<User, IdentityRole<int>>(config =>

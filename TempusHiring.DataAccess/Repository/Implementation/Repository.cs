@@ -47,6 +47,11 @@ namespace TempusHiring.DataAccess.Repository.Implementation
             return _set.Where(predicate).AsQueryable();
         }
 
+        public IQueryable<TSource> ReadAll()
+        {
+            return _set.AsQueryable();
+        }
+
         public void Update(TSource item)
         {
             UpdateRange(new[] { item });

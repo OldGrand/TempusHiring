@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using TempusHiring.BusinessLogic.DataTransferObjects;
+using TempusHiring.BusinessLogic.DataTransferObjects.Order;
 
 namespace TempusHiring.BusinessLogic.Services.Interfaces
 {
