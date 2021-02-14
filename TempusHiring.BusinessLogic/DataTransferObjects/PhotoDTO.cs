@@ -6,6 +6,6 @@
         public string Path { get; set; }
 
         public int WatchId { get; set; }
-        public virtual WatchDTO Watch { get; set; }
+        public WatchDTO Watch { get; set; }
     }
 }

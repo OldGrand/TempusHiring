@@ -6,6 +6,6 @@
         public string Path { get; set; }
 
         public int WatchId { get; set; }
-        public virtual WatchViewModel Watch { get; set; }
+        public WatchViewModel Watch { get; set; }
     }
 }
