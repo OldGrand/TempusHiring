@@ -102,7 +102,7 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
             ReadMen().OrderBy(_ => _.SaledCount);
 
         private IQueryable<WatchDTO> ReadWomen() =>
-            ReadAll().Where(_ => _.Gender == Gender.Man);
+            ReadAll().Where(_ => _.Gender == Gender.Woman);
         private IQueryable<WatchDTO> ReadWomenOrderedByPriceDesc() =>
             ReadWomen().OrderByDescending(_ => _.Price);
         private IQueryable<WatchDTO> ReadWomenOrderedByPriceAsc() =>

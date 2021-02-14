@@ -11,7 +11,7 @@ using TempusHiring.DataAccess.UnitOfWork.Interfaces;
 
 namespace TempusHiring.BusinessLogic.Services.Implementation
 {
-    class PhotoService : IPhotoService
+    public class PhotoService : IPhotoService
     {
         private readonly IRepository<Photo> _repository;
         private readonly IUnitOfWork _unitOfWork;

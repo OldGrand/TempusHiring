@@ -24,6 +24,7 @@ namespace TempusHiring.Presentation.Extensions
             services.AddScoped<IStrapMaterialService, StrapMaterialService>();
             services.AddScoped<IStrapService, StrapService>();
             services.AddScoped<IWristSizeService, WristSizeService>();
+            services.AddScoped<IPhotoService, PhotoService>();
             
             services.AddScoped(typeof(ICrudService<>), typeof(CrudService<,>));
         }
