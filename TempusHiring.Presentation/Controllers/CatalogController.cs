@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TempusHiring.BusinessLogic.Pagination;
@@ -50,13 +49,53 @@ namespace TempusHiring.Presentation.Controllers
         [HttpGet]
         public IActionResult MensWatches(int pageNum = 1, int itemsOnPage = 12)
         {
-            return View(nameof(Index));
+            var pagedResultWithDto = _catalogService.ReadMen(Filter.Deafult, pageNum, itemsOnPage);
+            var pagedResultWithViewModels = _mapper.Map<PagedResult<WatchViewModel>>(pagedResultWithDto);
+
+            var filteredWatchViewModel = new FilteredWatchViewModel
+            {
+                PageResult = pagedResultWithViewModels,
+            };
+
+            return View(nameof(Index), filteredWatchViewModel);
+        }
+
+        [HttpPost]
+        public IActionResult MensWatches(FilteredWatchViewModel filteredVM, int pageNum = 1)
+        {
+            var pagedResultWithDto = _catalogService.ReadMen(Filter.Deafult, pageNum, filteredVM.ItemsOnPage);
+            var pagedResultWithViewModels = _mapper.Map<PagedResult<WatchViewModel>>(pagedResultWithDto);
+
+            filteredVM.PageResult = pagedResultWithViewModels;
+            filteredVM.ItemsOnPageViewModel = ITEMS_ON_PAGE;
+
+            return View(nameof(Index), filteredVM);
         }
 
         [HttpGet]
         public IActionResult WomensWatches(int pageNum = 1, int itemsOnPage = 12)
         {
-            return View(nameof(Index));
+            var pagedResultWithDto = _catalogService.ReadWomen(Filter.Deafult, pageNum, itemsOnPage);
+            var pagedResultWithViewModels = _mapper.Map<PagedResult<WatchViewModel>>(pagedResultWithDto);
+
+            var filteredWatchViewModel = new FilteredWatchViewModel
+            {
+                PageResult = pagedResultWithViewModels,
+            };
+
+            return View(nameof(Index), filteredWatchViewModel);
+        }
+
+        [HttpPost]
+        public IActionResult WomensWatches(FilteredWatchViewModel filteredVM, int pageNum = 1)
+        {
+            var pagedResultWithDto = _catalogService.ReadWomen(Filter.Deafult, pageNum, filteredVM.ItemsOnPage);
+            var pagedResultWithViewModels = _mapper.Map<PagedResult<WatchViewModel>>(pagedResultWithDto);
+
+            filteredVM.PageResult = pagedResultWithViewModels;
+            filteredVM.ItemsOnPageViewModel = ITEMS_ON_PAGE;
+
+            return View(nameof(Index), filteredVM);
         }
 
         public IActionResult GetPriceRange() => Json(_catalogService.GetWatchesPriceRange());
