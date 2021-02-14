@@ -19,22 +19,8 @@ namespace TempusHiring.Presentation.Controllers
             _catalogService = shopService;
             _mapper = mapper;
         }
-
+        
         [HttpGet]
-        public IActionResult Index(int pageNum = 1, int itemsOnPage = 12)
-        {
-            var pagedResultWithDto = _catalogService.ReadUnisex(Filter.Deafult, pageNum, itemsOnPage);
-            var pagedResultWithViewModels = _mapper.Map<PagedResult<WatchViewModel>>(pagedResultWithDto);
-
-            var filteredWatchViewModel = new FilteredWatchViewModel
-            {
-                PageResult = pagedResultWithViewModels,
-            };
-
-            return View(filteredWatchViewModel);
-        }
-
-        [HttpPost]
         public IActionResult Index(FilteredWatchViewModel filteredVM, int pageNum = 1)
         {
             var pagedResultWithDto = _catalogService.ReadUnisex(Filter.Deafult, pageNum, filteredVM.ItemsOnPage);
@@ -45,22 +31,8 @@ namespace TempusHiring.Presentation.Controllers
 
             return View(filteredVM);
         }
-
+        
         [HttpGet]
-        public IActionResult MensWatches(int pageNum = 1, int itemsOnPage = 12)
-        {
-            var pagedResultWithDto = _catalogService.ReadMen(Filter.Deafult, pageNum, itemsOnPage);
-            var pagedResultWithViewModels = _mapper.Map<PagedResult<WatchViewModel>>(pagedResultWithDto);
-
-            var filteredWatchViewModel = new FilteredWatchViewModel
-            {
-                PageResult = pagedResultWithViewModels,
-            };
-
-            return View(nameof(Index), filteredWatchViewModel);
-        }
-
-        [HttpPost]
         public IActionResult MensWatches(FilteredWatchViewModel filteredVM, int pageNum = 1)
         {
             var pagedResultWithDto = _catalogService.ReadMen(Filter.Deafult, pageNum, filteredVM.ItemsOnPage);
@@ -71,22 +43,8 @@ namespace TempusHiring.Presentation.Controllers
 
             return View(nameof(Index), filteredVM);
         }
-
+        
         [HttpGet]
-        public IActionResult WomensWatches(int pageNum = 1, int itemsOnPage = 12)
-        {
-            var pagedResultWithDto = _catalogService.ReadWomen(Filter.Deafult, pageNum, itemsOnPage);
-            var pagedResultWithViewModels = _mapper.Map<PagedResult<WatchViewModel>>(pagedResultWithDto);
-
-            var filteredWatchViewModel = new FilteredWatchViewModel
-            {
-                PageResult = pagedResultWithViewModels,
-            };
-
-            return View(nameof(Index), filteredWatchViewModel);
-        }
-
-        [HttpPost]
         public IActionResult WomensWatches(FilteredWatchViewModel filteredVM, int pageNum = 1)
         {
             var pagedResultWithDto = _catalogService.ReadWomen(Filter.Deafult, pageNum, filteredVM.ItemsOnPage);

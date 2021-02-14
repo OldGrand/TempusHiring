@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using TempusHiring.BusinessLogic.AutoMapper;
 using TempusHiring.BusinessLogic.DataTransferObjects;
@@ -7,7 +6,6 @@ using TempusHiring.BusinessLogic.Pagination;
 using TempusHiring.BusinessLogic.Services.Interfaces;
 using TempusHiring.Common;
 using TempusHiring.DataAccess.Core;
-using TempusHiring.DataAccess.Entities;
 using TempusHiring.DataAccess.EntityEnums;
 
 namespace TempusHiring.BusinessLogic.Services.Implementation
@@ -15,14 +13,12 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
     public class CatalogService : ICatalogService
     {
         private readonly TempusHiringDbContext _context;
-        private readonly IMapper _mapper;
         private static PriceRangeDTO _priceRange;
 
-        public CatalogService(TempusHiringDbContext context, IMapper mapper)
+        public CatalogService(TempusHiringDbContext context)
         {
             _context = context;
             _priceRange ??= InitRange();
-            _mapper = mapper;
         }
 
         public PagedResult<WatchDTO> ReadUnisex(Filter filter, int pageNum, int itemsOnPage)
@@ -67,7 +63,7 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
             }).GetPaged(pageNum, itemsOnPage);
         }
 
-        public IQueryable<WatchDTO> ReadAll()
+        private IQueryable<WatchDTO> ReadAll()
         {
             var watchEntities = _context.Watches
                 .Where(_ => _.Price >= _priceRange.StartPrice && _.Price <= _priceRange.EndPrice);
@@ -77,47 +73,47 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
             return result;
         }
 
-        public IQueryable<WatchDTO> ReadOrderedByPriceDesc() =>
+        private IQueryable<WatchDTO> ReadOrderedByPriceDesc() =>
             ReadAll().OrderByDescending(_ => _.Price);
-        public IQueryable<WatchDTO> ReadOrderedByPriceAsc() =>
+        private IQueryable<WatchDTO> ReadOrderedByPriceAsc() =>
             ReadAll().OrderBy(_ => _.Price);
-        public IQueryable<WatchDTO> ReadOrderedByNoveltyDesc() =>
+        private IQueryable<WatchDTO> ReadOrderedByNoveltyDesc() =>
             ReadAll().OrderByDescending(_ => _.Id);
-        public IQueryable<WatchDTO> ReadOrderedByNoveltyAsc() =>
+        private IQueryable<WatchDTO> ReadOrderedByNoveltyAsc() =>
             ReadAll().OrderBy(_ => _.Id);
-        public IQueryable<WatchDTO> ReadOrderedByPopularityDesc() =>
+        private IQueryable<WatchDTO> ReadOrderedByPopularityDesc() =>
             ReadAll().OrderByDescending(_ => _.SaledCount);
-        public IQueryable<WatchDTO> ReadOrderedByPopularityAsc() =>
+        private IQueryable<WatchDTO> ReadOrderedByPopularityAsc() =>
             ReadAll().OrderBy(_ => _.SaledCount);
-        
-        public IQueryable<WatchDTO> ReadMen() =>
+
+        private IQueryable<WatchDTO> ReadMen() =>
             ReadAll().Where(_ => _.Gender == Gender.Man);
-        public IQueryable<WatchDTO> ReadMenOrderedByPriceDesc() =>
+        private IQueryable<WatchDTO> ReadMenOrderedByPriceDesc() =>
             ReadMen().OrderByDescending(_ => _.Price);
-        public IQueryable<WatchDTO> ReadMenOrderedByPriceAsc() =>
+        private IQueryable<WatchDTO> ReadMenOrderedByPriceAsc() =>
             ReadMen().OrderBy(_ => _.Price);
-        public IQueryable<WatchDTO> ReadMenOrderedByNoveltyDesc() =>
+        private IQueryable<WatchDTO> ReadMenOrderedByNoveltyDesc() =>
             ReadMen().OrderByDescending(_ => _.Id);
-        public IQueryable<WatchDTO> ReadMenOrderedByNoveltyAsc() =>
+        private IQueryable<WatchDTO> ReadMenOrderedByNoveltyAsc() =>
             ReadMen().OrderBy(_ => _.Id);
-        public IQueryable<WatchDTO> ReadMenOrderedByPopularityDesc() =>
+        private IQueryable<WatchDTO> ReadMenOrderedByPopularityDesc() =>
             ReadMen().OrderByDescending(_ => _.SaledCount);
-        public IQueryable<WatchDTO> ReadMenOrderedByPopularityAsc() =>
+        private IQueryable<WatchDTO> ReadMenOrderedByPopularityAsc() =>
             ReadMen().OrderBy(_ => _.SaledCount);
-        
-        public IQueryable<WatchDTO> ReadWomen() =>
+
+        private IQueryable<WatchDTO> ReadWomen() =>
             ReadAll().Where(_ => _.Gender == Gender.Man);
-        public IQueryable<WatchDTO> ReadWomenOrderedByPriceDesc() =>
+        private IQueryable<WatchDTO> ReadWomenOrderedByPriceDesc() =>
             ReadWomen().OrderByDescending(_ => _.Price);
-        public IQueryable<WatchDTO> ReadWomenOrderedByPriceAsc() =>
+        private IQueryable<WatchDTO> ReadWomenOrderedByPriceAsc() =>
             ReadWomen().OrderBy(_ => _.Price);
-        public IQueryable<WatchDTO> ReadWomenOrderedByNoveltyDesc() =>
+        private IQueryable<WatchDTO> ReadWomenOrderedByNoveltyDesc() =>
             ReadWomen().OrderByDescending(_ => _.Id);
-        public IQueryable<WatchDTO> ReadWomenOrderedByNoveltyAsc() =>
+        private IQueryable<WatchDTO> ReadWomenOrderedByNoveltyAsc() =>
             ReadWomen().OrderBy(_ => _.Id);
-        public IQueryable<WatchDTO> ReadWomenOrderedByPopularityDesc() =>
+        private IQueryable<WatchDTO> ReadWomenOrderedByPopularityDesc() =>
             ReadWomen().OrderByDescending(_ => _.SaledCount);
-        public IQueryable<WatchDTO> ReadWomenOrderedByPopularityAsc() =>
+        private IQueryable<WatchDTO> ReadWomenOrderedByPopularityAsc() =>
             ReadWomen().OrderBy(_ => _.SaledCount);
 
         public PriceRangeDTO GetWatchesPriceRange() => _priceRange;
