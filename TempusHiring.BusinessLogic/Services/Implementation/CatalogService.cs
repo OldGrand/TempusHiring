@@ -33,11 +33,11 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
                 Description = watch.Description,
                 Diameter = watch.Diameter,
                 Gender = watch.Gender,
-                Photo = watch.Photo,
                 Price = watch.Price,
                 CountInStock = watch.CountInStock,
                 SaledCount = watch.SaledCount,
             };
+
         public IQueryable<WatchDTO> ReadOrderedByPriceDesc() =>
             ReadAll().OrderByDescending(_ => _.Price);
         public IQueryable<WatchDTO> ReadOrderedByPriceAsc() =>

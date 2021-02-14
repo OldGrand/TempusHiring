@@ -24,6 +24,7 @@ namespace TempusHiring.DataAccess.Core
         public DbSet<WristSize> WristSizes { get; set; }
         public DbSet<Lease> Leases { get; set; }
         public DbSet<Rent> Rents { get; set; }
+        public DbSet<Photo> Photos { get; set; }
 
         public TempusHiringDbContext(DbContextOptions options) : base(options)
         {

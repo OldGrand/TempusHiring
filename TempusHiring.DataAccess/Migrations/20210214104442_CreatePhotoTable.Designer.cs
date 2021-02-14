@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TempusHiring.DataAccess.Core;
 
 namespace TempusHiring.DataAccess.Migrations
 {
     [DbContext(typeof(TempusHiringDbContext))]
-    partial class TempusHiringDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210214104442_CreatePhotoTable")]
+    partial class CreatePhotoTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -555,6 +557,9 @@ namespace TempusHiring.DataAccess.Migrations
                     b.Property<int>("MechanismId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Photo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
@@ -695,7 +700,7 @@ namespace TempusHiring.DataAccess.Migrations
             modelBuilder.Entity("TempusHiring.DataAccess.Entities.Photo", b =>
                 {
                     b.HasOne("TempusHiring.DataAccess.Entities.Watch", "Watch")
-                        .WithMany("Photos")
+                        .WithMany()
                         .HasForeignKey("WatchId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -834,8 +839,6 @@ namespace TempusHiring.DataAccess.Migrations
                     b.Navigation("CartWatchLinks");
 
                     b.Navigation("OrderWatchLinks");
-
-                    b.Navigation("Photos");
                 });
 #pragma warning restore 612, 618
         }

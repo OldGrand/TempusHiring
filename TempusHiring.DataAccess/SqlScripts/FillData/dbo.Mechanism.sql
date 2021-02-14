@@ -1,0 +1,6 @@
+INSERT INTO Mechanisms (Title, Description, PowerReserveDays, MechanismType) VALUES ('Unico', 'The first 100% Hublot “House” movement, the Unico caliber has designed a new face for the automatic chronograph', '3', 'Mechanical'),
+                                                                                    ('Unico 2', 'A flatter version of Hublot’s famous 100% automatic chronograph movement with a reinvented design', '3', 'Mechanical'),
+                                                                                    ('MECA-10', 'A 10-day power reserve and atypical display with rack and pinion', '10', 'Mechanical'),
+                                                                                    ('TOURBILLON 5', 'An entirely transparent tourbillon, combined with a five-day power reserve', '5', 'Mechanical'),
+                                                                                    ('MP-11', 'An unrivaled 14-day power reserve supported by seven in-line barrels visible on the dial side', '14', 'Mechanical'),
+                                                                                    ('Qc-23', 'Quartz watches are timepieces that use an electronic oscillator regulated by a quartz crystal to keep time', '23', 'Quartz');

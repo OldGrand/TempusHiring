@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="SqlScripts\" />
     <Folder Include="Repository\Interfaces\" />
   </ItemGroup>
 

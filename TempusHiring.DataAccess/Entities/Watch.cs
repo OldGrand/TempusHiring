@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
-using TempusHiring.DataAccess.AbstractEntities;
 using TempusHiring.DataAccess.EntityEnums;
 
 namespace TempusHiring.DataAccess.Entities
 {
-    public class Watch : IdTitleBased
+    public class Watch
     {
+        public int Id { get; set; }
+        public string Title { get; set; }
         public double Diameter { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
-        public string Photo { get; set; }
         public Gender Gender { get; set; }
         public int CountInStock { get; set; }
         public int SaledCount { get; set; }
-
+        
         public int ManufacturerId { get; set; }
         public virtual Manufacturer Manufacturer { get; set; }
         public int GlassMaterialId { get; set; }
@@ -26,5 +26,6 @@ namespace TempusHiring.DataAccess.Entities
         public virtual Strap Strap { get; set; }
         public virtual ICollection<OrderWatchLink> OrderWatchLinks { get; set; }
         public virtual ICollection<ShoppingCart> CartWatchLinks { get; set; }
+        public virtual ICollection<Photo> Photos { get; set; }
     }
 }

@@ -26,7 +26,6 @@ namespace TempusHiring.BusinessLogic.Extensions
                 Description = watch.Description,
                 Diameter = watch.Diameter,
                 Gender = watch.Gender,
-                Photo = watch.Photo,
                 Price = watch.Price,
                 CountInStock = watch.CountInStock,
                 SaledCount = watch.SaledCount,
