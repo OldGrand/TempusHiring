@@ -25,6 +25,8 @@ namespace TempusHiring.BusinessLogic.AutoMapper
                 cfg.CreateMap<StrapMaterial, StrapMaterialDTO>().ReverseMap();
                 cfg.CreateMap<WristSize, WristSizeDTO>().ReverseMap();
                 cfg.CreateMap<Watch, WatchDTO>().ReverseMap();
+                cfg.CreateMap<ShoppingCart, ShoppingCartDTO>().ReverseMap();
+                cfg.CreateMap<Photo, PhotoDTO>().ReverseMap();
             });
         }
     }

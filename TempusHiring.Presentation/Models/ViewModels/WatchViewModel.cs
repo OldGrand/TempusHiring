@@ -10,7 +10,6 @@ namespace TempusHiring.Presentation.Models.ViewModels
         public double Diameter { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
-        public string Photo { get; set; }
         public string Title { get; set; }
         public Gender Gender { get; set; }
         public int CountInStock { get; set; }
@@ -26,6 +25,6 @@ namespace TempusHiring.Presentation.Models.ViewModels
         public BodyMaterialViewModel BodyMaterial { get; set; }
         public int StrapId { get; set; }
         public StrapViewModel Strap { get; set; }
-        public IEnumerable<PhotoViewModel> Photos { get; set; }
+        public ICollection<PhotoViewModel> Photos { get; set; }
     }
 }

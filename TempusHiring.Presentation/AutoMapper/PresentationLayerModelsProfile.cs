@@ -44,6 +44,7 @@ namespace TempusHiring.Presentation.AutoMapper
             CreateMap<StrapDTO, StrapViewModel>().ReverseMap();
             CreateMap<StrapMaterialDTO, StrapMaterialViewModel>().ReverseMap();
             CreateMap<WristSizeDTO, WristSizeViewModel>().ReverseMap();
+            CreateMap<PhotoDTO, PhotoViewModel>().ReverseMap();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using TempusHiring.BusinessLogic.DataTransferObjects.Admin;
+﻿using System.Collections.Generic;
+using TempusHiring.BusinessLogic.DataTransferObjects.Admin;
 using TempusHiring.DataAccess.EntityEnums;
 
 namespace TempusHiring.BusinessLogic.DataTransferObjects
@@ -24,5 +25,6 @@ namespace TempusHiring.BusinessLogic.DataTransferObjects
         public BodyMaterialDTO BodyMaterial { get; set; }
         public int StrapId { get; set; }
         public StrapDTO Strap { get; set; }
+        public ICollection<PhotoDTO> Photos { get; set; }
     }
 }
