@@ -1,6 +1,6 @@
-﻿namespace TempusHiring.BusinessLogic.DataTransferObjects.Admin
+﻿namespace TempusHiring.Presentation.Models.ViewModels.Admin
 {
-    public class StrapMaterialDTO
+    public class StrapMaterialViewModel
     {
         public int Id { get; set; }
         public string Title { get; set; }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using TempusHiring.BusinessLogic.DataTransferObjects;
 using TempusHiring.BusinessLogic.DataTransferObjects.Account;
 using TempusHiring.BusinessLogic.DataTransferObjects.Admin;
 using TempusHiring.DataAccess.Entities;
@@ -20,6 +21,7 @@ namespace TempusHiring.BusinessLogic.AutoMapper
             CreateMap<Strap, StrapDTO>().ReverseMap();
             CreateMap<StrapMaterial, StrapMaterialDTO>().ReverseMap();
             CreateMap<WristSize, WristSizeDTO>().ReverseMap();
+            CreateMap<Watch, WatchDTO>().ReverseMap();
         }
     }
 }

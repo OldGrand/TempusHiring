@@ -1,5 +1,4 @@
-﻿@using TempusHiring.Presentation.Models.ViewModels
-@model TempusHiring.Presentation.Models.ViewModels.FilteredWatchViewModel
+﻿@model TempusHiring.Presentation.Models.ViewModels.FilteredWatchViewModel
 
 @{
     ViewData["Title"] = "Catalog";
@@ -67,11 +66,11 @@
 
                 <div class="select__group">
                     <form class="form-select" method="post" asp-route-ItemsOnPage="@Model.ItemsOnPage" asp-route-Filter="@Model.Filter">
-                        <select asp-for="@Model.ItemsOnPage" asp-items="@Model.ItemsOnPageVM"
+                        <select asp-for="@Model.ItemsOnPage" asp-items="@Model.ItemsOnPageViewModel"
                                 class="select" onchange="this.form.submit()"></select>
                     </form>
                     <form class="form-select" method="post" asp-route-ItemsOnPage="@Model.ItemsOnPage" asp-route-Filter="@Model.Filter">
-                        <select asp-for="@Model.Filter" asp-items="@Html.GetEnumSelectList<Filter>()"
+                        <select asp-for="@Model.Filter" asp-items="@Html.GetEnumSelectList<FilterViewModel>()"
                                 class="select" onchange="this.form.submit()"></select>
                     </form>
                 </div>

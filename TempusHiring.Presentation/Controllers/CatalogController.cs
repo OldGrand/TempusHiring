@@ -1,9 +1,10 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TempusHiring.BusinessLogic.Pagination;
 using TempusHiring.BusinessLogic.Services.Interfaces;
+using TempusHiring.Common;
 using TempusHiring.Presentation.Models.ViewModels;
 
 namespace TempusHiring.Presentation.Controllers
@@ -12,6 +13,7 @@ namespace TempusHiring.Presentation.Controllers
     {
         private readonly ICatalogService _catalogService;
         private readonly IMapper _mapper;
+        private readonly SelectList ITEMS_ON_PAGE = new SelectList(new[] { 12, 24, 36 });
 
         public CatalogController(ICatalogService shopService, IMapper mapper)
         {
@@ -19,78 +21,43 @@ namespace TempusHiring.Presentation.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
+        public IActionResult Index(int pageNum = 1, int itemsOnPage = 12)
+        {
+            var pagedResultWithDto = _catalogService.ReadUnisex(Filter.Deafult, pageNum, itemsOnPage);
+            var pagedResultWithViewModels = _mapper.Map<PagedResult<WatchViewModel>>(pagedResultWithDto);
+
+            var filteredWatchViewModel = new FilteredWatchViewModel
+            {
+                PageResult = pagedResultWithViewModels,
+            };
+
+            return View(filteredWatchViewModel);
+        }
+
+        [HttpPost]
         public IActionResult Index(FilteredWatchViewModel filteredVM, int pageNum = 1)
         {
-            if (filteredVM.PriceRange is null)
-            {
-                var priceRangeDTO = _catalogService.GetWatchesPriceRange();
-                filteredVM.PriceRange = _mapper.Map<PriceRangeViewModel>(priceRangeDTO);
-            }
-            else
-            {
-                _catalogService.ChangePriceRange(filteredVM.PriceRange.StartPrice, filteredVM.PriceRange.EndPrice);
-            }
+            var pagedResultWithDto = _catalogService.ReadUnisex(Filter.Deafult, pageNum, filteredVM.ItemsOnPage);
+            var pagedResultWithViewModels = _mapper.Map<PagedResult<WatchViewModel>>(pagedResultWithDto);
 
-            var pagedResult = (filteredVM.Filter switch
-            {
-                Filter.OrderByPriceAsc => _catalogService.ReadOrderedByPriceAsc(),
-                Filter.OrderByPriceDesc => _catalogService.ReadOrderedByPriceDesc(),
-                Filter.SortByNoveltyAsc => _catalogService.ReadOrderedByNoveltyAsc(),
-                Filter.SortByNoveltyDesc => _catalogService.ReadOrderedByNoveltyDesc(),
-                Filter.SortByPopularityAsc => _catalogService.ReadOrderedByPopularityAsc(),
-                Filter.SortByPopularityDesc => _catalogService.ReadOrderedByPopularityDesc(),
-                _ => _catalogService.ReadAll()
-            }).Select(_ => _mapper.Map<WatchViewModel>(_)).GetPaged(pageNum, filteredVM.ItemsOnPage);
-
-            filteredVM.PageResult = pagedResult;
-            filteredVM.ItemsOnPageVM = new SelectList(new[] { 12, 24, 36 });
+            filteredVM.PageResult = pagedResultWithViewModels;
+            filteredVM.ItemsOnPageViewModel = ITEMS_ON_PAGE;
 
             return View(filteredVM);
         }
 
-        //public IActionResult MensWatches(FilteredWatchViewModel filteredVM, int pageNum = 1)
-        //{
-        //    if (!string.IsNullOrEmpty(filteredVM.PriceRange.StartPrice) || !string.IsNullOrEmpty(filteredVM.PriceRange.EndPrice))
-        //        _catalogService.ChangePriceRange(filteredVM.PriceRange.StartPrice, filteredVM.PriceRange.EndPrice);
+        [HttpGet]
+        public IActionResult MensWatches(int pageNum = 1, int itemsOnPage = 12)
+        {
+            return View(nameof(Index));
+        }
 
-        //    var pagedResult = (filteredVM.Filter switch
-        //    {
-        //        Filter.OrderByPriceAsc => _catalogService.ReadMenOrderedByPriceAsc(),
-        //        Filter.OrderByPriceDesc => _catalogService.ReadMenOrderedByPriceDesc(),
-        //        Filter.SortByNoveltyAsc => _catalogService.ReadMenOrderedByNoveltyAsc(),
-        //        Filter.SortByNoveltyDesc => _catalogService.ReadMenOrderedByNoveltyDesc(),
-        //        Filter.SortByPopularityAsc => _catalogService.ReadMenOrderedByPopularityAsc(),
-        //        Filter.SortByPopularityDesc => _catalogService.ReadMenOrderedByPopularityDesc(),
-        //        _ => _catalogService.ReadMen()
-        //    }).Select(_ => _mapper.Map<WatchViewModel>(_)).GetPaged(pageNum, filteredVM.ItemsOnPage);
-
-        //    filteredVM.PageResult = pagedResult;
-        //    filteredVM.ItemsOnPageVM = new SelectList(new[] { 12, 24, 36 });
-
-        //    return View(nameof(Index), filteredVM);
-        //}
-
-        //public IActionResult WomensWatches(FilteredWatchViewModel filteredVM, int pageNum = 1)
-        //{
-        //    if (!string.IsNullOrEmpty(filteredVM.PriceRange.StartPrice) || !string.IsNullOrEmpty(filteredVM.PriceRange.EndPrice))
-        //        _catalogService.ChangePriceRange(filteredVM.PriceRange.StartPrice, filteredVM.PriceRange.EndPrice);
-
-        //    var pagedResult = (filteredVM.Filter switch
-        //    {
-        //        Filter.OrderByPriceAsc => _catalogService.ReadWomenOrderedByPriceAsc(),
-        //        Filter.OrderByPriceDesc => _catalogService.ReadWomenOrderedByPriceDesc(),
-        //        Filter.SortByNoveltyAsc => _catalogService.ReadWomenOrderedByNoveltyAsc(),
-        //        Filter.SortByNoveltyDesc => _catalogService.ReadWomenOrderedByNoveltyDesc(),
-        //        Filter.SortByPopularityAsc => _catalogService.ReadWomenOrderedByPopularityAsc(),
-        //        Filter.SortByPopularityDesc => _catalogService.ReadWomenOrderedByPopularityDesc(),
-        //        _ => _catalogService.ReadWomen()
-        //    }).Select(_ => _mapper.Map<WatchViewModel>(_)).GetPaged(pageNum, filteredVM.ItemsOnPage);
-
-        //    filteredVM.PageResult = pagedResult;
-        //    filteredVM.ItemsOnPageVM = new SelectList(new[] { 12, 24, 36 });
-
-        //    return View(nameof(Index), filteredVM);
-        //}
+        [HttpGet]
+        public IActionResult WomensWatches(int pageNum = 1, int itemsOnPage = 12)
+        {
+            return View(nameof(Index));
+        }
 
         public IActionResult GetPriceRange() => Json(_catalogService.GetWatchesPriceRange());
     }

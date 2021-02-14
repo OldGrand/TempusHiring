@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
 using TempusHiring.BusinessLogic.DataTransferObjects;
 using TempusHiring.BusinessLogic.DataTransferObjects.Account;
+using TempusHiring.BusinessLogic.DataTransferObjects.Admin;
 using TempusHiring.BusinessLogic.DataTransferObjects.Order;
+using TempusHiring.BusinessLogic.Pagination;
 using TempusHiring.Presentation.Models.AccountViewModels;
 using TempusHiring.Presentation.Models.ViewModels;
+using TempusHiring.Presentation.Models.ViewModels.Admin;
 
 namespace TempusHiring.Presentation.AutoMapper
 {
@@ -31,6 +34,16 @@ namespace TempusHiring.Presentation.AutoMapper
             CreateMap<OrderDTO, OrderViewModel>().ReverseMap();
             CreateMap<OrderWatchLinkDTO, OrderWatchLinkViewModel>().ReverseMap();
             CreateMap<PriceRangeDTO, PriceRangeViewModel>().ReverseMap();
+            CreateMap<PagedResult<WatchDTO>, PagedResult<WatchViewModel>>().ReverseMap();
+
+            CreateMap<BodyMaterialDTO, BodyMaterialViewModel>().ReverseMap();
+            CreateMap<ColorDTO, ColorViewModel>().ReverseMap();
+            CreateMap<GlassMaterialDTO, GlassMaterialViewModel>().ReverseMap();
+            CreateMap<ManufacturerDTO, ManufacturerViewModel>().ReverseMap();
+            CreateMap<MechanismDTO, MechanismViewModel>().ReverseMap();
+            CreateMap<StrapDTO, StrapViewModel>().ReverseMap();
+            CreateMap<StrapMaterialDTO, StrapMaterialViewModel>().ReverseMap();
+            CreateMap<WristSizeDTO, WristSizeViewModel>().ReverseMap();
         }
     }
 }

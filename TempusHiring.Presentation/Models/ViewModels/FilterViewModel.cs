@@ -2,7 +2,7 @@
 
 namespace TempusHiring.Presentation.Models.ViewModels
 {
-    public enum Filter
+    public enum FilterViewModel
     {
         [Display(Name = "По умолчанию")]
         Deafult,

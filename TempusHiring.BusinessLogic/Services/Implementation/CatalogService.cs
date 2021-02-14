@@ -1,8 +1,13 @@
 ﻿using System.Linq;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using TempusHiring.BusinessLogic.AutoMapper;
 using TempusHiring.BusinessLogic.DataTransferObjects;
-using TempusHiring.BusinessLogic.Extensions;
+using TempusHiring.BusinessLogic.Pagination;
 using TempusHiring.BusinessLogic.Services.Interfaces;
+using TempusHiring.Common;
 using TempusHiring.DataAccess.Core;
+using TempusHiring.DataAccess.Entities;
 using TempusHiring.DataAccess.EntityEnums;
 
 namespace TempusHiring.BusinessLogic.Services.Implementation
@@ -10,33 +15,67 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
     public class CatalogService : ICatalogService
     {
         private readonly TempusHiringDbContext _context;
+        private readonly IMapper _mapper;
         private static PriceRangeDTO _priceRange;
 
-        public CatalogService(TempusHiringDbContext context)
+        public CatalogService(TempusHiringDbContext context, IMapper mapper)
         {
             _context = context;
             _priceRange ??= InitRange();
+            _mapper = mapper;
         }
 
-        public PriceRangeDTO GetWatchesPriceRange() => _priceRange;
-
-        public void ChangePriceRange(decimal start, decimal end) =>
-            (_priceRange.StartPrice, _priceRange.EndPrice) = (start, end);
-
-        public IQueryable<WatchDTO> ReadAll() =>
-            from watch in _context.Watches
-            where watch.CountInStock > 0 && (watch.Price >= _priceRange.StartPrice && watch.Price <= _priceRange.EndPrice)
-            select new WatchDTO
+        public PagedResult<WatchDTO> ReadUnisex(Filter filter, int pageNum, int itemsOnPage)
+        {
+            return (filter switch
             {
-                Id = watch.Id,
-                Title = watch.Title,
-                Description = watch.Description,
-                Diameter = watch.Diameter,
-                Gender = watch.Gender,
-                Price = watch.Price,
-                CountInStock = watch.CountInStock,
-                SaledCount = watch.SaledCount,
-            };
+                Filter.OrderByPriceAsc => ReadOrderedByPriceAsc(),
+                Filter.OrderByPriceDesc => ReadOrderedByPriceDesc(),
+                Filter.SortByNoveltyAsc => ReadOrderedByNoveltyAsc(),
+                Filter.SortByNoveltyDesc => ReadOrderedByNoveltyDesc(),
+                Filter.SortByPopularityAsc => ReadOrderedByPopularityAsc(),
+                Filter.SortByPopularityDesc => ReadOrderedByPopularityDesc(),
+                _ => ReadAll()
+            }).GetPaged(pageNum, itemsOnPage);
+        }
+
+        public PagedResult<WatchDTO> ReadMen(Filter filter, int pageNum, int itemsOnPage)
+        {
+            return (filter switch
+            {
+                Filter.OrderByPriceAsc => ReadMenOrderedByPriceAsc(),
+                Filter.OrderByPriceDesc => ReadMenOrderedByPriceDesc(),
+                Filter.SortByNoveltyAsc => ReadMenOrderedByNoveltyAsc(),
+                Filter.SortByNoveltyDesc => ReadMenOrderedByNoveltyDesc(),
+                Filter.SortByPopularityAsc => ReadMenOrderedByPopularityAsc(),
+                Filter.SortByPopularityDesc => ReadMenOrderedByPopularityDesc(),
+                _ => ReadMen()
+            }).GetPaged(pageNum, itemsOnPage);
+        }
+
+        public PagedResult<WatchDTO> ReadWomen(Filter filter, int pageNum, int itemsOnPage)
+        {
+            return (filter switch
+            {
+                Filter.OrderByPriceAsc => ReadWomenOrderedByPriceAsc(),
+                Filter.OrderByPriceDesc => ReadWomenOrderedByPriceDesc(),
+                Filter.SortByNoveltyAsc => ReadWomenOrderedByNoveltyAsc(),
+                Filter.SortByNoveltyDesc => ReadWomenOrderedByNoveltyDesc(),
+                Filter.SortByPopularityAsc => ReadWomenOrderedByPopularityAsc(),
+                Filter.SortByPopularityDesc => ReadWomenOrderedByPopularityDesc(),
+                _ => ReadWomen()
+            }).GetPaged(pageNum, itemsOnPage);
+        }
+
+        public IQueryable<WatchDTO> ReadAll()
+        {
+            var watchEntities = _context.Watches
+                .Where(_ => _.Price >= _priceRange.StartPrice && _.Price <= _priceRange.EndPrice);
+
+            var mapperConfig = BusinessLogicLayerMapperConfig.GetConfiguration();
+            var result = watchEntities.ProjectTo<WatchDTO>(mapperConfig);
+            return result;
+        }
 
         public IQueryable<WatchDTO> ReadOrderedByPriceDesc() =>
             ReadAll().OrderByDescending(_ => _.Price);
@@ -50,10 +89,9 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
             ReadAll().OrderByDescending(_ => _.SaledCount);
         public IQueryable<WatchDTO> ReadOrderedByPopularityAsc() =>
             ReadAll().OrderBy(_ => _.SaledCount);
-
-
+        
         public IQueryable<WatchDTO> ReadMen() =>
-            ReadAll().ReadByGender(Gender.Man);
+            ReadAll().Where(_ => _.Gender == Gender.Man);
         public IQueryable<WatchDTO> ReadMenOrderedByPriceDesc() =>
             ReadMen().OrderByDescending(_ => _.Price);
         public IQueryable<WatchDTO> ReadMenOrderedByPriceAsc() =>
@@ -66,10 +104,9 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
             ReadMen().OrderByDescending(_ => _.SaledCount);
         public IQueryable<WatchDTO> ReadMenOrderedByPopularityAsc() =>
             ReadMen().OrderBy(_ => _.SaledCount);
-
-
+        
         public IQueryable<WatchDTO> ReadWomen() =>
-            ReadAll().ReadByGender(Gender.Woman);
+            ReadAll().Where(_ => _.Gender == Gender.Man);
         public IQueryable<WatchDTO> ReadWomenOrderedByPriceDesc() =>
             ReadWomen().OrderByDescending(_ => _.Price);
         public IQueryable<WatchDTO> ReadWomenOrderedByPriceAsc() =>
@@ -83,6 +120,10 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
         public IQueryable<WatchDTO> ReadWomenOrderedByPopularityAsc() =>
             ReadWomen().OrderBy(_ => _.SaledCount);
 
+        public PriceRangeDTO GetWatchesPriceRange() => _priceRange;
+
+        public void ChangePriceRange(decimal start, decimal end) =>
+            (_priceRange.StartPrice, _priceRange.EndPrice) = (start, end);
 
         private PriceRangeDTO InitRange()
         {
