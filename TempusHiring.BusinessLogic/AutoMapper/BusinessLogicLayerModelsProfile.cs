@@ -24,6 +24,7 @@ namespace TempusHiring.BusinessLogic.AutoMapper
             CreateMap<Watch, WatchDTO>().ReverseMap();
             CreateMap<ShoppingCart, ShoppingCartDTO>().ReverseMap();
             CreateMap<Photo, PhotoDTO>().ReverseMap();
+            CreateMap<User, UserDTO>().ReverseMap();
         }
     }
 }

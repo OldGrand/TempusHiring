@@ -94,9 +94,7 @@
                                 <a class="item__wishlist">Add to wishlist</a>
                                 <div class="item__descr">Count in stock: @watch.CountInStock</div>
                                 <div class="item__descr">Count of sales: @watch.SaledCount</div>
-                                <form class="catalog-cart-form" asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-watchId="@watch.Id" method="post">
-                                    <input type="submit" value="Add to cart" class="submit__btn" />
-                                </form>
+                                <input type="button" value="Add to cart" way="Catalog/AddToCart" val="@watch.Id" class="submit__btn sozdat-zapis" />
                                 <form class="catalog-cart-form" asp-controller="Catalog" asp-action="Details" asp-route-watchId="@watch.Id" method="post">
                                     <input type="submit" value="Details" class="submit__btn" />
                                 </form>
@@ -128,5 +126,6 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js'></script>
     <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
     <script src='https://code.jquery.com/ui/1.12.0/jquery-ui.min.js'></script>
+    <script src="js/AddToCart.js"></script>
     <script src="~/js/range.js"></script>
 }

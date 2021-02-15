@@ -1,6 +1,8 @@
-﻿using AutoMapper;
+﻿using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using TempusHiring.BusinessLogic.Extensions;
 using TempusHiring.BusinessLogic.Pagination;
 using TempusHiring.BusinessLogic.Services.Interfaces;
 using TempusHiring.Common;
@@ -11,13 +13,15 @@ namespace TempusHiring.Presentation.Controllers
     public class CatalogController : Controller
     {
         private readonly ICatalogService _catalogService;
+        private readonly IShoppingCartService _shoppingCartService;
         private readonly IMapper _mapper;
         private readonly SelectList ITEMS_ON_PAGE = new SelectList(new[] { 12, 24, 36 });
 
-        public CatalogController(ICatalogService shopService, IMapper mapper)
+        public CatalogController(ICatalogService shopService, IMapper mapper, IShoppingCartService shoppingCartService)
         {
             _catalogService = shopService;
             _mapper = mapper;
+            _shoppingCartService = shoppingCartService;
         }
         
         [HttpGet]
@@ -62,6 +66,18 @@ namespace TempusHiring.Presentation.Controllers
             return View();
         }
 
-        public IActionResult GetPriceRange() => Json(_catalogService.GetWatchesPriceRange());
+        [HttpGet]
+        public IActionResult GetPriceRange()
+        {
+            return Json(_catalogService.GetWatchesPriceRange());
+        }
+        
+        [HttpGet]
+        public async Task<IActionResult> AddToCart(int watchId)
+        {
+            var userId = User.GetId();
+            await _shoppingCartService.AddToCartAsync(userId, watchId);
+            return Ok();
+        }
     }
 }

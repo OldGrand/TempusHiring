@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -22,6 +22,7 @@ namespace TempusHiring.Presentation.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
         public IActionResult Items()
         {
             var userId = User.GetId();
@@ -29,7 +30,7 @@ namespace TempusHiring.Presentation.Controllers
             var cartWrapper = new CartWrapperViewModel
             {
                 OrderSummary = _mapper.Map<OrderSummaryViewModel>(_cartService.GetSummary(userId)),
-                ShoppingCarts = ReadUserCartVM(userId).ToList()
+                ShoppingCarts = _mapper.Map<IEnumerable<ShoppingCartViewModel>>(_cartService.ReadUserCart(userId))
             };
 
             return View(cartWrapper);
@@ -47,15 +48,7 @@ namespace TempusHiring.Presentation.Controllers
         {
             return RedirectToAction("CreateOrder", "Orders");
         }
-
-        public async Task<IActionResult> AddToCart(int watchId)
-        {
-            var userId = User.GetId();
-            await _cartService.AddToCartAsync(userId, watchId);
-            
-            return RedirectToAction(nameof(Items), "ShoppingCart");
-        }
-
+        
         public IActionResult ChangeCount(int watchId, Operations operation)
         {
             var userId = User.GetId();
@@ -68,13 +61,6 @@ namespace TempusHiring.Presentation.Controllers
         {
             _cartService.DeleteFromCart(cartId);
             return RedirectToAction(nameof(Items), "ShoppingCart");
-        }
-
-        private IQueryable<ShoppingCartViewModel> ReadUserCartVM(int userId)
-        {
-            var cartVMs = _cartService.ReadUserCart(userId)
-                                          .Select(_ => _mapper.Map<ShoppingCartViewModel>(_));
-            return cartVMs;
         }
     }
 }

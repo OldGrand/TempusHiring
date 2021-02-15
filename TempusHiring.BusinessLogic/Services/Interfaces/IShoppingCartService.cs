@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using TempusHiring.BusinessLogic.DataTransferObjects;
 using TempusHiring.BusinessLogic.DataTransferObjects.Order;
@@ -8,7 +8,7 @@ namespace TempusHiring.BusinessLogic.Services.Interfaces
 {
     public interface IShoppingCartService
     {
-        IQueryable<ShoppingCartDTO> ReadUserCart(int id);
+        IEnumerable<ShoppingCartDTO> ReadUserCart(int id);
         Task AddToCartAsync(int userId, int watchId);
         void ChangeCount(int userId, int watchId, Operations operation);
         void DeleteFromCart(int cartId);
