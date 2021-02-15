@@ -2,6 +2,7 @@
 using TempusHiring.BusinessLogic.DataTransferObjects;
 using TempusHiring.BusinessLogic.DataTransferObjects.Account;
 using TempusHiring.BusinessLogic.DataTransferObjects.Admin;
+using TempusHiring.BusinessLogic.DataTransferObjects.Order;
 using TempusHiring.DataAccess.Entities;
 
 namespace TempusHiring.BusinessLogic.AutoMapper
@@ -25,6 +26,7 @@ namespace TempusHiring.BusinessLogic.AutoMapper
             CreateMap<ShoppingCart, ShoppingCartDTO>().ReverseMap();
             CreateMap<Photo, PhotoDTO>().ReverseMap();
             CreateMap<User, UserDTO>().ReverseMap();
+            CreateMap<Order, OrderDTO>().ReverseMap();
         }
     }
 }

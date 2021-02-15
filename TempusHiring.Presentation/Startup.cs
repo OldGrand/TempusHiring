@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -98,6 +99,12 @@ namespace TempusHiring.Presentation
             });
 
             services.AddControllersWithViews();
+            services.AddDistributedMemoryCache();
+            services.AddSession(config =>
+            {
+                config.Cookie.IsEssential = true;
+                config.IdleTimeout = TimeSpan.FromHours(2);
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -117,6 +124,8 @@ namespace TempusHiring.Presentation
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

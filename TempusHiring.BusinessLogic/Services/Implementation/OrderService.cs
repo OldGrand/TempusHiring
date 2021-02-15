@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using TempusHiring.BusinessLogic.DataTransferObjects;
 using TempusHiring.BusinessLogic.DataTransferObjects.Order;
 using TempusHiring.BusinessLogic.Extensions;
 using TempusHiring.BusinessLogic.Services.Interfaces;
+using TempusHiring.Common;
 using TempusHiring.DataAccess.Core;
 using TempusHiring.DataAccess.Entities;
 
@@ -12,10 +15,12 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
     public class OrderService : IOrderService
     {
         private readonly TempusHiringDbContext _context;
+        private readonly IMapper _mapper;
 
-        public OrderService(TempusHiringDbContext context)
+        public OrderService(TempusHiringDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         private Order CreateOrder(int userId)
@@ -23,7 +28,7 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
             var order = new Order
             {
                 UserId = userId,
-                PaymentMethod = "Наличные",
+                PaymentMethod = PaymentMethods.CASH,
                 OrderDate = DateTime.Now,
                 User = _context.Users.Find(userId),
             };
@@ -69,12 +74,13 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
             }
         }
 
-        public IQueryable<OrderDTO> GetOrders(int userId)
+        public IEnumerable<OrderDTO> GetOrders(int userId)
         {
-            return from order in _context.Orders
-                   where order.UserId == userId && order.IsOrderCompleted != true
-                   orderby order.Id descending
-                   select order.ToDTO();
+            var orders = _context.Orders.Where(_ => _.UserId == userId && !_.IsOrderCompleted)
+                                                            .OrderBy(_ => _.Id);
+
+            var orderDtos = _mapper.Map<IEnumerable<OrderDTO>>(orders);
+            return orderDtos;
         }
     }
 }
