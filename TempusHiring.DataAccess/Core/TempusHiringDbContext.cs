@@ -28,8 +28,6 @@ namespace TempusHiring.DataAccess.Core
 
         public TempusHiringDbContext(DbContextOptions options) : base(options)
         {
-            //Database.EnsureDeleted();
-            //Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

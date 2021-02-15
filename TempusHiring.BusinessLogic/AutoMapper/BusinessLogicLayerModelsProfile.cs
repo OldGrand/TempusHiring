@@ -27,6 +27,7 @@ namespace TempusHiring.BusinessLogic.AutoMapper
             CreateMap<Photo, PhotoDTO>().ReverseMap();
             CreateMap<User, UserDTO>().ReverseMap();
             CreateMap<Order, OrderDTO>().ReverseMap();
+            CreateMap<OrderWatchLink, OrderWatchLinkDTO>().ReverseMap();
         }
     }
 }

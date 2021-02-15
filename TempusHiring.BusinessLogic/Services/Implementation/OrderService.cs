@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using TempusHiring.BusinessLogic.DataTransferObjects;
 using TempusHiring.BusinessLogic.DataTransferObjects.Order;
 using TempusHiring.BusinessLogic.Extensions;
 using TempusHiring.BusinessLogic.Services.Interfaces;
@@ -75,7 +74,7 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
         }
 
         public IEnumerable<OrderDTO> GetOrders(int userId)
-        {
+        {//TODO миллион запросов
             var orders = _context.Orders.Where(_ => _.UserId == userId && !_.IsOrderCompleted)
                                                             .OrderBy(_ => _.Id)
                                                             .ToList();
