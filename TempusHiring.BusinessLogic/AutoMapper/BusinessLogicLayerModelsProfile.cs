@@ -12,7 +12,7 @@ namespace TempusHiring.BusinessLogic.AutoMapper
         public BusinessLogicLayerModelsProfile()
         {
             CreateMap<User, RegisterDTO>().ForMember(_ => _.Password, opt => opt.Ignore())
-                                          .ReverseMap();
+                .ReverseMap();
 
             CreateMap<BodyMaterial, BodyMaterialDTO>().ReverseMap();
             CreateMap<Color, ColorDTO>().ReverseMap();

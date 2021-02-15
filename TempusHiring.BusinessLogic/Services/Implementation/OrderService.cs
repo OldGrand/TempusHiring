@@ -77,7 +77,8 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
         public IEnumerable<OrderDTO> GetOrders(int userId)
         {
             var orders = _context.Orders.Where(_ => _.UserId == userId && !_.IsOrderCompleted)
-                                                            .OrderBy(_ => _.Id);
+                                                            .OrderBy(_ => _.Id)
+                                                            .ToList();
 
             var orderDtos = _mapper.Map<IEnumerable<OrderDTO>>(orders);
             return orderDtos;

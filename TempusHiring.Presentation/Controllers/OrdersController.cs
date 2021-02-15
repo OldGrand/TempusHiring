@@ -24,9 +24,10 @@ namespace TempusHiring.Presentation.Controllers
         public IActionResult Items()
         {
             var userId = User.GetId();
-            var orderDTOs = _orderService.GetOrders(userId).ToList();
-            var orderVMs = _mapper.Map<IEnumerable<OrderViewModel>>(orderDTOs);
-            return View(orderVMs);
+            var orderDtos = _orderService.GetOrders(userId).ToList();
+            var orderViewModels = _mapper.Map<IEnumerable<OrderViewModel>>(orderDtos);
+
+            return View(orderViewModels);
         }
 
         public IActionResult CreateOrder()
