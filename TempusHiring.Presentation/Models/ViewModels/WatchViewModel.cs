@@ -9,6 +9,7 @@ namespace TempusHiring.Presentation.Models.ViewModels
         public int Id { get; set; }
         public double Diameter { get; set; }
         public string Description { get; set; }
+        public string PreviewPhoto { get; set; }
         public decimal Price { get; set; }
         public string Title { get; set; }
         public Gender Gender { get; set; }

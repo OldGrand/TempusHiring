@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TempusHiring.BusinessLogic.AutoMapper;
 using TempusHiring.Common;
 using TempusHiring.DataAccess.Core;
 using TempusHiring.DataAccess.Entities;
@@ -36,7 +37,7 @@ namespace TempusHiring.Presentation
                 //option.LowercaseUrls = true;
             });
 
-            services.AddAutoMapper(typeof(PresentationLayerModelsProfile));
+            services.AddAutoMapper(typeof(PresentationLayerModelsProfile), typeof(BusinessLogicLayerModelsProfile));
             services.AddUnitOfWorkAndRepository();
             services.AddBusinessLogicLayerServices();
 
@@ -56,7 +57,7 @@ namespace TempusHiring.Presentation
 
             services.ConfigureApplicationCookie(config =>
             {
-                config.LoginPath = "/Account/LoginRegister";
+                config.LoginPath = "/Account/Login";
                 config.AccessDeniedPath = "/Home/AccessDenied";
                 config.LogoutPath = "/Account/Logout";
             });

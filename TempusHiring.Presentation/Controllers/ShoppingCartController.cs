@@ -52,7 +52,7 @@ namespace TempusHiring.Presentation.Controllers
         {
             var userId = User.GetId();
             await _cartService.AddToCartAsync(userId, watchId);
-
+            
             return RedirectToAction(nameof(Items), "ShoppingCart");
         }
 

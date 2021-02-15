@@ -56,6 +56,12 @@ namespace TempusHiring.Presentation.Controllers
             return View(nameof(Index), filteredVM);
         }
 
+        [HttpPost]
+        public IActionResult Details(int id)
+        {
+            return View();
+        }
+
         public IActionResult GetPriceRange() => Json(_catalogService.GetWatchesPriceRange());
     }
 }

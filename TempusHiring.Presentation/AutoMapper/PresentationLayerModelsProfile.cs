@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using AutoMapper;
 using TempusHiring.BusinessLogic.DataTransferObjects;
 using TempusHiring.BusinessLogic.DataTransferObjects.Account;
 using TempusHiring.BusinessLogic.DataTransferObjects.Admin;
@@ -14,7 +15,10 @@ namespace TempusHiring.Presentation.AutoMapper
     {
         public PresentationLayerModelsProfile()
         {
-            CreateMap<ResetPasswordDTO, ResetPasswordViewModel>().ReverseMap();
+            CreateMap<LoginDTO, LoginViewModel>()
+                .ForMember(dst => dst.Email, src => src.MapFrom(_ => _.UserName))
+                .ReverseMap();
+
             CreateMap<ExternalRegisterViewModel, UserDTO>()
                 .ForMember(dst => dst.UserName, src => src.MapFrom(_ => _.Email))
                 .ReverseMap();
@@ -27,7 +31,23 @@ namespace TempusHiring.Presentation.AutoMapper
                 .ForMember(dst => dst.UserName, src => src.MapFrom(_ => _.Email))
                 .ReverseMap();
 
-            CreateMap<WatchDTO, WatchViewModel>().ReverseMap();
+            CreateMap<WatchDTO, WatchViewModel>()
+                .BeforeMap((x, y) =>
+                {
+                    if (x.Photos is not null && x.Photos.Any())
+                    {
+                        x.PreviewPhoto = x.Photos.First().Path;
+                        return;
+                    }
+                    x.PreviewPhoto = string.Empty;
+                })
+                .ReverseMap();
+
+            CreateMap<RegisterDTO, RegisterViewModel>()
+                .ForMember(_ => _.Email, x => x.MapFrom(_ => _.UserName))
+                .ReverseMap();
+            
+            CreateMap<ResetPasswordDTO, ResetPasswordViewModel>().ReverseMap();
             CreateMap<UserDTO, UserViewModel>().ReverseMap();
             CreateMap<ShoppingCartDTO, ShoppingCartViewModel>().ReverseMap();
             CreateMap<OrderSummaryDTO, OrderSummaryViewModel>().ReverseMap();

@@ -14,8 +14,10 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
     {
         private readonly TempusHiringDbContext _context;
 
-        public ShoppingCartService(TempusHiringDbContext context) =>
+        public ShoppingCartService(TempusHiringDbContext context)
+        {
             _context = context;
+        }
 
         private IQueryable<ShoppingCart> ReadAll(int userId)
         {

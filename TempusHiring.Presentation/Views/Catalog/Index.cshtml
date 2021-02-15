@@ -82,7 +82,7 @@
                     <div class="card">
                         <div class="front">
                             <div class="front__description">
-                                <img src="/images/Shop/@watch.Photo" alt="" class="item__img">
+                                <img src="/images/Shop/@watch.PreviewPhoto" alt="" class="item__img">
                                 <p class="item__category">@watch.Gender</p>
                                 <div class="item__title">@watch.Title</div>
                                 <div class="item__price">$@watch.Price</div>
@@ -96,6 +96,9 @@
                                 <div class="item__descr">Count of sales: @watch.SaledCount</div>
                                 <form class="catalog-cart-form" asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-watchId="@watch.Id" method="post">
                                     <input type="submit" value="Add to cart" class="submit__btn" />
+                                </form>
+                                <form class="catalog-cart-form" asp-controller="Catalog" asp-action="Details" asp-route-watchId="@watch.Id" method="post">
+                                    <input type="submit" value="Details" class="submit__btn" />
                                 </form>
                             </div>
                         </div>
