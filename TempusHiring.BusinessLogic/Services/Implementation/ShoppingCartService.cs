@@ -60,7 +60,7 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
         }
 
         public IEnumerable<ShoppingCartDTO> ReadUserCart(int userId)
-        {//TODO миллион запросов
+        {
             var shoppingCarts = ReadAll(userId).ToList();
             var shoppingCartDto = _mapper.Map<IEnumerable<ShoppingCartDTO>>(shoppingCarts);
             return shoppingCartDto;

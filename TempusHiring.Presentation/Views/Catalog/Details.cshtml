@@ -1,1 +1,129 @@
-﻿
+﻿@model WatchViewModel
+
+@{
+    ViewData["Title"] = "Watch Details";
+}
+
+<div class="details_wrapper">
+    <div class="details">
+        <div class="details__header">
+            <div id="details-slider">
+                <a href="#" class="details-slider_control_next">></a>
+                <a href="#" class="details-slider_control_prev"><</a>
+                <ul>
+                    @foreach (var photo in Model.Photos)
+                    {
+                        <li>
+                            <img src="images/@photo.Path" alt="Product Image" class="details-image">
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="details__main-info">
+                <div class="details__data-header">
+                    <h2>@Model.Title</h2>
+                </div>
+                <div class="details__data-content">
+                    <ul class="details__data-list">
+                        <li class="details__data-item">
+                            <label>Title:</label>
+                            <span>@Model.Title</span>
+                        </li>
+                        <li class="details__data-item">
+                            <label>Descriptions:</label>
+                            <span>@Model.Description</span>
+                        </li>
+                        <li class="details__data-item">
+                            <label>Diameter:</label>
+                            <span>@Model.Diameter</span>
+                        </li>
+                        <li class="details__data-item">
+                            <label>Price:</label>
+                            <span>$@Model.Price</span>
+                        </li>
+                        <li class="details__data-item">
+                            <label>Gender:</label>
+                            <span>@Model.Gender</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="details__footer">
+            <div class="details__specification">
+                <div class="details__specification-header">
+                    <h2>Specifications</h2>
+                </div>
+                <div class="details__specification-content">
+                    <div class="details__specification-bodycolumn">
+                        <h2 class="details__specification-title">Body</h2>
+                        <div class="details__specification-content-values">
+                            <div class="details__specification-content-wrapper">
+                                <h3 class="details__specification-subtitle">Diameter</h3>
+                                <span>50.4</span>
+                            </div>
+                            <div class="details__specification-content-wrapper">
+                                <h3 class="details__specification-subtitle">Corpus</h3>
+                                <span>@Model.BodyMaterial.Title</span>
+                            </div>
+                            <div class="details__specification-content-wrapper">
+                                <h3 class="details__specification-subtitle">Glass</h3>
+                                <span>@Model.GlassMaterial.Title</span>
+                            </div>
+                            <div class="details__specification-content-wrapper">
+                                <h3 class="details__specification-subtitle">Manufacturer</h3>
+                                <span>@Model.Manufacturer.Title</span>
+                            </div>
+                            <div class="details__specification-content-wrapper">
+                                <h3 class="details__specification-subtitle">Manufacturer Country</h3>
+                                <span>@Model.Manufacturer.Country</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="details__specification-mechanism">
+                        <h2 class="details__specification-title">Mechanism</h2>
+                        <div class="details__specification-content-wrapper">
+                            <h3 class="details__specification-subtitle">Title</h3>
+                            <span>@Model.Mechanism.Title</span>
+                        </div>
+                        <div class="details__specification-content-wrapper">
+                            <h3 class="details__specification-subtitle">Description</h3>
+                            <span>@Model.Mechanism.Description</span>
+                        </div>
+                        <div class="details__specification-content-wrapper">
+                            <h3 class="details__specification-subtitle">Power Reserve Days Count</h3>
+                            <span>@Model.Mechanism.PowerReserveDays</span>
+                        </div>
+                        <div class="details__specification-content-wrapper">
+                            <h3 class="details__specification-subtitle">Mechanism Type</h3>
+                            <span>@Model.Mechanism.MechanismType</span>
+                        </div>
+                    </div>
+                    <div class="details__specification-strap">
+                        <h2 class="details__specification-title">Strap / bracelet</h2>
+                        <div class="details__specification-content-wrapper">
+                            <h3 class="details__specification-subtitle">Weight</h3>
+                            <span>@Model.Strap.Weight</span>
+                        </div>
+                        <div class="details__specification-content-wrapper">
+                            <h3 class="details__specification-subtitle">Wrist Size</h3>
+                            <span>@Model.Strap.WristSize.Title (@Model.Strap.WristSize.Size)</span>
+                        </div>
+                        <div class="details__specification-content-wrapper">
+                            <h3 class="details__specification-subtitle">Strap material</h3>
+                            <span>@Model.Strap.StrapMaterial.Title</span>
+                        </div>
+                        <div class="details__specification-content-wrapper">
+                            <h3 class="details__specification-subtitle">Color</h3>
+                            <span>@Model.Strap.Color</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/detailSlider.js"></script>
+}

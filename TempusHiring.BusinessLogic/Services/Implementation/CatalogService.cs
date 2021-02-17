@@ -1,5 +1,8 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
 using TempusHiring.BusinessLogic.AutoMapper;
 using TempusHiring.BusinessLogic.DataTransferObjects;
 using TempusHiring.BusinessLogic.Pagination;
@@ -14,11 +17,13 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
     {
         private readonly TempusHiringDbContext _context;
         private static PriceRangeDTO _priceRange;
+        private readonly IMapper _mapper;
 
-        public CatalogService(TempusHiringDbContext context)
+        public CatalogService(TempusHiringDbContext context, IMapper mapper)
         {
             _context = context;
             _priceRange ??= InitRange();
+            _mapper = mapper;
         }
 
         public PagedResult<WatchDTO> ReadUnisex(Filter filter, int pageNum, int itemsOnPage)
@@ -61,6 +66,13 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
                 Filter.SortByPopularityDesc => ReadWomenOrderedByPopularityDesc(),
                 _ => ReadWomen()
             }).GetPaged(pageNum, itemsOnPage);
+        }
+
+        public WatchDTO ReadById(int id)
+        {
+            var watchEntity = _context.Watches.Find(id);
+            var watchDto = _mapper.Map<WatchDTO>(watchEntity);
+            return watchDto;
         }
 
         private IQueryable<WatchDTO> ReadAll()

@@ -12,5 +12,6 @@ namespace TempusHiring.BusinessLogic.Services.Interfaces
         PagedResult<WatchDTO> ReadUnisex(Filter filter, int pageNum, int itemsOnPage);
         PagedResult<WatchDTO> ReadMen(Filter filter, int pageNum, int itemsOnPage);
         PagedResult<WatchDTO> ReadWomen(Filter filter, int pageNum, int itemsOnPage);
+        WatchDTO ReadById(int id);
     }
 }
