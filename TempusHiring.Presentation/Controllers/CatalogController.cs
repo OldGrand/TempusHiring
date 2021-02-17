@@ -61,9 +61,9 @@ namespace TempusHiring.Presentation.Controllers
         }
 
         [HttpPost]
-        public IActionResult Details(int id)
+        public IActionResult Details(int watchId)
         {
-            var watchDto = _catalogService.ReadById(id);
+            var watchDto = _catalogService.ReadById(watchId);
             var watchViewModel = _mapper.Map<WatchViewModel>(watchDto);
             return View(watchViewModel);
         }

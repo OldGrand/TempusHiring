@@ -14,7 +14,7 @@
                     @foreach (var photo in Model.Photos)
                     {
                         <li>
-                            <img src="images/@photo.Path" alt="Product Image" class="details-image">
+                            <img src="/images/Shop/@photo.Path" alt="Product Image" class="details-image">
                         </li>
                     }
                 </ul>
@@ -58,10 +58,6 @@
                     <div class="details__specification-bodycolumn">
                         <h2 class="details__specification-title">Body</h2>
                         <div class="details__specification-content-values">
-                            <div class="details__specification-content-wrapper">
-                                <h3 class="details__specification-subtitle">Diameter</h3>
-                                <span>50.4</span>
-                            </div>
                             <div class="details__specification-content-wrapper">
                                 <h3 class="details__specification-subtitle">Corpus</h3>
                                 <span>@Model.BodyMaterial.Title</span>
@@ -107,7 +103,7 @@
                         </div>
                         <div class="details__specification-content-wrapper">
                             <h3 class="details__specification-subtitle">Wrist Size</h3>
-                            <span>@Model.Strap.WristSize.Title (@Model.Strap.WristSize.Size)</span>
+                            <span>@Model.Strap.WristSize.Title (@Model.Strap.WristSize.Size cm)</span>
                         </div>
                         <div class="details__specification-content-wrapper">
                             <h3 class="details__specification-subtitle">Strap material</h3>
@@ -115,7 +111,7 @@
                         </div>
                         <div class="details__specification-content-wrapper">
                             <h3 class="details__specification-subtitle">Color</h3>
-                            <span>@Model.Strap.Color</span>
+                            <span>@Model.Strap.Color.Title</span>
                         </div>
                     </div>
                 </div>

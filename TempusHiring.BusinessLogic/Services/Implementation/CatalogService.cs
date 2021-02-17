@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
@@ -71,6 +72,12 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
         public WatchDTO ReadById(int id)
         {
             var watchEntity = _context.Watches.Find(id);
+
+            if (watchEntity is null)
+            {
+                throw new Exception("Entity not found exception");
+            }
+
             var watchDto = _mapper.Map<WatchDTO>(watchEntity);
             return watchDto;
         }
