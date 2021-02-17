@@ -28,11 +28,11 @@
         });
     };
 
-    $('a.details-slider_control_prev').click(function () {
+    $('div.details-slider_control_prev').click(function () {
         moveLeft();
     });
 
-    $('a.details-slider_control_next').click(function () {
+    $('div.details-slider_control_next').click(function () {
         moveRight();
     });
 });

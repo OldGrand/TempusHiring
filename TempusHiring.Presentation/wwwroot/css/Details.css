@@ -196,7 +196,7 @@
             background: #444444;
         }
 
-a.details-slider_control_next, a.details-slider_control_prev {
+div.details-slider_control_next, div.details-slider_control_prev {
     position: absolute;
     top: 40%;
     z-index: 999;
@@ -213,16 +213,16 @@ a.details-slider_control_next, a.details-slider_control_prev {
     cursor: pointer;
 }
 
-    a.details-slider_control_prev:hover, a.details-slider_control_next:hover {
+    div.details-slider_control_prev:hover, div.details-slider_control_next:hover {
         opacity: 1;
         transition: all 0.2s ease;
     }
 
-a.details-slider_control_prev {
+div.details-slider_control_prev {
     border-radius: 0 2px 2px 0;
 }
 
-a.details-slider_control_next {
+div.details-slider_control_next {
     right: 0;
     border-radius: 2px 0 0 2px;
 }
