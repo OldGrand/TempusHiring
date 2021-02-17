@@ -24,7 +24,6 @@ namespace TempusHiring.Presentation.Controllers
             _shoppingCartService = shoppingCartService;
         }
         
-        [HttpGet]
         public IActionResult Index(FilteredWatchViewModel filteredVM, int pageNum = 1)
         {
             var pagedResultWithDto = _catalogService.ReadUnisex(Filter.Deafult, pageNum, filteredVM.ItemsOnPage);
@@ -36,7 +35,6 @@ namespace TempusHiring.Presentation.Controllers
             return View(filteredVM);
         }
         
-        [HttpGet]
         public IActionResult MensWatches(FilteredWatchViewModel filteredVM, int pageNum = 1)
         {
             var pagedResultWithDto = _catalogService.ReadMen(Filter.Deafult, pageNum, filteredVM.ItemsOnPage);
@@ -48,7 +46,6 @@ namespace TempusHiring.Presentation.Controllers
             return View(nameof(Index), filteredVM);
         }
         
-        [HttpGet]
         public IActionResult WomensWatches(FilteredWatchViewModel filteredVM, int pageNum = 1)
         {
             var pagedResultWithDto = _catalogService.ReadWomen(Filter.Deafult, pageNum, filteredVM.ItemsOnPage);
