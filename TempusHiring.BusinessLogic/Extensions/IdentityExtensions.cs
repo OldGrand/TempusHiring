@@ -26,7 +26,18 @@ namespace TempusHiring.BusinessLogic.Extensions
             throw new AuthenticationException(SIGN_IN_FAILURE_MESSAGE);
         }
 
-        public static int GetId(this ClaimsPrincipal user) =>
-            Int32.Parse(user.FindFirstValue(ClaimTypes.NameIdentifier));
+        public static int GetId(this ClaimsPrincipal user)
+        {
+            try
+            {
+                return int.Parse(user.FindFirstValue(ClaimTypes.NameIdentifier));
+            }
+            catch (Exception e)
+            {
+                Console.BackgroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine(e);
+                throw;
+            }
+        }
     }
 }
