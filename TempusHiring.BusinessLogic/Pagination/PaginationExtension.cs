@@ -7,8 +7,9 @@ namespace TempusHiring.BusinessLogic.Pagination
     {
         public static PagedResult<T> GetPaged<T>(this IQueryable<T> source, int pageNum, int itemsOnPage) where T : class
         {
-            int count = source.Count();
-            int skippedItems = (pageNum - 1) * itemsOnPage;
+            var skippedItems = (pageNum - 1) * itemsOnPage;
+            var resultItems = source.Skip(skippedItems).Take(itemsOnPage).ToList();
+            var count = source.Count();
 
             var result = new PagedResult<T>()
             {
@@ -17,7 +18,7 @@ namespace TempusHiring.BusinessLogic.Pagination
                 ItemsTotal = count,
                 SkippedItems = skippedItems,
                 PagesTotal = (int)Math.Ceiling((double)count / itemsOnPage),
-                Result = source.Skip(skippedItems).Take(itemsOnPage).ToList()
+                Result = resultItems
             };
 
             return result;

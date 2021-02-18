@@ -32,6 +32,8 @@ namespace TempusHiring.DataAccess.Core
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.EnableSensitiveDataLogging();
+
             optionsBuilder.LogTo(_ =>
             {
                 Console.WriteLine(_);

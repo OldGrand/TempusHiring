@@ -1,8 +1,8 @@
-document.querySelector('.zalupa').addEventListener('click', e => {
-    let start = document.querySelector('#first').innerHTML.replace(/\s/g, '');
-    let end = document.querySelector('#second').innerHTML.replace(/\s/g, '');
-    debugger
-    document.querySelector('.zalupa__start').value = +start;
+
+document.querySelector(".zalupa").addEventListener("click", e => {
+    let start = document.querySelector("#first").innerHTML.replace(/\s/g, '');
+    let end = document.querySelector("#second").innerHTML.replace(/\s/g, '');
+    document.querySelector(".zalupa__start").value = +start;
     document.querySelector('.zalupa__end').value = +end;
 });
 

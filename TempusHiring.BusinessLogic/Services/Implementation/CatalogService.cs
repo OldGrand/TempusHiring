@@ -15,14 +15,38 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
     public class CatalogService : ICatalogService
     {
         private readonly TempusHiringDbContext _context;
-        private static PriceRangeDTO _priceRange;
         private readonly IMapper _mapper;
+
+        private static PriceRangeDTO _priceRange;
 
         public CatalogService(TempusHiringDbContext context, IMapper mapper)
         {
             _context = context;
-            _priceRange ??= InitRange();
             _mapper = mapper;
+            _priceRange ??= GetWatchesPriceRange();
+        }
+
+        public PriceRangeDTO GetWatchesPriceRange()
+        {
+            if (_priceRange is not null)
+                return _priceRange;
+
+            var start = _context.Watches.Min(_ => _.Price);
+            var end = _context.Watches.Max(_ => _.Price);
+
+            return new PriceRangeDTO
+            {
+                StartBorder = start,
+                EndBorder = end,
+                StartPrice = start,
+                EndPrice = end,
+            };
+        }
+
+        public void ChangePriceRange(decimal start, decimal end)
+        {
+            _priceRange.StartPrice = start;
+            _priceRange.EndPrice = end;
         }
 
         public PagedResult<WatchDTO> ReadUnisex(Filter filter, int pageNum, int itemsOnPage)
@@ -132,24 +156,5 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
             ReadWomen().OrderByDescending(_ => _.SaledCount);
         private IQueryable<WatchDTO> ReadWomenOrderedByPopularityAsc() =>
             ReadWomen().OrderBy(_ => _.SaledCount);
-
-        public PriceRangeDTO GetWatchesPriceRange() => _priceRange;
-
-        public void ChangePriceRange(decimal start, decimal end) =>
-            (_priceRange.StartPrice, _priceRange.EndPrice) = (start, end);
-
-        private PriceRangeDTO InitRange()
-        {
-            var start = _context.Watches.Min(_ => _.Price);
-            var end = _context.Watches.Max(_ => _.Price);
-
-            return new PriceRangeDTO
-            {
-                StartBorder = start,
-                EndBorder = end,
-                StartPrice = start,
-                EndPrice = end,
-            };
-        }
     }
 }

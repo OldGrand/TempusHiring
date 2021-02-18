@@ -15,7 +15,7 @@ namespace TempusHiring.Presentation.Controllers
         private readonly ICatalogService _catalogService;
         private readonly IShoppingCartService _shoppingCartService;
         private readonly IMapper _mapper;
-        private readonly SelectList ITEMS_ON_PAGE = new SelectList(new[] { 12, 24, 36 });
+        private static readonly SelectList ITEMS_ON_PAGE = new SelectList(new[] { 12, 24, 36 });
 
         public CatalogController(ICatalogService shopService, IMapper mapper, IShoppingCartService shoppingCartService)
         {
@@ -63,6 +63,12 @@ namespace TempusHiring.Presentation.Controllers
             var watchDto = _catalogService.ReadById(watchId);
             var watchViewModel = _mapper.Map<WatchViewModel>(watchDto);
             return View(watchViewModel);
+        }
+
+        [HttpPost]
+        public IActionResult UpdatePriceRange()
+        {
+            return Json(_catalogService.GetWatchesPriceRange());
         }
 
         [HttpGet]
