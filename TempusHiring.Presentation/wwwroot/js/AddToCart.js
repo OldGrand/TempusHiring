@@ -8,7 +8,7 @@
 document.querySelectorAll(".sozdat-zapis").forEach(elem => elem.addEventListener("click", e => {
     $.ajax({
         type: "GET",
-        url: e.target.getAttribute("way"),
+        url: "/Catalog/AddToCart",
         data: `watchId=${e.target.getAttribute("val")}`
     })
     .done(() => {
