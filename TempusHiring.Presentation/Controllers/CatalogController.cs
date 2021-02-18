@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -66,9 +67,18 @@ namespace TempusHiring.Presentation.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdatePriceRange()
+        public IActionResult UpdatePriceRange(int startPrice, int endPrice)
         {
-            return Json(_catalogService.GetWatchesPriceRange());
+            try
+            {
+                _catalogService.ChangePriceRange(startPrice, endPrice);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return StatusCode(500);
+            }
         }
 
         [HttpGet]

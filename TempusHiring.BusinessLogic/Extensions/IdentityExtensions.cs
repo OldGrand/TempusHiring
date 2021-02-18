@@ -35,7 +35,7 @@ namespace TempusHiring.BusinessLogic.Extensions
             catch (Exception e)
             {
                 Console.BackgroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine(e);
+                Console.WriteLine(e.Message);
                 throw;
             }
         }

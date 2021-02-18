@@ -43,10 +43,10 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
             };
         }
 
-        public void ChangePriceRange(decimal start, decimal end)
+        public void ChangePriceRange(decimal startPrice, decimal endPrice)
         {
-            _priceRange.StartPrice = start;
-            _priceRange.EndPrice = end;
+            _priceRange.StartPrice = startPrice;
+            _priceRange.EndPrice = endPrice;
         }
 
         public PagedResult<WatchDTO> ReadUnisex(Filter filter, int pageNum, int itemsOnPage)
