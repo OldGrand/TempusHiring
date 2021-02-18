@@ -16,7 +16,6 @@ namespace TempusHiring.Presentation.Controllers
         private readonly ICatalogService _catalogService;
         private readonly IShoppingCartService _shoppingCartService;
         private readonly IMapper _mapper;
-        private static readonly SelectList ITEMS_ON_PAGE = new SelectList(new[] { 12, 24, 36 });
 
         public CatalogController(ICatalogService shopService, IMapper mapper, IShoppingCartService shoppingCartService)
         {
@@ -32,7 +31,7 @@ namespace TempusHiring.Presentation.Controllers
             var pagedResultWithViewModels = _mapper.Map<PagedResult<WatchViewModel>>(pagedResultWithDto);
 
             filteredViewModel.PageResult = pagedResultWithViewModels;
-            filteredViewModel.ItemsOnPageViewModel = ITEMS_ON_PAGE;
+            filteredViewModel.ItemsOnPageViewModel = new SelectList(new[] { 12, 24, 36 }, filteredViewModel.ItemsOnPage);
 
             return View(filteredViewModel);
         }
@@ -44,7 +43,7 @@ namespace TempusHiring.Presentation.Controllers
             var pagedResultWithViewModels = _mapper.Map<PagedResult<WatchViewModel>>(pagedResultWithDto);
 
             filteredViewModel.PageResult = pagedResultWithViewModels;
-            filteredViewModel.ItemsOnPageViewModel = ITEMS_ON_PAGE;
+            filteredViewModel.ItemsOnPageViewModel = new SelectList(new[] { 12, 24, 36 }, filteredViewModel.ItemsOnPage);
 
             return View(nameof(Index), filteredViewModel);
         }
@@ -56,7 +55,7 @@ namespace TempusHiring.Presentation.Controllers
             var pagedResultWithViewModels = _mapper.Map<PagedResult<WatchViewModel>>(pagedResultWithDto);
 
             filteredViewModel.PageResult = pagedResultWithViewModels;
-            filteredViewModel.ItemsOnPageViewModel = ITEMS_ON_PAGE;
+            filteredViewModel.ItemsOnPageViewModel = new SelectList(new[] { 12, 24, 36 }, filteredViewModel.ItemsOnPage);
 
             return View(nameof(Index), filteredViewModel);
         }

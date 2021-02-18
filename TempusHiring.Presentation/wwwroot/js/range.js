@@ -8,7 +8,7 @@ document.querySelector(".zalupa").addEventListener("click", e => {
         url: "/Catalog/UpdatePriceRange",
         data: `startPrice=${start}&endPrice=${end}`,
         success: function (response) {
-            window.location.href = response;
+            //window.location.href = response;
         }
     });
 });
