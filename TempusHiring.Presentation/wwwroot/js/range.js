@@ -1,9 +1,16 @@
 
 document.querySelector(".zalupa").addEventListener("click", e => {
-    let start = document.querySelector("#first").innerHTML.replace(/\s/g, '');
-    let end = document.querySelector("#second").innerHTML.replace(/\s/g, '');
-    document.querySelector(".zalupa__start").value = +start;
-    document.querySelector('.zalupa__end').value = +end;
+    let start = document.querySelector("#first").innerHTML.replace(/\s/g, "");
+    let end = document.querySelector("#second").innerHTML.replace(/\s/g, "");
+    console.log("It works");
+    $.ajax({
+        type: "POST",
+        url: "/Catalog/UpdatePriceRange",
+        data: `startPrice=${start}&endPrice=${end}`,
+        success: function (response) {
+            window.location.href = response;
+        }
+    });
 });
 
 $('.slider').each(async function (e) {
@@ -26,8 +33,8 @@ $('.slider').each(async function (e) {
         range: true,
         values: [promise.startPrice, promise.endPrice],
         min: promise.startBorder,
-        step: 10,
-        minRange: 1000,
+        step: 1,
+        minRange: 1,
         max: promise.endBorder,
         create(event, ui) {
 

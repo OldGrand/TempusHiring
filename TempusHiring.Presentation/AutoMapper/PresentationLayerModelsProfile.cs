@@ -5,6 +5,7 @@ using TempusHiring.BusinessLogic.DataTransferObjects.Account;
 using TempusHiring.BusinessLogic.DataTransferObjects.Admin;
 using TempusHiring.BusinessLogic.DataTransferObjects.Order;
 using TempusHiring.BusinessLogic.Pagination;
+using TempusHiring.Common;
 using TempusHiring.Presentation.Models.AccountViewModels;
 using TempusHiring.Presentation.Models.ViewModels;
 using TempusHiring.Presentation.Models.ViewModels.Admin;
@@ -65,6 +66,7 @@ namespace TempusHiring.Presentation.AutoMapper
             CreateMap<StrapMaterialDTO, StrapMaterialViewModel>().ReverseMap();
             CreateMap<WristSizeDTO, WristSizeViewModel>().ReverseMap();
             CreateMap<PhotoDTO, PhotoViewModel>().ReverseMap();
+            CreateMap<Filter, FilterViewModel>().ReverseMap();
         }
     }
 }
