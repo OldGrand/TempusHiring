@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TempusHiring.BusinessLogic.Extensions;
 using TempusHiring.BusinessLogic.Services.Interfaces;
-using TempusHiring.Common;
 using TempusHiring.Presentation.Models.ViewModels;
 
 namespace TempusHiring.Presentation.Controllers
@@ -25,11 +24,16 @@ namespace TempusHiring.Presentation.Controllers
         public IActionResult Items()
         {
             var userId = User.GetId();
+
             var shoppingCartDto = _cartService.ReadUserCart(userId);
             var userShoppingCartViewModels = _mapper.Map<IEnumerable<ShoppingCartViewModel>>(shoppingCartDto);
-            
+
+            var orderSummaryDto = _cartService.GetSummary(userId);
+            var orderSummaryViewModel = _mapper.Map<OrderSummaryViewModel>(orderSummaryDto);
+
             var cartWrapper = new CartWrapperViewModel
             {
+                OrderSummaryViewModel = orderSummaryViewModel,
                 ShoppingCarts = userShoppingCartViewModels
             };
 
@@ -60,10 +64,10 @@ namespace TempusHiring.Presentation.Controllers
             return RedirectToAction("CreateOrder", "Orders");
         }
         
-        public IActionResult ChangeCount(int watchId, Operations operation)
+        public IActionResult ChangeCount(int watchId, int count)
         {
             var userId = User.GetId();
-            _cartService.ChangeCount(userId, watchId, operation);
+            _cartService.ChangeItemsCountInCart(userId, watchId, count);
 
             return RedirectToAction(nameof(Items), "ShoppingCart");
         }

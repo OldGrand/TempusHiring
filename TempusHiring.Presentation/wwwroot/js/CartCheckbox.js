@@ -16,8 +16,8 @@ const OnChangeCheckbox = async function(e) {
         return data;
     });
     
-    document.querySelector(".order__span__subtotal").innerHTML = `$${(+promise.subTotal).toFixed(2)}`;
-    document.querySelector(".order__span__shipping").innerHTML = `$${(+promise.shipping).toFixed(2)}`;
+    document.querySelector(".order__span__subtotal").innerHTML = `$${(+promise.subTotal).toFixed(2).toString().replace(".", ",")}`;
+    document.querySelector(".order__span__shipping").innerHTML = `$${(+promise.shipping).toFixed(2).toString().replace(".", ",")}`;
     document.querySelector(".order__span__count").innerHTML = promise.count;
-    document.querySelector(".order__span__total").innerHTML = `$${(+promise.total).toFixed(2)}`;
+    document.querySelector(".order__span__total").innerHTML = `$${(+promise.total).toFixed(2).toString().replace(".", ",")}`;
 }

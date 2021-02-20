@@ -6,7 +6,6 @@ using AutoMapper;
 using TempusHiring.BusinessLogic.DataTransferObjects;
 using TempusHiring.BusinessLogic.DataTransferObjects.Order;
 using TempusHiring.BusinessLogic.Services.Interfaces;
-using TempusHiring.Common;
 using TempusHiring.DataAccess.Core;
 using TempusHiring.DataAccess.Entities;
 
@@ -79,7 +78,7 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
             _context.SaveChanges();
         }
 
-        public void ChangeCount(int userId, int watchId, Operations operation)
+        public void ChangeItemsCountInCart(int userId, int watchId, int count)
         {
             var changedShoppingCart = _context.ShoppingCarts.FirstOrDefault(_ => _.UserId == userId && _.WatchId == watchId);
 
@@ -88,17 +87,13 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
                 throw new Exception("Item not found");
             }
 
-            changedShoppingCart.Count = operation switch
+            if (count < 0 || count > changedShoppingCart.Watch.CountInStock)
             {
-                Operations.Minus => changedShoppingCart.Count - 1,
-                Operations.Plus => changedShoppingCart.Count + 1,
-                _ => changedShoppingCart.Count
-            };
-
-            if (changedShoppingCart.Count >= 1 && changedShoppingCart.Count <= changedShoppingCart.Watch.CountInStock)
-            {
-                _context.SaveChanges();
+                throw new Exception("Incorrect count value");
             }
+
+            changedShoppingCart.Count = count;
+            _context.SaveChanges();
         }
 
         public Task AddToCartAsync(int userId, int watchId)
