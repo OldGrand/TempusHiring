@@ -5,14 +5,6 @@
 
 const OnChangeCheckbox = async function(e) {
     e.target.checked = !!e.target.checked;
-    //$.ajax({
-    //    type: "POST",
-    //    url: "/ShoppingCart/ChangeSelection",
-    //    data: `watchId=${e.target.value}&isChecked=${e.target.checked}`,
-    //    success: function (response) {
-
-    //    }
-    //});
 
     await $.post("/ShoppingCart/ChangeSelection",
         {
