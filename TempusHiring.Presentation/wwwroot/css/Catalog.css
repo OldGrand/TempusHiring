@@ -370,6 +370,8 @@
     background-color: #444444;
     overflow: hidden;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
 }
 
 .cart-minus-btn,
@@ -379,6 +381,14 @@
     cursor: pointer;
 }
 
+.cart-minus-btn {
+    margin-right: 10px; 
+}
+
+.cart-plus-btn {
+    margin-left: 10px;
+}
+
     .cart-minus-btn:hover,
     .cart-plus-btn:hover {
         background-color: #cb9400;
@@ -386,5 +396,4 @@
 
 .cart-item-count {
     color: #fff;
-    padding: 0px 10px;
 }

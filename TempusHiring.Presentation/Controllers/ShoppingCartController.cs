@@ -11,12 +11,12 @@ namespace TempusHiring.Presentation.Controllers
     [Authorize]
     public class ShoppingCartController : Controller
     {
-        private readonly IShoppingCartService _cartService;
+        private readonly IShoppingCartService _shoppingCartService;
         private readonly IMapper _mapper;
 
         public ShoppingCartController(IShoppingCartService cartService, IMapper mapper)
         {
-            _cartService = cartService;
+            _shoppingCartService = cartService;
             _mapper = mapper;
         }
 
@@ -25,10 +25,10 @@ namespace TempusHiring.Presentation.Controllers
         {
             var userId = User.GetId();
 
-            var shoppingCartDto = _cartService.ReadUserCart(userId);
+            var shoppingCartDto = _shoppingCartService.ReadUserCart(userId);
             var userShoppingCartViewModels = _mapper.Map<IEnumerable<ShoppingCartViewModel>>(shoppingCartDto);
 
-            var orderSummaryDto = _cartService.GetSummary(userId);
+            var orderSummaryDto = _shoppingCartService.GetSummary(userId);
             var orderSummaryViewModel = _mapper.Map<OrderSummaryViewModel>(orderSummaryDto);
 
             var cartWrapper = new CartWrapperViewModel
@@ -44,17 +44,25 @@ namespace TempusHiring.Presentation.Controllers
         public IActionResult GetOrderSummary()
         {
             var userId = User.GetId();
-            var orderSummary = _cartService.GetSummary(userId);
+            var orderSummary = _shoppingCartService.GetSummary(userId);
             var orderSummaryViewModel = _mapper.Map<OrderSummaryViewModel>(orderSummary);
 
             return Json(orderSummaryViewModel);
+        }
+
+        [HttpGet]
+        public IActionResult GetWatchCountInStock(int watchId)
+        {
+            var count = _shoppingCartService.GetWatchCountInStock(watchId);
+
+            return Json(count);
         }
 
         [HttpPost]
         public IActionResult ChangeSelection(int watchId, bool isChecked)
         {
             var userId = User.GetId();
-            _cartService.UpdateSelection(userId, watchId, isChecked);
+            _shoppingCartService.UpdateSelection(userId, watchId, isChecked);
 
             return Json(Url.Action(nameof(Items), "ShoppingCart"));
         }
@@ -67,14 +75,14 @@ namespace TempusHiring.Presentation.Controllers
         public IActionResult ChangeCount(int watchId, int count)
         {
             var userId = User.GetId();
-            _cartService.ChangeItemsCountInCart(userId, watchId, count);
+            _shoppingCartService.ChangeItemsCountInCart(userId, watchId, count);
 
             return RedirectToAction(nameof(Items), "ShoppingCart");
         }
 
         public IActionResult Remove(int cartId)
         {
-            _cartService.DeleteFromCart(cartId);
+            _shoppingCartService.DeleteFromCart(cartId);
             return RedirectToAction(nameof(Items), "ShoppingCart");
         }
     }

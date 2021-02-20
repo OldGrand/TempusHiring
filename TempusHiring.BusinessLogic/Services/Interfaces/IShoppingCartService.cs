@@ -12,6 +12,7 @@ namespace TempusHiring.BusinessLogic.Services.Interfaces
         void ChangeItemsCountInCart(int userId, int watchId, int count);
         void DeleteFromCart(int cartId);
         void UpdateSelection(int userId, int watchId, bool isChecked);
+        int GetWatchCountInStock(int watchId);
         OrderSummaryDTO GetSummary(int userId);
     }
 }

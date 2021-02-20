@@ -30,6 +30,11 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
                    select cart;
         }
 
+        public int GetWatchCountInStock(int watchId)
+        {
+            return _context.Watches.Find(watchId).CountInStock;
+        }
+
         public OrderSummaryDTO GetSummary(int userId)
         {
             var watches = ReadAll(userId).Where(_ => _.IsChecked);
