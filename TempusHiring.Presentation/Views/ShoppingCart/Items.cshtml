@@ -1,5 +1,4 @@
-﻿@using TempusHiring.Common
-@model TempusHiring.Presentation.Models.ViewModels.CartWrapperViewModel
+﻿@model CartWrapperViewModel
 
 @{
     ViewBag.Title = "Shopping Cart";
@@ -13,7 +12,7 @@
             </div>
 
             <div class="cart__items">
-                @if (Model is null || Model.ShoppingCarts.Count() == 0)
+                @if (Model is null || !Model.ShoppingCarts.Any())
                 {
                     <div class="cart__item">
                         <div class="cart-item__content">
@@ -25,10 +24,9 @@
                 {
                     <div class="cart__item">
                         <div class="cart-item__content">
-                            <form class="squaredThree">
-                                <input type="hidden" name="watchId" value="@item.WatchId" class="watchIdInput" />
-                                <input name="isChecked" asp-for="@item.IsChecked" class="checkboxInput" />
-                            </form>
+                            <div class="squaredThree">
+                                <input value="@item.WatchId" type="checkbox" class="checkboxInput" />
+                            </div>
                             <img src="/images/Shop/@item.Watch.PreviewPhoto" alt="" class="cart__item-img">
                             <div class="cart__item-block">
                                 <span class="cart__item-title">@item.Watch.Title</span>
@@ -59,19 +57,19 @@
             <h1 class="cart__header-title">Order Summary</h1>
             <p class="order__subtotal order__content">
                 <span>Subtotal</span>
-                <span>$@Math.Round(Model.OrderSummary.SubTotal, 2)</span>
+                <span class="order__span__subtotal">$0</span>
             </p>
             <p class="order__shipping order__content">
                 <span>Shipping</span>
-                <span>$@Model.OrderSummary.Shipping</span>
+                <span class="order__span__shipping">$0</span>
             </p>
             <p class="order__shipping order__content">
                 <span>Count</span>
-                <span>@Model.OrderSummary.Count</span>
+                <span class="order__span__count">0</span>
             </p>
             <p class="order__total order__content">
                 <span>Total</span>
-                <span>$@Math.Round(Model.OrderSummary.Total, 2)</span>
+                <span class="order__span__total">$0</span>
             </p>
             <a asp-controller="ShoppingCart" asp-action="Buy" class="buy__btn">BUY</a>
         </div>

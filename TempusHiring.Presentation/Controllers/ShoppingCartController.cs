@@ -25,16 +25,28 @@ namespace TempusHiring.Presentation.Controllers
         public IActionResult Items()
         {
             var userId = User.GetId();
-
+            var shoppingCartDto = _cartService.ReadUserCart(userId);
+            var userShoppingCartViewModels = _mapper.Map<IEnumerable<ShoppingCartViewModel>>(shoppingCartDto);
+            
             var cartWrapper = new CartWrapperViewModel
             {
-                OrderSummary = _mapper.Map<OrderSummaryViewModel>(_cartService.GetSummary(userId)),
-                ShoppingCarts = _mapper.Map<IEnumerable<ShoppingCartViewModel>>(_cartService.ReadUserCart(userId))
+                ShoppingCarts = userShoppingCartViewModels
             };
 
             return View(cartWrapper);
         }
 
+        [HttpGet]
+        public IActionResult GetOrderSummary()
+        {
+            var userId = User.GetId();
+            var orderSummary = _cartService.GetSummary(userId);
+            var orderSummaryViewModel = _mapper.Map<OrderSummaryViewModel>(orderSummary);
+
+            return Json(orderSummaryViewModel);
+        }
+
+        [HttpPost]
         public IActionResult ChangeSelection(int watchId, bool isChecked)
         {
             var userId = User.GetId();
