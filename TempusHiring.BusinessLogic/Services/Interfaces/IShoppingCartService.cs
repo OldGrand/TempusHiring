@@ -11,6 +11,7 @@ namespace TempusHiring.BusinessLogic.Services.Interfaces
         Task AddToCartAsync(int userId, int watchId);
         void ChangeItemsCountInCart(int userId, int watchId, int count);
         void DeleteFromCart(int cartId);
+        decimal GetWatchPrice(int watchId);
         void UpdateSelection(int userId, int watchId, bool isChecked);
         int GetWatchCountInStock(int watchId);
         OrderSummaryDTO GetSummary(int userId);

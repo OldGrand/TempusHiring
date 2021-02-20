@@ -30,6 +30,11 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
                    select cart;
         }
 
+        public decimal GetWatchPrice(int watchId)
+        {
+            return _context.Watches.Find(watchId).Price;
+        }
+
         public int GetWatchCountInStock(int watchId)
         {
             return _context.Watches.Find(watchId).CountInStock;

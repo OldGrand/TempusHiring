@@ -51,6 +51,14 @@ namespace TempusHiring.Presentation.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetWatchPrice(int watchId)
+        {
+            var watchPrice = _shoppingCartService.GetWatchPrice(watchId);
+
+            return Json(watchPrice);
+        }
+
+        [HttpGet]
         public IActionResult GetWatchCountInStock(int watchId)
         {
             var count = _shoppingCartService.GetWatchCountInStock(watchId);
