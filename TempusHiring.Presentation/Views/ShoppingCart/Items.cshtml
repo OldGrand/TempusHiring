@@ -32,9 +32,9 @@
                                 <span class="cart__item-title">@item.Watch.Title</span>
                                 <span class="cart__item-descr">@item.Watch.Description</span>
                                 <span class="cart__item-price">
-                                    $<span class="cart__item-total-price">@(item.Watch.Price * item.Count)</span>
+                                    $<span class="cart__item-total-price-@item.Id">@(item.Watch.Price * item.Count)</span>
                                     <span class="price__details">
-                                        ($ <span class="price__details-default">@item.Watch.Price</span> x <span class="price__details-count">@item.Count</span>)
+                                        ($ <span class="price__details-default-@item.Id">@item.Watch.Price</span> x <span class="price__details-count-@item.Id">@item.Count</span>)
                                     </span>
                                 </span>
                             </div>
@@ -46,12 +46,12 @@
                                 </svg>
                             </a>
                             <div class="watch-counter-setter" watchIdVal="@item.WatchId">
-                                <a class="cart-minus-btn">-</a>
+                                <a class="cart-minus-btn" uniqBtnVal="@item.Id">-</a>
                                 <div>
-                                    <label class="cart-item-count">0</label>
+                                    <label class="cart-item-count">@item.Count</label>
                                     <label class="cart-item-count">/@item.Watch.CountInStock</label>
                                 </div>
-                                <a class="cart-plus-btn">+</a>
+                                <a class="cart-plus-btn" uniqBtnVal="@item.Id">+</a>
                             </div>
                         </div>
                     </div>

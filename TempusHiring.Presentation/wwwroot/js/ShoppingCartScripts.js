@@ -43,8 +43,16 @@ const OnChangeCheckbox = async function (e) {
     await setValuesToOrderSummary();
 }
 
+const setAdditionalPriceInfo = (unqiId, totalPrice, count) => {
+    document.querySelector(`.cart__item-total-price-${unqiId}`).innerHTML = totalPrice;
+    document.querySelector(`.price__details-count-${unqiId}`).innerHTML = count;
+}
+
 document.querySelectorAll(".cart-minus-btn").forEach(item => item.addEventListener("click", async e => {
     let watchId = e.target.parentNode.getAttribute("watchIdVal");
+    let uniqBtnVal = e.target.getAttribute("uniqBtnVal");
+
+    console.log(uniqBtnVal);
 
     let currentInput = e.target.nextElementSibling.childNodes[1];
     let currentVal = +currentInput.innerHTML - 1;
@@ -53,15 +61,18 @@ document.querySelectorAll(".cart-minus-btn").forEach(item => item.addEventListen
         currentInput.innerHTML = currentVal;
         await setWatchesCount(watchId, currentVal);
         await setValuesToOrderSummary();
-        //let watchPrice = await getWatchPrice(watchId);
-        //setAdditionalPriceInfo(watchPrice * currentVal, currentVal);
+        let watchPrice = await getWatchPrice(watchId);
+        setAdditionalPriceInfo(uniqBtnVal, watchPrice * currentVal, currentVal);
     }
 }));
 
 document.querySelectorAll(".cart-plus-btn").forEach(item => item.addEventListener("click", async e => {
     let watchId = e.target.parentNode.getAttribute("watchIdVal");
     let watchCount = await getWatchesCount(watchId);
+    let uniqBtnVal = e.target.getAttribute("uniqBtnVal");
 
+    console.log(uniqBtnVal);
+    
     let currentInput = e.target.previousElementSibling.childNodes[1];
     let currentVal = +currentInput.innerHTML + 1;
 
@@ -69,7 +80,7 @@ document.querySelectorAll(".cart-plus-btn").forEach(item => item.addEventListene
         currentInput.innerHTML = currentVal;
         await setWatchesCount(watchId, currentVal);
         await setValuesToOrderSummary();
-        //let watchPrice = await getWatchPrice(watchId);
-        //setAdditionalPriceInfo(watchPrice * currentVal, currentVal);
+        let watchPrice = await getWatchPrice(watchId);
+        setAdditionalPriceInfo(uniqBtnVal, watchPrice * currentVal, currentVal);
     }
 }));
