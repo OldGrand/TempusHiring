@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using TempusHiring.BusinessLogic.Pagination;
 
 namespace TempusHiring.BusinessLogic.Services.Interfaces.Common
 {

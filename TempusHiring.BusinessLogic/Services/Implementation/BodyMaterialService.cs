@@ -14,5 +14,6 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
         : base(repository, unitOfWork, mapper)
         {
         }
+        
     }
 }

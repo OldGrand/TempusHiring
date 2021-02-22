@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using TempusHiring.BusinessLogic.Pagination;
 using TempusHiring.BusinessLogic.Services.Interfaces.Common;
 using TempusHiring.DataAccess.Repository.Interfaces;
@@ -59,7 +60,7 @@ namespace TempusHiring.BusinessLogic.Services.Implementation.Common
             var result = _mapper.Map<IEnumerable<TModel>>(source);
             return result;
         }
-
+        
         public void Update(TModel item)
         {
             UpdateRange(new[] { item });

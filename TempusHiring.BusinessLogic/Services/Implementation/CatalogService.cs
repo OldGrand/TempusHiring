@@ -2,7 +2,6 @@
 using System.Linq;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using TempusHiring.BusinessLogic.AutoMapper;
 using TempusHiring.BusinessLogic.DataTransferObjects;
 using TempusHiring.BusinessLogic.Pagination;
 using TempusHiring.BusinessLogic.Services.Interfaces;
@@ -109,8 +108,8 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
             var watchEntities = _context.Watches
                 .Where(_ => _.Price >= _priceRange.StartPrice && _.Price <= _priceRange.EndPrice);
 
-            var mapperConfig = BusinessLogicLayerMapperConfig.GetConfiguration();
-            var result = watchEntities.ProjectTo<WatchDTO>(mapperConfig);
+            var configProvider = _mapper.ConfigurationProvider;
+            var result = watchEntities.ProjectTo<WatchDTO>(configProvider);
             return result;
         }
 
