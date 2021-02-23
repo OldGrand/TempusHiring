@@ -8,7 +8,7 @@ namespace TempusHiring.Presentation.Models.ViewModels
         public PagedResult<WatchViewModel> PageResult { get; set; }
         public int ItemsOnPage { get; set; } = 12;
         public FilterViewModel Filter { get; set; }
-        public SelectList ItemsOnPageViewModel { get; set; }
+        public SelectList ItemsOnPageSelectList { get; set; }
         public PriceRangeViewModel PriceRange { get; set; }
     }
 }

@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using TempusHiring.BusinessLogic.Pagination;
 using TempusHiring.BusinessLogic.Services.Interfaces.Common;
 using TempusHiring.DataAccess.Repository.Interfaces;
@@ -15,6 +15,8 @@ namespace TempusHiring.BusinessLogic.Services.Implementation.Common
         private readonly IRepository<TEntity> _repository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+
+        private const string NOT_FOUND_ERROR_MESSAGE = "Item not found";
 
         public CrudService(IRepository<TEntity> repository, IUnitOfWork unitOfWork, IMapper mapper)
         {
@@ -74,6 +76,11 @@ namespace TempusHiring.BusinessLogic.Services.Implementation.Common
 
         public void Delete(TModel item)
         {
+            if (item is null)
+            {
+                throw new Exception(NOT_FOUND_ERROR_MESSAGE);
+            }
+
             DeleteRange(new[] { item });
         }
 

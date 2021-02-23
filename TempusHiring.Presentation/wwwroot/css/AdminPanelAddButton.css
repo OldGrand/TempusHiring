@@ -1,0 +1,28 @@
+﻿.add__button {
+    border: 1px dashed #aaaaaa;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    transition: linear .2s;
+}
+
+.add__button::after {
+    content: "+";
+    color: #aaaaaa;
+    font-size: 2rem;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: ease .2s;
+}
+
+.add__button:hover {
+    border: 1px solid #dd9500;
+}
+
+.add__button:hover::after {
+    color: #dd9500;
+}
