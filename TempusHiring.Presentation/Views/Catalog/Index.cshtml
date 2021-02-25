@@ -10,7 +10,7 @@
             <div class="filter__range">
                 <h3>filter by price</h3>
                 <div class="slider" data-value-0="#first" data-value-1="#second" data-range="#third"></div>
-                <form class="box__container" asp-route-pageNum="@Model.PageResult.CurrentPage" asp-route-filter="@Model.Filter" asp-route-itemsOnPage="@Model.ItemsOnPage">
+                <form class="box__container" asp-route-pageNum="@Model.PageResult.CurrentPageNum" asp-route-filter="@Model.Filter" asp-route-itemsOnPage="@Model.ItemsOnPage">
                     <div class="values">
                         <div>$<spam name="StartPrice" id="first"></spam></div> - <div>$<span name="EndPrice" id="second"></span></div>
                     </div>
@@ -103,7 +103,7 @@
                 <div class="pagination__container">
                     @for (int i = Model.PageResult.Range.Start.Value; i <= Model.PageResult.Range.End.Value; i++)
                     {
-                        if (i == Model.PageResult.CurrentPage)
+                        if (i == Model.PageResult.CurrentPageNum)
                         {
                             <a asp-route-ItemsOnPage="@Model.ItemsOnPage" asp-route-Filter="@Model.Filter" asp-route-pageNum="@i" class="pagination__btn pagination__btn-active">@i</a>
                         }

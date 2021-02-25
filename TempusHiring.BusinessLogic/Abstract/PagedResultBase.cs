@@ -6,13 +6,13 @@ namespace TempusHiring.BusinessLogic.Abstract
     {
         private const int PAGES_RANGE = 3;
 
-        public int CurrentPage { get; set; }
-        public int PagesTotal { get; set; }//общее кол-во страниц 
-        public int ItemsOnPage { get; set; } = 12;
-        public int ItemsTotal { get; set; }//общее кол-во элементов total
-        public int SkippedItems { get; set; }//кол-во просмотренных элементов
+        public int CurrentPageNum { get; set; }
+        public int PagesTotal { get; set; } 
+        public int ItemsOnPage { get; set; }
+        public int ItemsTotal { get; set; }
+        public int SkippedItems { get; set; }
         public int CurrentItemsCount => SkippedItems + ItemsOnPage;
-        public Range Range => GetPaginationRange(CurrentPage, PagesTotal, PAGES_RANGE);
+        public Range Range => GetPaginationRange(CurrentPageNum, PagesTotal, PAGES_RANGE);
 
         private static Range GetPaginationRange(int currentPage, int total, int range)
         {

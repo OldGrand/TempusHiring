@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -60,18 +59,16 @@ namespace TempusHiring.Presentation.Controllers
         }
         
         [HttpGet]
-        public IActionResult GetBodyMaterialList(PaginationViewModel<BodyMaterialViewModel> paginationViewModel)
+        public IActionResult GetBodyMaterialList(PaginationViewModel<BodyMaterialViewModel> paginationViewModel, int pageNum = 1)
         {
-            var pagedResultWithDtos = _bodyMaterialService.GetPagedResult(paginationViewModel.PagedResult.CurrentPage, paginationViewModel.PagedResult.ItemsOnPage);
+            var pagedResultWithDtos = _bodyMaterialService.GetPagedResult(pageNum, paginationViewModel.ItemsOnPage);
             var pagedResultWithViewModels = _mapper.Map<PagedResult<BodyMaterialViewModel>>(pagedResultWithDtos);
 
-            var result = new PaginationViewModel<BodyMaterialViewModel>
-            {
-                ItemsOnPageSelectList = new SelectList(new[] {12, 24, 36}, paginationViewModel.PagedResult.ItemsOnPage),
-                PagedResult = pagedResultWithViewModels
-            };
-
-            return View(result);
+            paginationViewModel.ItemsOnPageSelectList =
+                new SelectList(new[] {12, 24, 36}, paginationViewModel.ItemsOnPage);
+            paginationViewModel.PagedResult = pagedResultWithViewModels;
+            
+            return View(paginationViewModel);
         }
 
         [HttpPost]

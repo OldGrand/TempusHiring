@@ -13,7 +13,7 @@ namespace TempusHiring.BusinessLogic.Pagination
 
             var result = new PagedResult<T>()
             {
-                CurrentPage = pageNum,
+                CurrentPageNum = pageNum,
                 ItemsOnPage = itemsOnPage,
                 ItemsTotal = count,
                 SkippedItems = skippedItems,

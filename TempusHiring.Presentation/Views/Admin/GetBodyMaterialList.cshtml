@@ -19,7 +19,7 @@
                     Edit
                 </th>
             </tr>
-            @foreach (var bm in Model.Items)
+            @foreach (var bm in Model.PagedResult.Result)
              {
             <tr>
                 <td>
@@ -47,15 +47,15 @@
         </a>
         <div class="pagination">
             <div class="pagination__container">
-                @for (int i = Model.PageResult.Range.Start.Value; i <= Model.PageResult.Range.End.Value; i++)
+                @for (int i = Model.PagedResult.Range.Start.Value; i <= Model.PagedResult.Range.End.Value; i++)
                 {
-                    if (i == Model.PageNum)
+                    if (i == Model.PagedResult.CurrentPageNum)
                     {
-                        <a asp-route-ItemsOnPage="@Model.ItemsOnPage" asp-route-pageNum="@i" class="pagination__btn pagination__btn-active">@i</a>
+                        <a asp-route-ItemsOnPage="@Model.PagedResult.ItemsOnPage" asp-route-pageNum="@i" class="pagination__btn pagination__btn-active">@i</a>
                     }
                     else
                     {
-                        <a asp-route-ItemsOnPage="@Model.ItemsOnPage" asp-route-pageNum="@i" class="pagination__btn">@i</a>
+                        <a asp-route-ItemsOnPage="@Model.PagedResult.ItemsOnPage" asp-route-pageNum="@i" class="pagination__btn">@i</a>
                     }
                 }
             </div>
