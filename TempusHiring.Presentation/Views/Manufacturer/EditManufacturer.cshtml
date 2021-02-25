@@ -27,7 +27,8 @@
                 <div class="form-group">
                     <label asp-for="Country" class="control-label"></label>
                     <div class="fake__form-input">
-                        <input asp-for="Country" class="form-input">
+                        <select asp-for="Country" asp-items="@Html.GetEnumSelectList<Country>()"
+                                class="select" style="width: 100%"></select>
                     </div>
                     <div class="error__message-block">
                         <span asp-validation-for="Country" class="form-span"></span>
