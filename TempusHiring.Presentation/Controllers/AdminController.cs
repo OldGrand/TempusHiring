@@ -7,7 +7,6 @@ namespace TempusHiring.Presentation.Controllers
     //[Authorize(Policy = ClaimRoles.Admin)]
     public class AdminController : Controller
     {
-        private readonly IColorService _colorService;
         private readonly IGlassMaterialService _glassMaterialService;
         private readonly IManufacturerService _manufacturerService;
         private readonly IMechanismService _mechanismService;
@@ -19,8 +18,7 @@ namespace TempusHiring.Presentation.Controllers
 
         private const string CURRENT_CONTROLLER_NAME = "Admin";
 
-        public AdminController(IColorService colorService, 
-                               IGlassMaterialService glassMaterialService, 
+        public AdminController(IGlassMaterialService glassMaterialService, 
                                IManufacturerService manufacturerService, 
                                IMechanismService mechanismService, 
                                IPhotoService photoService, 
@@ -29,7 +27,6 @@ namespace TempusHiring.Presentation.Controllers
                                IWristSizeService wristSizeService, 
                                IMapper mapper)
         {
-            _colorService = colorService;
             _glassMaterialService = glassMaterialService;
             _manufacturerService = manufacturerService;
             _mechanismService = mechanismService;

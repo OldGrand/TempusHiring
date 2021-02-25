@@ -11,6 +11,7 @@ using TempusHiring.Presentation.Models.ViewModels;
 using TempusHiring.Presentation.Models.ViewModels.Admin;
 using TempusHiring.Presentation.Models.ViewModels.BodyMaterial;
 using TempusHiring.Presentation.Models.ViewModels.Color;
+using TempusHiring.Presentation.Models.ViewModels.GlassMaterial;
 
 namespace TempusHiring.Presentation.AutoMapper
 {

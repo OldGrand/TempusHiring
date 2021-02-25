@@ -1,4 +1,6 @@
-﻿namespace TempusHiring.Presentation.Models.ViewModels.Admin
+﻿using TempusHiring.Presentation.Models.ViewModels.Color;
+
+namespace TempusHiring.Presentation.Models.ViewModels.Admin
 {
     public class StrapViewModel
     {

@@ -32,14 +32,14 @@
                         @color.Hex
                     </td>
                     <td>
-                        <a asp-controller="Color" asp-action="DeleteColor" asp-route-bodyMaterialId="@color.Id">
+                        <a asp-controller="Color" asp-action="DeleteColor" asp-route-colorId="@color.Id">
                             <svg class="delete-svg" viewBox="0 0 512 512">
                                 <use xlink:href="/images/icons/delete.svg#delete"></use>
                             </svg>
                         </a>
                     </td>
                     <td>
-                        <a asp-controller="Color" asp-action="EditColor" asp-route-bodyMaterialId="@color.Id">
+                        <a asp-controller="Color" asp-action="EditColor" asp-route-colorId="@color.Id">
                             <svg class="delete-svg" viewBox="0 0 48 48">
                                 <use xlink:href="/images/icons/pencil.svg#edit"></use>
                             </svg>
