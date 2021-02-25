@@ -1,0 +1,76 @@
+﻿@model PaginationViewModel<ManufacturerViewModel>
+
+@{
+    ViewData["Title"] = "Manufacturer List";
+}
+
+<div class="admin_wrapper">
+    <div class="admin_panel">
+        <table class="table_price">
+            <caption class="table__caption">Manufacturers</caption>
+            <tr class="tr__title">
+                <th>
+                    Title
+                </th>
+                <th>
+                    Country
+                </th>
+                <th>
+                    Delete
+                </th>
+                <th>
+                    Edit
+                </th>
+            </tr>
+            @foreach (var bm in Model.PagedResult.Result)
+            {
+                <tr>
+                    <td>
+                        @bm.Title
+                    </td>
+                    <td>
+                        @bm.Country
+                    </td>
+                    <td>
+                        <a asp-controller="Manufacturer" asp-action="DeleteManufacturer" asp-route-manufacturerId="@bm.Id">
+                            <svg class="delete-svg" viewBox="0 0 512 512">
+                                <use xlink:href="/images/icons/delete.svg#delete"></use>
+                            </svg>
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-controller="Manufacturer" asp-action="EditManufacturer" asp-route-manufacturerId="@bm.Id">
+                            <svg class="delete-svg" viewBox="0 0 48 48">
+                                <use xlink:href="/images/icons/pencil.svg#edit"></use>
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td></td>
+                <td colspan="2">
+                    <a asp-controller="Manufacturer" asp-action="CreateManufacturer" class="add__button_link">
+                        <div class="add__button"></div>
+                    </a>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+        <div class="pagination">
+            <div class="pagination__container">
+                @for (int i = Model.PagedResult.Range.Start.Value; i <= Model.PagedResult.Range.End.Value; i++)
+                {
+                    if (i == Model.PagedResult.CurrentPageNum)
+                    {
+                        <a asp-route-ItemsOnPage="@Model.PagedResult.ItemsOnPage" asp-route-pageNum="@i" class="pagination__btn pagination__btn-active">@i</a>
+                    }
+                    else
+                    {
+                        <a asp-route-ItemsOnPage="@Model.PagedResult.ItemsOnPage" asp-route-pageNum="@i" class="pagination__btn">@i</a>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

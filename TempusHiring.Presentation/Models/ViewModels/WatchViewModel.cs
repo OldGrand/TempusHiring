@@ -3,6 +3,7 @@ using TempusHiring.DataAccess.EntityEnums;
 using TempusHiring.Presentation.Models.ViewModels.Admin;
 using TempusHiring.Presentation.Models.ViewModels.BodyMaterial;
 using TempusHiring.Presentation.Models.ViewModels.GlassMaterial;
+using TempusHiring.Presentation.Models.ViewModels.Manufacturer;
 
 namespace TempusHiring.Presentation.Models.ViewModels
 {
