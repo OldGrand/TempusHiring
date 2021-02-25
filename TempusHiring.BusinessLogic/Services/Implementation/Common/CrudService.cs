@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using TempusHiring.BusinessLogic.Pagination;
 using TempusHiring.BusinessLogic.Services.Interfaces.Common;
 using TempusHiring.DataAccess.Repository.Interfaces;
@@ -47,11 +48,12 @@ namespace TempusHiring.BusinessLogic.Services.Implementation.Common
 
         public PagedResult<TModel> GetPagedResult(int pageNum, int itemsOnPage)
         {
+            var configProvider = _mapper.ConfigurationProvider;
             var pagedResult = _repository.ReadAll()
+                .ProjectTo<TModel>(configProvider)
                 .GetPaged(pageNum, itemsOnPage);
-
-            var result = _mapper.Map<PagedResult<TModel>>(pagedResult);
-            return result;
+            
+            return pagedResult;
         }
 
         public IEnumerable<TModel> ReadAll()
