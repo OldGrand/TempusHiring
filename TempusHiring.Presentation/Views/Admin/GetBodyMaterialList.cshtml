@@ -7,13 +7,17 @@
 <div class="admin_wrapper">
     <div class="admin_panel">
         <table class="table_price">
-            <caption>Product</caption>
-            <tr>
+            <caption class="table__caption">Body Materials</caption>
+            <tr class="tr__title">
                 <th>
                     Title
                 </th>
-                <th></th>
-                <th></th>
+                <th>
+                    Delete
+                </th>
+                <th>
+                    Edit
+                </th>
             </tr>
             @foreach (var bm in Model.Items)
              {
@@ -30,8 +34,8 @@
                 </td>
                 <td>
                     <a asp-controller="Admin" asp-action="EditBodyMaterial" asp-route-cartId="@bm.Id">
-                        <svg class="delete-svg" viewBox="0 0 512 512">
-                            <use xlink:href="/images/icons/pencil.svg#delete"></use>
+                        <svg class="delete-svg" viewBox="0 0 48 48">
+                            <use xlink:href="/images/icons/pencil.svg#edit"></use>
                         </svg>
                     </a>
                 </td>
@@ -41,5 +45,20 @@
         <a asp-controller="Admin" asp-action="CreateBodyMaterial">
             <div class="add__button"></div>
         </a>
+        <div class="pagination">
+            <div class="pagination__container">
+                @for (int i = Model.PageResult.Range.Start.Value; i <= Model.PageResult.Range.End.Value; i++)
+                {
+                    if (i == Model.PageResult.CurrentPage)
+                    {
+                        <a asp-route-ItemsOnPage="@Model.ItemsOnPage" asp-route-Filter="@Model.Filter" asp-route-pageNum="@i" class="pagination__btn pagination__btn-active">@i</a>
+                    }
+                    else
+                    {
+                        <a asp-route-ItemsOnPage="@Model.ItemsOnPage" asp-route-Filter="@Model.Filter" asp-route-pageNum="@i" class="pagination__btn">@i</a>
+                    }
+                }
+            </div>
+        </div>
     </div>
 </div>

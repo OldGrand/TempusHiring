@@ -117,7 +117,7 @@
 .cart__item-control {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -150,5 +150,4 @@
 .delete-svg {
     height: 25px;
     fill: #fff;
-    margin-bottom: 35px;
 }
