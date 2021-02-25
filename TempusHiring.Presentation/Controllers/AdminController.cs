@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TempusHiring.BusinessLogic.DataTransferObjects.Admin;
+using TempusHiring.BusinessLogic.Pagination;
 using TempusHiring.BusinessLogic.Services.Interfaces;
 using TempusHiring.Presentation.Models.ViewModels;
 using TempusHiring.Presentation.Models.ViewModels.BodyMaterial;
@@ -61,18 +62,16 @@ namespace TempusHiring.Presentation.Controllers
         [HttpGet]
         public IActionResult GetBodyMaterialList(PaginationViewModel<BodyMaterialViewModel> paginationViewModel)
         {
-            var bodyMaterialDtos = _bodyMaterialService.ReadAll(paginationViewModel.PageNum, paginationViewModel.ItemsOnPage);
-            var bodyViewModel = _mapper.Map<IEnumerable<BodyMaterialViewModel>>(bodyMaterialDtos);
+            var pagedResultWithDtos = _bodyMaterialService.GetPagedResult(paginationViewModel.PagedResult.CurrentPage, paginationViewModel.PagedResult.ItemsOnPage);
+            var pagedResultWithViewModels = _mapper.Map<PagedResult<BodyMaterialViewModel>>(pagedResultWithDtos);
 
-            var paginationVM = new PaginationViewModel<BodyMaterialViewModel>
+            var result = new PaginationViewModel<BodyMaterialViewModel>
             {
-                ItemsOnPageSelectList = new SelectList(new[] {12, 24, 36}, paginationViewModel.ItemsOnPage),
-                PageNum = paginationViewModel.PageNum,
-                ItemsOnPage = paginationViewModel.ItemsOnPage,
-                Items = bodyViewModel
+                ItemsOnPageSelectList = new SelectList(new[] {12, 24, 36}, paginationViewModel.PagedResult.ItemsOnPage),
+                PagedResult = pagedResultWithViewModels
             };
 
-            return View(paginationVM);
+            return View(result);
         }
 
         [HttpPost]

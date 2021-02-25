@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using TempusHiring.BusinessLogic.Pagination;
 
@@ -11,7 +10,7 @@ namespace TempusHiring.BusinessLogic.Services.Interfaces.Common
         Task AddRangeAsync(IEnumerable<TModel> items);
 
         ValueTask<TModel> ReadAsync(int id);
-        IEnumerable<TModel> ReadAll(int pageNum, int itemsOnPage);
+        PagedResult<TModel> GetPagedResult(int pageNum, int itemsOnPage);
         IEnumerable<TModel> ReadAll();
 
         void Update(TModel item);

@@ -49,13 +49,13 @@
             <div class="pagination__container">
                 @for (int i = Model.PageResult.Range.Start.Value; i <= Model.PageResult.Range.End.Value; i++)
                 {
-                    if (i == Model.PageResult.CurrentPage)
+                    if (i == Model.PageNum)
                     {
-                        <a asp-route-ItemsOnPage="@Model.ItemsOnPage" asp-route-Filter="@Model.Filter" asp-route-pageNum="@i" class="pagination__btn pagination__btn-active">@i</a>
+                        <a asp-route-ItemsOnPage="@Model.ItemsOnPage" asp-route-pageNum="@i" class="pagination__btn pagination__btn-active">@i</a>
                     }
                     else
                     {
-                        <a asp-route-ItemsOnPage="@Model.ItemsOnPage" asp-route-Filter="@Model.Filter" asp-route-pageNum="@i" class="pagination__btn">@i</a>
+                        <a asp-route-ItemsOnPage="@Model.ItemsOnPage" asp-route-pageNum="@i" class="pagination__btn">@i</a>
                     }
                 }
             </div>

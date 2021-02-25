@@ -10,7 +10,8 @@ using TempusHiring.DataAccess.UnitOfWork.Interfaces;
 
 namespace TempusHiring.BusinessLogic.Services.Implementation.Common
 {
-    public class CrudService<TEntity, TModel> : ICrudService<TModel> where TEntity : class where TModel : class
+    public class CrudService<TEntity, TModel> : ICrudService<TModel> where TEntity : class
+                                                                     where TModel : class
     {
         private readonly IRepository<TEntity> _repository;
         private readonly IUnitOfWork _unitOfWork;
@@ -44,13 +45,12 @@ namespace TempusHiring.BusinessLogic.Services.Implementation.Common
             return result;
         }
 
-        public IEnumerable<TModel> ReadAll(int pageNum, int itemsOnPage)
+        public PagedResult<TModel> GetPagedResult(int pageNum, int itemsOnPage)
         {
-            var source = _repository.ReadAll()
-                                                     .GetPaged(pageNum, itemsOnPage)
-                                                     .Result;
+            var pagedResult = _repository.ReadAll()
+                .GetPaged(pageNum, itemsOnPage);
 
-            var result = _mapper.Map<IEnumerable<TModel>>(source);
+            var result = _mapper.Map<PagedResult<TModel>>(pagedResult);
             return result;
         }
 
