@@ -10,6 +10,7 @@ using TempusHiring.Presentation.Models.AccountViewModels;
 using TempusHiring.Presentation.Models.ViewModels;
 using TempusHiring.Presentation.Models.ViewModels.Admin;
 using TempusHiring.Presentation.Models.ViewModels.BodyMaterial;
+using TempusHiring.Presentation.Models.ViewModels.Color;
 
 namespace TempusHiring.Presentation.AutoMapper
 {
@@ -56,7 +57,6 @@ namespace TempusHiring.Presentation.AutoMapper
             CreateMap<OrderDTO, OrderViewModel>().ReverseMap();
             CreateMap<OrderWatchLinkDTO, OrderWatchLinkViewModel>().ReverseMap();
             CreateMap<PriceRangeDTO, PriceRangeViewModel>().ReverseMap();
-            CreateMap<ColorDTO, ColorViewModel>().ReverseMap();
             CreateMap<GlassMaterialDTO, GlassMaterialViewModel>().ReverseMap();
             CreateMap<ManufacturerDTO, ManufacturerViewModel>().ReverseMap();
             CreateMap<MechanismDTO, MechanismViewModel>().ReverseMap();
@@ -70,9 +70,14 @@ namespace TempusHiring.Presentation.AutoMapper
             CreateMap<BodyMaterialDTO, CreateBodyMaterialViewModel>().ReverseMap();
             CreateMap<BodyMaterialDTO, EditBodyMaterialViewModel>().ReverseMap();
 
+            CreateMap<ColorDTO, ColorViewModel>().ReverseMap();
+            CreateMap<ColorDTO, CreateColorViewModel>().ReverseMap();
+            CreateMap<ColorDTO, EditColorViewModel>().ReverseMap();
+
             //TODO fix this shit
             CreateMap<PagedResult<WatchDTO>, PagedResult<WatchViewModel>>().ReverseMap();
             CreateMap<PagedResult<BodyMaterialDTO>, PagedResult<BodyMaterialViewModel>>().ReverseMap();
+            CreateMap<PagedResult<ColorDTO>, PagedResult<ColorViewModel>>().ReverseMap();
         }
     }
 }

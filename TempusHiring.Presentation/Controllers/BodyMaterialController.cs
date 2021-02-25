@@ -22,7 +22,7 @@ namespace TempusHiring.Presentation.Controllers
         private const string CURRENT_CONTROLLER_NAME = "BodyMaterial";
 
         public BodyMaterialController(IBodyMaterialService bodyMaterialService,
-                               IMapper mapper)
+            IMapper mapper)
         {
             _bodyMaterialService = bodyMaterialService;
             _mapper = mapper;
