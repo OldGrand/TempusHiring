@@ -26,14 +26,14 @@
                     @bm.Title
                 </td>
                 <td>
-                    <a asp-controller="Admin" asp-action="DeleteBodyMaterial" asp-route-bodyMaterialId="@bm.Id">
+                    <a asp-controller="BodyMaterial" asp-action="DeleteBodyMaterial" asp-route-bodyMaterialId="@bm.Id">
                         <svg class="delete-svg" viewBox="0 0 512 512">
                             <use xlink:href="/images/icons/delete.svg#delete"></use>
                         </svg>
                     </a>
                 </td>
                 <td>
-                    <a asp-controller="Admin" asp-action="EditBodyMaterial" asp-route-bodyMaterialId="@bm.Id">
+                    <a asp-controller="BodyMaterial" asp-action="EditBodyMaterial" asp-route-bodyMaterialId="@bm.Id">
                         <svg class="delete-svg" viewBox="0 0 48 48">
                             <use xlink:href="/images/icons/pencil.svg#edit"></use>
                         </svg>
@@ -44,7 +44,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <a asp-controller="Admin" asp-action="CreateBodyMaterial" class="add__button_link">
+                    <a asp-controller="BodyMaterial" asp-action="CreateBodyMaterial" class="add__button_link">
                         <div class="add__button"></div>
                     </a>
                 </td>
