@@ -45,14 +45,14 @@
                                                 <li class="sub-user__item">
                                                     <a asp-controller="Orders" asp-action="Items" class="sub-user__link">Orders</a>
                                                 </li>
-                                                @if (User.IsInRole(ClaimRoles.Admin))
-                                                {
+                                                @*@if (User.IsInRole(ClaimRoles.Admin))
+                                                {*@
                                                     <li class="sub-user__item">
-                                                        <form asp-controller="Admin" asp-action="DeleteBodyMaterials" method="post">
+                                                        <form asp-controller="Admin" asp-action="GetBodyMaterialsList" method="get">
                                                             <input type="submit" value="Admin Panel" class="user-exit__link" />
                                                         </form>
                                                     </li>
-                                                }
+                                                @*}*@
                                                 <li class="sub-user__item">
                                                     <form asp-controller="Account" asp-action="Logout" method="post">
                                                         <input type="submit" value="Exit" class="user-exit__link" />

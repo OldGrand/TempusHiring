@@ -10,7 +10,7 @@
 .add__button::after {
     content: "+";
     color: #aaaaaa;
-    font-size: 2rem;
+    font-size: 30px;
     font-weight: bold;
     position: absolute;
     top: 50%;

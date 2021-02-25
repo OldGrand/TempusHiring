@@ -1,15 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TempusHiring.BusinessLogic.DataTransferObjects.Admin;
 using TempusHiring.BusinessLogic.Services.Interfaces;
-using TempusHiring.Common;
-using TempusHiring.DataAccess.Entities;
 using TempusHiring.Presentation.Models.ViewModels;
-using TempusHiring.Presentation.Models.ViewModels.Admin;
+using TempusHiring.Presentation.Models.ViewModels.BodyMaterial;
 
 namespace TempusHiring.Presentation.Controllers
 {
@@ -27,6 +24,8 @@ namespace TempusHiring.Presentation.Controllers
         private readonly IStrapService _strapService;
         private readonly IWristSizeService _wristSizeService;
         private readonly IMapper _mapper;
+
+        private const string CURRENT_CONTROLLER_NAME = "Admin";
 
         public AdminController(IBodyMaterialService bodyMaterialService, 
                                ICatalogService catalogService, 
@@ -54,7 +53,13 @@ namespace TempusHiring.Presentation.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetBodyMaterialsList(PaginationViewModel<BodyMaterialViewModel> paginationViewModel)
+        public IActionResult Index()
+        {
+            return View();
+        }
+        
+        [HttpGet]
+        public IActionResult GetBodyMaterialList(PaginationViewModel<BodyMaterialViewModel> paginationViewModel)
         {
             var bodyMaterialDtos = _bodyMaterialService.ReadAll(paginationViewModel.PageNum, paginationViewModel.ItemsOnPage);
             var bodyViewModel = _mapper.Map<IEnumerable<BodyMaterialViewModel>>(bodyMaterialDtos);
@@ -71,26 +76,52 @@ namespace TempusHiring.Presentation.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeleteBodyMaterials(int bodyMaterialId)
+        public async Task<IActionResult> DeleteBodyMaterial(int bodyMaterialId)
         {
             var bodyMaterialDto = await _bodyMaterialService.ReadAsync(bodyMaterialId);
             _bodyMaterialService.Delete(bodyMaterialDto);
 
-            return RedirectToAction(nameof(GetBodyMaterialsList), "Admin");
+            return RedirectToAction(nameof(GetBodyMaterialList), CURRENT_CONTROLLER_NAME);
+        }
+
+        [HttpGet]
+        public IActionResult EditBodyMaterial()
+        {
+            return View();
         }
 
         [HttpPost]
-        public IActionResult EditBodyMaterials(BodyMaterialViewModel bodyMaterialViewModel)
+        public IActionResult EditBodyMaterial(EditBodyMaterialViewModel editBodyMaterialViewModel)
         {
             if (!ModelState.IsValid)
             {
-                return View(bodyMaterialViewModel);
+                return View(editBodyMaterialViewModel);
             }
 
-            var bodyMaterialDto = _mapper.Map<BodyMaterialDTO>(bodyMaterialViewModel);
+            var bodyMaterialDto = _mapper.Map<BodyMaterialDTO>(editBodyMaterialViewModel);
             _bodyMaterialService.Update(bodyMaterialDto);
 
-            return RedirectToAction(nameof(GetBodyMaterialsList), "Admin");
+            return RedirectToAction(nameof(GetBodyMaterialList), CURRENT_CONTROLLER_NAME);
+        }
+
+        [HttpGet]
+        public IActionResult CreateBodyMaterial()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateBodyMaterial(CreateBodyMaterialViewModel createBodyMaterialViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(createBodyMaterialViewModel);
+            }
+
+            var bodyMaterialDto = _mapper.Map<BodyMaterialDTO>(createBodyMaterialViewModel);
+            _bodyMaterialService.AddAsync(bodyMaterialDto);
+
+            return RedirectToAction(nameof(GetBodyMaterialList), CURRENT_CONTROLLER_NAME);
         }
     }
 }

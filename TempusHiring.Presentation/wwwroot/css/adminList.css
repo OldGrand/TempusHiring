@@ -10,6 +10,7 @@
 .admin_panel {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
     background-color: #272727;
 }
@@ -21,7 +22,7 @@
     border-right: 3px solid #dd9500;
     border-bottom: 3px solid #dd9500;
     font-family: "Lucida Grande", sans-serif;
-    margin-bottom: 25px;
+    margin: 20px auto;
 }
 
 .table_price caption {
@@ -46,6 +47,10 @@
     word-break: break-all;
 }
 
+.table_price th {
+    min-width: 150px;
+}
+
 .table_price tr:nth-child(2n) {
     background: #242424;
 }
@@ -60,4 +65,8 @@
     display: inline-block;
     padding: 5px 10px;
     background: #fff;
+}
+
+.table__button:hover {
+    background: #0b0259;
 }

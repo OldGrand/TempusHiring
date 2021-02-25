@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using TempusHiring.DataAccess.EntityEnums;
 using TempusHiring.Presentation.Models.ViewModels.Admin;
+using TempusHiring.Presentation.Models.ViewModels.BodyMaterial;
 
 namespace TempusHiring.Presentation.Models.ViewModels
 {

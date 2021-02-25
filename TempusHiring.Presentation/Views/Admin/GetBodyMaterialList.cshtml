@@ -22,14 +22,14 @@
                     @bm.Title
                 </td>
                 <td>
-                    <a asp-controller="Admin" asp-action="DeleteBodyMaterials" asp-route-cartId="@bm.Id">
+                    <a asp-controller="Admin" asp-action="DeleteBodyMaterial" asp-route-cartId="@bm.Id">
                         <svg class="delete-svg" viewBox="0 0 512 512">
                             <use xlink:href="/images/icons/delete.svg#delete"></use>
                         </svg>
                     </a>
                 </td>
                 <td>
-                    <a asp-controller="Admin" asp-action="EditBodyMaterials" asp-route-cartId="@bm.Id">
+                    <a asp-controller="Admin" asp-action="EditBodyMaterial" asp-route-cartId="@bm.Id">
                         <svg class="delete-svg" viewBox="0 0 512 512">
                             <use xlink:href="/images/icons/pencil.svg#delete"></use>
                         </svg>
@@ -38,7 +38,7 @@
             </tr>
              }
         </table>
-        <a asp-action="Create">
+        <a asp-controller="Admin" asp-action="CreateBodyMaterial">
             <div class="add__button"></div>
         </a>
     </div>

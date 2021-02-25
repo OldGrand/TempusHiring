@@ -9,6 +9,7 @@ using TempusHiring.Common;
 using TempusHiring.Presentation.Models.AccountViewModels;
 using TempusHiring.Presentation.Models.ViewModels;
 using TempusHiring.Presentation.Models.ViewModels.Admin;
+using TempusHiring.Presentation.Models.ViewModels.BodyMaterial;
 
 namespace TempusHiring.Presentation.AutoMapper
 {
