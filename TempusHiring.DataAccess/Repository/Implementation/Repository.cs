@@ -59,7 +59,7 @@ namespace TempusHiring.DataAccess.Repository.Implementation
 
         public void UpdateRange(IEnumerable<TSource> items)
         {
-            _context.Entry(items).State = EntityState.Modified;
+            _context.UpdateRange(items);
         }
 
         public void Delete(TSource item)

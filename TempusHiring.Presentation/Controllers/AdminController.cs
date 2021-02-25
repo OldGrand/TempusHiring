@@ -76,18 +76,22 @@ namespace TempusHiring.Presentation.Controllers
         {
             var bodyMaterialDto = await _bodyMaterialService.ReadAsync(bodyMaterialId);
             _bodyMaterialService.Delete(bodyMaterialDto);
+            await _bodyMaterialService.SaveChangesAsync();
 
             return RedirectToAction(nameof(GetBodyMaterialList), CURRENT_CONTROLLER_NAME);
         }
 
         [HttpGet]
-        public IActionResult EditBodyMaterial()
+        public async Task<IActionResult> EditBodyMaterial(int bodyMaterialId)
         {
-            return View();
+            var bodyMaterialDto = await _bodyMaterialService.ReadAsync(bodyMaterialId);
+            var editBodyMaterialViewModel = _mapper.Map<EditBodyMaterialViewModel>(bodyMaterialDto);
+
+            return View(editBodyMaterialViewModel);
         }
 
         [HttpPost]
-        public IActionResult EditBodyMaterial(EditBodyMaterialViewModel editBodyMaterialViewModel)
+        public async Task<IActionResult> EditBodyMaterial(EditBodyMaterialViewModel editBodyMaterialViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -96,6 +100,7 @@ namespace TempusHiring.Presentation.Controllers
 
             var bodyMaterialDto = _mapper.Map<BodyMaterialDTO>(editBodyMaterialViewModel);
             _bodyMaterialService.Update(bodyMaterialDto);
+            await _bodyMaterialService.SaveChangesAsync();
 
             return RedirectToAction(nameof(GetBodyMaterialList), CURRENT_CONTROLLER_NAME);
         }
@@ -107,7 +112,7 @@ namespace TempusHiring.Presentation.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateBodyMaterial(CreateBodyMaterialViewModel createBodyMaterialViewModel)
+        public async Task<IActionResult> CreateBodyMaterial(CreateBodyMaterialViewModel createBodyMaterialViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -115,7 +120,8 @@ namespace TempusHiring.Presentation.Controllers
             }
 
             var bodyMaterialDto = _mapper.Map<BodyMaterialDTO>(createBodyMaterialViewModel);
-            _bodyMaterialService.AddAsync(bodyMaterialDto);
+            await _bodyMaterialService.AddAsync(bodyMaterialDto);
+            await _bodyMaterialService.SaveChangesAsync();
 
             return RedirectToAction(nameof(GetBodyMaterialList), CURRENT_CONTROLLER_NAME);
         }

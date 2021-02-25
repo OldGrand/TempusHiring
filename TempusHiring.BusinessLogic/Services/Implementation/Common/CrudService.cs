@@ -42,6 +42,12 @@ namespace TempusHiring.BusinessLogic.Services.Implementation.Common
         public async ValueTask<TModel> ReadAsync(int id)
         {
             var source = await _repository.ReadAsync(id);
+
+            if (source is null)
+            {
+                throw new Exception(NOT_FOUND_ERROR_MESSAGE);
+            }
+
             var result = _mapper.Map<TModel>(source);
             return result;
         }

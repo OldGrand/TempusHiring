@@ -1,4 +1,10 @@
-﻿.add__button {
+﻿.add__button_link {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.add__button {
     border: 1px dashed #aaaaaa;
     border-radius: 50%;
     width: 25px;
@@ -10,12 +16,12 @@
 .add__button::after {
     content: "+";
     color: #aaaaaa;
-    font-size: 30px;
-    font-weight: bold;
+    font-size: 26px;
+    font-weight: 100;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-47%, -54%);
+    transform: translate(-50%, -50%);
     transition: ease .2s;
 }
 

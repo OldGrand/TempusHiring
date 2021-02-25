@@ -56,7 +56,6 @@ namespace TempusHiring.Presentation.AutoMapper
             CreateMap<OrderDTO, OrderViewModel>().ReverseMap();
             CreateMap<OrderWatchLinkDTO, OrderWatchLinkViewModel>().ReverseMap();
             CreateMap<PriceRangeDTO, PriceRangeViewModel>().ReverseMap();
-            CreateMap<BodyMaterialDTO, BodyMaterialViewModel>().ReverseMap();
             CreateMap<ColorDTO, ColorViewModel>().ReverseMap();
             CreateMap<GlassMaterialDTO, GlassMaterialViewModel>().ReverseMap();
             CreateMap<ManufacturerDTO, ManufacturerViewModel>().ReverseMap();
@@ -66,6 +65,10 @@ namespace TempusHiring.Presentation.AutoMapper
             CreateMap<WristSizeDTO, WristSizeViewModel>().ReverseMap();
             CreateMap<PhotoDTO, PhotoViewModel>().ReverseMap();
             CreateMap<Filter, FilterViewModel>().ReverseMap();
+
+            CreateMap<BodyMaterialDTO, BodyMaterialViewModel>().ReverseMap();
+            CreateMap<BodyMaterialDTO, CreateBodyMaterialViewModel>().ReverseMap();
+            CreateMap<BodyMaterialDTO, EditBodyMaterialViewModel>().ReverseMap();
 
             //TODO fix this shit
             CreateMap<PagedResult<WatchDTO>, PagedResult<WatchViewModel>>().ReverseMap();
