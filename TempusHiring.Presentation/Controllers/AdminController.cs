@@ -71,7 +71,7 @@ namespace TempusHiring.Presentation.Controllers
             return View(paginationViewModel);
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> DeleteBodyMaterial(int bodyMaterialId)
         {
             var bodyMaterialDto = await _bodyMaterialService.ReadAsync(bodyMaterialId);

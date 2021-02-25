@@ -30,9 +30,12 @@ namespace TempusHiring.DataAccess.Repository.Implementation
             return _set.AddRangeAsync(items);
         }
 
-        public ValueTask<TSource> ReadAsync(int id)
-        {
-            return _set.FindAsync(id);
+        public async ValueTask<TSource> ReadAsync(int id)
+        {//TODO need to fix
+            var entity = await _set.FindAsync(id);
+            _context.Entry(entity).State = EntityState.Detached;
+            
+            return entity;
         }
 
         public Task<TSource> ReadAsync(Func<TSource, bool> predicate)
@@ -69,7 +72,7 @@ namespace TempusHiring.DataAccess.Repository.Implementation
 
         public void DeleteRange(IEnumerable<TSource> items)
         {
-            _set.RemoveRange(items);
+            _context.RemoveRange(items);
         }
     }
 }
