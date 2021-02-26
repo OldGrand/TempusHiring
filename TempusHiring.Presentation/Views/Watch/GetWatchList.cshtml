@@ -30,6 +30,12 @@
                 <th>
                     SaledCount
                 </th>
+                <th>
+                    Delete
+                </th>
+                <th>
+                    Edit
+                </th>
             </tr>
             @foreach (var watch in Model.PagedResult.Result)
             {
@@ -73,14 +79,14 @@
             }
         <tr>
             <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td>
                 <a asp-controller="Watch" asp-action="CreateWatch" class="add__button_link">
                     <div class="add__button"></div>
                 </a>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
             <td></td>
             <td></td>
             <td></td>
