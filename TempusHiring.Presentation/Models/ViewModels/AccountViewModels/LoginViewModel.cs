@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace TempusHiring.Presentation.Models.AccountViewModels
+namespace TempusHiring.Presentation.Models.ViewModels.AccountViewModels
 {
     public class LoginViewModel
     {

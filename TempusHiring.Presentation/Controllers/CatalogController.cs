@@ -8,6 +8,7 @@ using TempusHiring.BusinessLogic.Pagination;
 using TempusHiring.BusinessLogic.Services.Interfaces;
 using TempusHiring.Common;
 using TempusHiring.Presentation.Models.ViewModels;
+using TempusHiring.Presentation.Models.ViewModels.Watch;
 
 namespace TempusHiring.Presentation.Controllers
 {

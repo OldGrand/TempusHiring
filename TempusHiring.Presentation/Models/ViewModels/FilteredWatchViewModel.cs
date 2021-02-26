@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using TempusHiring.BusinessLogic.Pagination;
+using TempusHiring.Presentation.Models.ViewModels.Watch;
 
 namespace TempusHiring.Presentation.Models.ViewModels
 {

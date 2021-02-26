@@ -6,8 +6,8 @@ using TempusHiring.BusinessLogic.DataTransferObjects.Admin;
 using TempusHiring.BusinessLogic.DataTransferObjects.Order;
 using TempusHiring.BusinessLogic.Pagination;
 using TempusHiring.Common;
-using TempusHiring.Presentation.Models.AccountViewModels;
 using TempusHiring.Presentation.Models.ViewModels;
+using TempusHiring.Presentation.Models.ViewModels.AccountViewModels;
 using TempusHiring.Presentation.Models.ViewModels.Admin;
 using TempusHiring.Presentation.Models.ViewModels.BodyMaterial;
 using TempusHiring.Presentation.Models.ViewModels.Color;
@@ -15,6 +15,7 @@ using TempusHiring.Presentation.Models.ViewModels.GlassMaterial;
 using TempusHiring.Presentation.Models.ViewModels.Manufacturer;
 using TempusHiring.Presentation.Models.ViewModels.Mechanism;
 using TempusHiring.Presentation.Models.ViewModels.StrapMaterial;
+using TempusHiring.Presentation.Models.ViewModels.Watch;
 using TempusHiring.Presentation.Models.ViewModels.WristSize;
 
 namespace TempusHiring.Presentation.AutoMapper

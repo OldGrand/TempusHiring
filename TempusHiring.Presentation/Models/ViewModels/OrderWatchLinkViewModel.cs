@@ -1,4 +1,6 @@
-﻿namespace TempusHiring.Presentation.Models.ViewModels
+﻿using TempusHiring.Presentation.Models.ViewModels.Watch;
+
+namespace TempusHiring.Presentation.Models.ViewModels
 {
     public class OrderWatchLinkViewModel
     {

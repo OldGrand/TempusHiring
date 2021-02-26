@@ -6,7 +6,7 @@ using TempusHiring.Presentation.Models.ViewModels.GlassMaterial;
 using TempusHiring.Presentation.Models.ViewModels.Manufacturer;
 using TempusHiring.Presentation.Models.ViewModels.Mechanism;
 
-namespace TempusHiring.Presentation.Models.ViewModels
+namespace TempusHiring.Presentation.Models.ViewModels.Watch
 {
     public class WatchViewModel
     {
