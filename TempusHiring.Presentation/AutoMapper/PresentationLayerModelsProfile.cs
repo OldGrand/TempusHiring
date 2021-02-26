@@ -13,6 +13,7 @@ using TempusHiring.Presentation.Models.ViewModels.BodyMaterial;
 using TempusHiring.Presentation.Models.ViewModels.Color;
 using TempusHiring.Presentation.Models.ViewModels.GlassMaterial;
 using TempusHiring.Presentation.Models.ViewModels.Manufacturer;
+using TempusHiring.Presentation.Models.ViewModels.WristSize;
 
 namespace TempusHiring.Presentation.AutoMapper
 {
@@ -62,7 +63,6 @@ namespace TempusHiring.Presentation.AutoMapper
             CreateMap<MechanismDTO, MechanismViewModel>().ReverseMap();
             CreateMap<StrapDTO, StrapViewModel>().ReverseMap();
             CreateMap<StrapMaterialDTO, StrapMaterialViewModel>().ReverseMap();
-            CreateMap<WristSizeDTO, WristSizeViewModel>().ReverseMap();
             CreateMap<PhotoDTO, PhotoViewModel>().ReverseMap();
             CreateMap<Filter, FilterViewModel>().ReverseMap();
 
@@ -82,12 +82,16 @@ namespace TempusHiring.Presentation.AutoMapper
             CreateMap<ManufacturerDTO, CreateManufacturerViewModel>().ReverseMap();
             CreateMap<ManufacturerDTO, EditManufacturerViewModel>().ReverseMap();
 
+            CreateMap<WristSizeDTO, WristSizeViewModel>().ReverseMap();
+            CreateMap<WristSizeDTO, CreateWristSizeViewModel>().ReverseMap();
+            CreateMap<WristSizeDTO, EditWristSizeViewModel>().ReverseMap();
             //TODO fix this shit
             CreateMap<PagedResult<WatchDTO>, PagedResult<WatchViewModel>>().ReverseMap();
             CreateMap<PagedResult<BodyMaterialDTO>, PagedResult<BodyMaterialViewModel>>().ReverseMap();
             CreateMap<PagedResult<ColorDTO>, PagedResult<ColorViewModel>>().ReverseMap();
             CreateMap<PagedResult<GlassMaterialDTO>, PagedResult<GlassMaterialViewModel>>().ReverseMap();
             CreateMap<PagedResult<ManufacturerDTO>, PagedResult<ManufacturerViewModel>>().ReverseMap();
+            CreateMap<PagedResult<WristSizeDTO>, PagedResult<WristSizeViewModel>>().ReverseMap();
         }
     }
 }

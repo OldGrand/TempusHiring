@@ -4,7 +4,6 @@ namespace TempusHiring.Presentation.Models.ViewModels.GlassMaterial
 {
     public class EditGlassMaterialViewModel
     {
-        [Required]
         public int Id { get; set; }
 
         [Required]

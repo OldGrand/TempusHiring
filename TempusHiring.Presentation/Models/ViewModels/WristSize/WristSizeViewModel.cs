@@ -1,4 +1,4 @@
-﻿namespace TempusHiring.Presentation.Models.ViewModels.Admin
+﻿namespace TempusHiring.Presentation.Models.ViewModels.WristSize
 {
     public class WristSizeViewModel
     {

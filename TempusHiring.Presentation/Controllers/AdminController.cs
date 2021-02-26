@@ -15,13 +15,13 @@ namespace TempusHiring.Presentation.Controllers
         private readonly IMapper _mapper;
 
         private const string CURRENT_CONTROLLER_NAME = "Admin";
-
-        public AdminController(IMechanismService mechanismService, 
-                               IPhotoService photoService, 
-                               IStrapMaterialService strapMaterialService, 
-                               IStrapService strapService, 
-                               IWristSizeService wristSizeService, 
-                               IMapper mapper)
+        
+        public AdminController(IWristSizeService wristSizeService, 
+            IMechanismService mechanismService, 
+           IPhotoService photoService, 
+           IStrapMaterialService strapMaterialService, 
+           IStrapService strapService,
+           IMapper mapper)
         {
             _mechanismService = mechanismService;
             _photoService = photoService;

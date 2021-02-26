@@ -1,4 +1,5 @@
 ﻿using TempusHiring.Presentation.Models.ViewModels.Color;
+using TempusHiring.Presentation.Models.ViewModels.WristSize;
 
 namespace TempusHiring.Presentation.Models.ViewModels.Admin
 {

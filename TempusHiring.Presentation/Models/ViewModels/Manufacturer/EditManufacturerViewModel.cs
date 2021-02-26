@@ -5,7 +5,6 @@ namespace TempusHiring.Presentation.Models.ViewModels.Manufacturer
 {
     public class EditManufacturerViewModel
     {
-        [Required]
         public int Id { get; set; }  
 
         [Required]

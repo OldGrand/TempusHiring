@@ -6,7 +6,6 @@ namespace TempusHiring.Presentation.Models.ViewModels.Color
 {
     public class EditColorViewModel
     {
-        [Required]
         public int Id { get; set; }
 
         [Required]

@@ -4,7 +4,6 @@ namespace TempusHiring.Presentation.Models.ViewModels.BodyMaterial
 {
     public class EditBodyMaterialViewModel
     {
-        [Required]
         public int Id { get; set; }
 
         [Required]
