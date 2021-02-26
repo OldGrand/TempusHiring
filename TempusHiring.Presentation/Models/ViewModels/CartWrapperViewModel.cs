@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TempusHiring.Presentation.Models.ViewModels.Order;
 
 namespace TempusHiring.Presentation.Models.ViewModels
 {

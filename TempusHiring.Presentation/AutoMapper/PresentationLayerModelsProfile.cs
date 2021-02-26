@@ -14,6 +14,7 @@ using TempusHiring.Presentation.Models.ViewModels.Color;
 using TempusHiring.Presentation.Models.ViewModels.GlassMaterial;
 using TempusHiring.Presentation.Models.ViewModels.Manufacturer;
 using TempusHiring.Presentation.Models.ViewModels.Mechanism;
+using TempusHiring.Presentation.Models.ViewModels.Order;
 using TempusHiring.Presentation.Models.ViewModels.StrapMaterial;
 using TempusHiring.Presentation.Models.ViewModels.Watch;
 using TempusHiring.Presentation.Models.ViewModels.WristSize;

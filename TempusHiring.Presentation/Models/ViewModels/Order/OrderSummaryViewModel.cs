@@ -1,4 +1,4 @@
-﻿namespace TempusHiring.Presentation.Models.ViewModels
+﻿namespace TempusHiring.Presentation.Models.ViewModels.Order
 {
     public class OrderSummaryViewModel
     {
