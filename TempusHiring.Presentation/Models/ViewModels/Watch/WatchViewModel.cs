@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using TempusHiring.DataAccess.EntityEnums;
-using TempusHiring.Presentation.Models.ViewModels.Admin;
 using TempusHiring.Presentation.Models.ViewModels.BodyMaterial;
 using TempusHiring.Presentation.Models.ViewModels.GlassMaterial;
 using TempusHiring.Presentation.Models.ViewModels.Manufacturer;
 using TempusHiring.Presentation.Models.ViewModels.Mechanism;
+using TempusHiring.Presentation.Models.ViewModels.Strap;
 
 namespace TempusHiring.Presentation.Models.ViewModels.Watch
 {

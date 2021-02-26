@@ -1,0 +1,106 @@
+﻿@model PaginationViewModel<WatchViewModel>
+
+@{
+    ViewData["Title"] = "Watch List";
+}
+
+<div class="admin_wrapper">
+    <div class="admin_panel">
+        <table class="table_price">
+            <caption class="table__caption">Watch</caption>
+            <tr class="tr__title">
+                <th>
+                    Title
+                </th>
+                <th>
+                    Diameter
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Gender
+                </th>
+                <th>
+                    CountInStock
+                </th>
+                <th>
+                    SaledCount
+                </th>
+            </tr>
+            @foreach (var watch in Model.PagedResult.Result)
+            {
+                <tr>
+                    <td>
+                        @watch.Title
+                    </td>
+                    <td>
+                        @watch.Diameter
+                    </td>
+                    <td>
+                        @watch.Description
+                    </td>
+                    <td>
+                        @watch.Price
+                    </td>
+                    <td>
+                        @watch.Gender
+                    </td>
+                    <td>
+                        @watch.CountInStock
+                    </td>
+                    <td>
+                        @watch.SaledCount
+                    </td>
+                    <td>
+                        <a asp-controller="Watch" asp-action="DeleteWatch" asp-route-watchId="@watch.Id">
+                            <svg class="delete-svg" viewBox="0 0 512 512">
+                                <use xlink:href="/images/icons/delete.svg#delete"></use>
+                            </svg>
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-controller="Watch" asp-action="EditWatch" asp-route-watchId="@watch.Id">
+                            <svg class="delete-svg" viewBox="0 0 48 48">
+                                <use xlink:href="/images/icons/pencil.svg#edit"></use>
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+            }
+        <tr>
+            <td></td>
+            <td>
+                <a asp-controller="Watch" asp-action="CreateWatch" class="add__button_link">
+                    <div class="add__button"></div>
+                </a>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </table>
+        <div class="pagination">
+            <div class="pagination__container">
+                @for (int i = Model.PagedResult.Range.Start.Value; i <= Model.PagedResult.Range.End.Value; i++)
+                {
+                    if (i == Model.PagedResult.CurrentPageNum)
+                    {
+                        <a asp-route-ItemsOnPage="@Model.PagedResult.ItemsOnPage" asp-route-pageNum="@i" class="pagination__btn pagination__btn-active">@i</a>
+                    }
+                    else
+                    {
+                        <a asp-route-ItemsOnPage="@Model.PagedResult.ItemsOnPage" asp-route-pageNum="@i" class="pagination__btn">@i</a>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,7 +2,7 @@
 using TempusHiring.Presentation.Models.ViewModels.StrapMaterial;
 using TempusHiring.Presentation.Models.ViewModels.WristSize;
 
-namespace TempusHiring.Presentation.Models.ViewModels.Admin
+namespace TempusHiring.Presentation.Models.ViewModels.Strap
 {
     public class StrapViewModel
     {

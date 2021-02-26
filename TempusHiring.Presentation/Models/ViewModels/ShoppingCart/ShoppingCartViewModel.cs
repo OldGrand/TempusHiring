@@ -1,6 +1,6 @@
 ﻿using TempusHiring.Presentation.Models.ViewModels.Watch;
 
-namespace TempusHiring.Presentation.Models.ViewModels
+namespace TempusHiring.Presentation.Models.ViewModels.ShoppingCart
 {
     public class ShoppingCartViewModel
     {

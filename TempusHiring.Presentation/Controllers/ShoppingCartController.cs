@@ -6,6 +6,7 @@ using TempusHiring.BusinessLogic.Extensions;
 using TempusHiring.BusinessLogic.Services.Interfaces;
 using TempusHiring.Presentation.Models.ViewModels;
 using TempusHiring.Presentation.Models.ViewModels.Order;
+using TempusHiring.Presentation.Models.ViewModels.ShoppingCart;
 
 namespace TempusHiring.Presentation.Controllers
 {

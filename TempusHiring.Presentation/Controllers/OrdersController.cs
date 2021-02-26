@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using TempusHiring.BusinessLogic.Extensions;
 using TempusHiring.BusinessLogic.Services.Interfaces;
 using TempusHiring.Presentation.Models.ViewModels;
+using TempusHiring.Presentation.Models.ViewModels.Order;
 
 namespace TempusHiring.Presentation.Controllers
 {

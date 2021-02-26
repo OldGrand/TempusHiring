@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using TempusHiring.Presentation.Models.ViewModels.Order;
 
-namespace TempusHiring.Presentation.Models.ViewModels
+namespace TempusHiring.Presentation.Models.ViewModels.ShoppingCart
 {
     public class CartWrapperViewModel
     {

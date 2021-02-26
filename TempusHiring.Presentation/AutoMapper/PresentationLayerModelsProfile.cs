@@ -8,13 +8,14 @@ using TempusHiring.BusinessLogic.Pagination;
 using TempusHiring.Common;
 using TempusHiring.Presentation.Models.ViewModels;
 using TempusHiring.Presentation.Models.ViewModels.AccountViewModels;
-using TempusHiring.Presentation.Models.ViewModels.Admin;
 using TempusHiring.Presentation.Models.ViewModels.BodyMaterial;
 using TempusHiring.Presentation.Models.ViewModels.Color;
 using TempusHiring.Presentation.Models.ViewModels.GlassMaterial;
 using TempusHiring.Presentation.Models.ViewModels.Manufacturer;
 using TempusHiring.Presentation.Models.ViewModels.Mechanism;
 using TempusHiring.Presentation.Models.ViewModels.Order;
+using TempusHiring.Presentation.Models.ViewModels.ShoppingCart;
+using TempusHiring.Presentation.Models.ViewModels.Strap;
 using TempusHiring.Presentation.Models.ViewModels.StrapMaterial;
 using TempusHiring.Presentation.Models.ViewModels.Watch;
 using TempusHiring.Presentation.Models.ViewModels.WristSize;
@@ -39,18 +40,6 @@ namespace TempusHiring.Presentation.AutoMapper
 
             CreateMap<RegisterViewModel, UserDTO>()
                 .ForMember(dst => dst.UserName, src => src.MapFrom(_ => _.Email))
-                .ReverseMap();
-
-            CreateMap<WatchDTO, WatchViewModel>()
-                .BeforeMap((x, y) =>
-                {
-                    if (x.Photos is not null && x.Photos.Any())
-                    {
-                        x.PreviewPhoto = x.Photos.First().Path;
-                        return;
-                    }
-                    x.PreviewPhoto = string.Empty;
-                })
                 .ReverseMap();
 
             CreateMap<RegisterDTO, RegisterViewModel>()
@@ -96,6 +85,20 @@ namespace TempusHiring.Presentation.AutoMapper
             CreateMap<MechanismDTO, MechanismViewModel>().ReverseMap();
             CreateMap<MechanismDTO, CreateMechanismViewModel>().ReverseMap();
             CreateMap<MechanismDTO, EditMechanismViewModel>().ReverseMap();
+
+            CreateMap<WatchDTO, WatchViewModel>()
+                .BeforeMap((x, y) =>
+                {
+                    if (x.Photos is not null && x.Photos.Any())
+                    {
+                        x.PreviewPhoto = x.Photos.First().Path;
+                        return;
+                    }
+                    x.PreviewPhoto = string.Empty;
+                })
+                .ReverseMap();
+            CreateMap<WatchDTO, CreateWatchViewModel>().ReverseMap();
+            CreateMap<WatchDTO, EditWatchViewModel>().ReverseMap();
             //TODO fix this shit
             CreateMap<PagedResult<WatchDTO>, PagedResult<WatchViewModel>>().ReverseMap();
             CreateMap<PagedResult<BodyMaterialDTO>, PagedResult<BodyMaterialViewModel>>().ReverseMap();
@@ -105,6 +108,7 @@ namespace TempusHiring.Presentation.AutoMapper
             CreateMap<PagedResult<WristSizeDTO>, PagedResult<WristSizeViewModel>>().ReverseMap();
             CreateMap<PagedResult<StrapMaterialDTO>, PagedResult<StrapMaterialViewModel>>().ReverseMap();
             CreateMap<PagedResult<MechanismDTO>, PagedResult<MechanismViewModel>>().ReverseMap();
+            CreateMap<PagedResult<WatchDTO>, PagedResult<WatchViewModel>>().ReverseMap();
         }
     }
 }

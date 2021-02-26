@@ -6,7 +6,6 @@ using TempusHiring.BusinessLogic.DataTransferObjects.Admin;
 using TempusHiring.BusinessLogic.Pagination;
 using TempusHiring.BusinessLogic.Services.Interfaces;
 using TempusHiring.Presentation.Models.ViewModels;
-using TempusHiring.Presentation.Models.ViewModels.Admin;
 using TempusHiring.Presentation.Models.ViewModels.Color;
 
 namespace TempusHiring.Presentation.Controllers
