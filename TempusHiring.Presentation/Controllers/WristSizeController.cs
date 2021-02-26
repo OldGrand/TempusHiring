@@ -13,7 +13,7 @@ using TempusHiring.Presentation.Models.ViewModels.WristSize;
 namespace TempusHiring.Presentation.Controllers
 {
     //[Authorize(Policy = ClaimRoles.Admin)]
-    [Microsoft.AspNetCore.Components.Route("Admin/{WristSize}/{action}/{wristSizeId?}")]
+    [Route("Admin/{WristSize}/{action}/{wristSizeId?}")]
     public class WristSizeController : Controller
     {
         private readonly IWristSizeService _wristSizeService;

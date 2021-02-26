@@ -13,6 +13,7 @@ using TempusHiring.Presentation.Models.ViewModels.BodyMaterial;
 using TempusHiring.Presentation.Models.ViewModels.Color;
 using TempusHiring.Presentation.Models.ViewModels.GlassMaterial;
 using TempusHiring.Presentation.Models.ViewModels.Manufacturer;
+using TempusHiring.Presentation.Models.ViewModels.StrapMaterial;
 using TempusHiring.Presentation.Models.ViewModels.WristSize;
 
 namespace TempusHiring.Presentation.AutoMapper
@@ -62,7 +63,7 @@ namespace TempusHiring.Presentation.AutoMapper
             CreateMap<PriceRangeDTO, PriceRangeViewModel>().ReverseMap();
             CreateMap<MechanismDTO, MechanismViewModel>().ReverseMap();
             CreateMap<StrapDTO, StrapViewModel>().ReverseMap();
-            CreateMap<StrapMaterialDTO, StrapMaterialViewModel>().ReverseMap();
+            
             CreateMap<PhotoDTO, PhotoViewModel>().ReverseMap();
             CreateMap<Filter, FilterViewModel>().ReverseMap();
 
@@ -85,6 +86,10 @@ namespace TempusHiring.Presentation.AutoMapper
             CreateMap<WristSizeDTO, WristSizeViewModel>().ReverseMap();
             CreateMap<WristSizeDTO, CreateWristSizeViewModel>().ReverseMap();
             CreateMap<WristSizeDTO, EditWristSizeViewModel>().ReverseMap();
+
+            CreateMap<StrapMaterialDTO, StrapMaterialViewModel>().ReverseMap();
+            CreateMap<StrapMaterialDTO, CreateStrapMaterialViewModel>().ReverseMap();
+            CreateMap<StrapMaterialDTO, EditStrapMaterialViewModel>().ReverseMap();
             //TODO fix this shit
             CreateMap<PagedResult<WatchDTO>, PagedResult<WatchViewModel>>().ReverseMap();
             CreateMap<PagedResult<BodyMaterialDTO>, PagedResult<BodyMaterialViewModel>>().ReverseMap();
@@ -92,6 +97,7 @@ namespace TempusHiring.Presentation.AutoMapper
             CreateMap<PagedResult<GlassMaterialDTO>, PagedResult<GlassMaterialViewModel>>().ReverseMap();
             CreateMap<PagedResult<ManufacturerDTO>, PagedResult<ManufacturerViewModel>>().ReverseMap();
             CreateMap<PagedResult<WristSizeDTO>, PagedResult<WristSizeViewModel>>().ReverseMap();
+            CreateMap<PagedResult<StrapMaterialDTO>, PagedResult<StrapMaterialViewModel>>().ReverseMap();
         }
     }
 }

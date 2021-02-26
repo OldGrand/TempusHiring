@@ -11,7 +11,6 @@ namespace TempusHiring.Presentation.Controllers
         private readonly IPhotoService _photoService;
         private readonly IStrapMaterialService _strapMaterialService;
         private readonly IStrapService _strapService;
-        private readonly IWristSizeService _wristSizeService;
         private readonly IMapper _mapper;
 
         private const string CURRENT_CONTROLLER_NAME = "Admin";
@@ -27,7 +26,6 @@ namespace TempusHiring.Presentation.Controllers
             _photoService = photoService;
             _strapMaterialService = strapMaterialService;
             _strapService = strapService;
-            _wristSizeService = wristSizeService;
             _mapper = mapper;
         }
 
