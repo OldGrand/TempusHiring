@@ -7,21 +7,28 @@ namespace TempusHiring.Presentation.Models.ViewModels.Watch
     public class EditWatchViewModel
     {
         public int Id { get; set; }
+
         [Range(20, double.MaxValue)]
         public double Diameter { get; set; }
+
         [Required]
         [MaxLength(64)]
         public string Title { get; set; }
+
         [Required]
         [MaxLength(64)]
         public string Description { get; set; }
+
         [Required]
         [MaxLength(128)]
         public string PreviewPhoto { get; set; }
+
         [Range(1, double.MaxValue)]
         public decimal Price { get; set; }
+
         [Range(0, int.MaxValue)]
         public int CountInStock { get; set; }
+
         [Range(0, int.MaxValue)]
         public int SaledCount { get; set; }
 
