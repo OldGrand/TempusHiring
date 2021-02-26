@@ -4,6 +4,7 @@ using TempusHiring.Presentation.Models.ViewModels.Admin;
 using TempusHiring.Presentation.Models.ViewModels.BodyMaterial;
 using TempusHiring.Presentation.Models.ViewModels.GlassMaterial;
 using TempusHiring.Presentation.Models.ViewModels.Manufacturer;
+using TempusHiring.Presentation.Models.ViewModels.Mechanism;
 
 namespace TempusHiring.Presentation.Models.ViewModels
 {

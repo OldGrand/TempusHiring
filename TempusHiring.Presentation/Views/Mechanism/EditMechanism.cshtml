@@ -1,0 +1,68 @@
+﻿@model EditMechanismViewModel
+
+@{
+    ViewBag.Title = "Edit Mechanism Entity";
+}
+
+<div class="login-register">
+    <div class="login-register__container">
+        <div class="login-register__header">
+            <h3 class="login-register__title title_active">
+                Edit Mechanism Entity
+            </h3>
+        </div>
+        <div class="login-register__froms">
+            <form asp-controller="Mechanism" asp-action="EditMechanism" method="post" class="form">
+                <div asp-validation-summary="ModelOnly"></div>
+                <div class="form-group">
+                    <input type="hidden" asp-for="Id" />
+                    <label asp-for="Title" class="control-label"></label>
+                    <div class="fake__form-input">
+                        <input asp-for="Title" class="form-input">
+                    </div>
+                    <div class="error__message-block">
+                        <span asp-validation-for="Title" class="form-span"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" asp-for="Id" />
+                    <label asp-for="Description" class="control-label"></label>
+                    <div class="fake__form-input">
+                        <input asp-for="Description" class="form-input">
+                    </div>
+                    <div class="error__message-block">
+                        <span asp-validation-for="Description" class="form-span"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" asp-for="Id" />
+                    <label asp-for="PowerReserveDays" class="control-label"></label>
+                    <div class="fake__form-input">
+                        <input asp-for="PowerReserveDays" class="form-input">
+                    </div>
+                    <div class="error__message-block">
+                        <span asp-validation-for="PowerReserveDays" class="form-span"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MechanismType" class="control-label"></label>
+                    <div class="fake__form-input">
+                        <select asp-for="MechanismType" asp-items="@Html.GetEnumSelectList<MechanismType>()"
+                                class="select" style="width: 100%"></select>
+                    </div>
+                    <div class="error__message-block">
+                        <span asp-validation-for="MechanismType" class="form-span"></span>
+                    </div>
+                </div>
+                <div class="extended-group">
+                    <input class="form-submit" type="submit" value="Edit" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

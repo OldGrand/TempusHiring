@@ -1,16 +1,25 @@
-﻿@model PaginationViewModel<StrapMaterialViewModel>
+﻿@model PaginationViewModel<MechanismViewModel>
 
 @{
-    ViewData["Title"] = "Strap Material List";
+    ViewData["Title"] = "Mechanism List";
 }
 
 <div class="admin_wrapper">
     <div class="admin_panel">
         <table class="table_price">
-            <caption class="table__caption">Strap Material List</caption>
+            <caption class="table__caption">Mechanisms</caption>
             <tr class="tr__title">
                 <th>
                     Title
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Power Reserve Days
+                </th>
+                <th>
+                    Mechanism Type
                 </th>
                 <th>
                     Delete
@@ -25,15 +34,24 @@
                     <td>
                         @bm.Title
                     </td>
+                    <td width="28%">
+                        @bm.Description
+                    </td>
                     <td>
-                        <a asp-controller="StrapMaterial" asp-action="DeleteStrapMaterial" asp-route-strapMaterialId="@bm.Id">
+                        @bm.PowerReserveDays
+                    </td>
+                    <td>
+                        @bm.MechanismType
+                    </td>
+                    <td>
+                        <a asp-controller="Mechanism" asp-action="DeleteMechanism" asp-route-mechanismId="@bm.Id">
                             <svg class="delete-svg" viewBox="0 0 512 512">
                                 <use xlink:href="/images/icons/delete.svg#delete"></use>
                             </svg>
                         </a>
                     </td>
                     <td>
-                        <a asp-controller="StrapMaterial" asp-action="EditStrapMaterial" asp-route-strapMaterialId="@bm.Id">
+                        <a asp-controller="Mechanism" asp-action="EditMechanism" asp-route-mechanismId="@bm.Id">
                             <svg class="delete-svg" viewBox="0 0 48 48">
                                 <use xlink:href="/images/icons/pencil.svg#edit"></use>
                             </svg>
@@ -42,13 +60,26 @@
                 </tr>
             }
             <tr>
-                <td></td>
                 <td>
-                    <a asp-controller="StrapMaterial" asp-action="CreateStrapMaterial" class="add__button_link">
+
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    <a asp-controller="Mechanism" asp-action="CreateMechanism" class="add__button_link">
                         <div class="add__button"></div>
                     </a>
                 </td>
-                <td></td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
             </tr>
         </table>
         <div class="pagination">

@@ -1,6 +1,6 @@
 ﻿using TempusHiring.DataAccess.EntityEnums;
 
-namespace TempusHiring.Presentation.Models.ViewModels.Admin
+namespace TempusHiring.Presentation.Models.ViewModels.Mechanism
 {
     public class MechanismViewModel
     {
