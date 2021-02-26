@@ -6,7 +6,7 @@ using TempusHiring.BusinessLogic.DataTransferObjects;
 using TempusHiring.BusinessLogic.DataTransferObjects.Account;
 using TempusHiring.BusinessLogic.Services.Interfaces;
 using TempusHiring.Common;
-using TempusHiring.Presentation.Models.AccountViewModels;
+using TempusHiring.Presentation.Models.ViewModels.AccountViewModels;
 
 namespace TempusHiring.Presentation.Controllers
 {

@@ -3,6 +3,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using TempusHiring.BusinessLogic.DataTransferObjects;
 using TempusHiring.BusinessLogic.DataTransferObjects.Admin;
 using TempusHiring.BusinessLogic.Pagination;
 using TempusHiring.BusinessLogic.Services.Interfaces;
