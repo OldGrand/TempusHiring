@@ -51,8 +51,8 @@ namespace TempusHiring.Presentation.Controllers
             return RedirectToAction(nameof(Items), CONTROLLER_NAME);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> DeleteColor(int orderId)
+        [HttpPost]
+        public async Task<IActionResult> DeleteOrder(int orderId)
         {
             var colorDto = await _orderService.ReadAsync(orderId);
             _orderService.Delete(colorDto);

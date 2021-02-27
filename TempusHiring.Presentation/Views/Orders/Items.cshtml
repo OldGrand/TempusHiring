@@ -18,6 +18,9 @@
             <div class="order__item">
                 <div class="order__number">
                     <span>Order number: @item.Id</span>
+                    <form asp-controller="Orders" asp-action="DeleteOrder" asp-route-orderId="@item.Id" class="extended-group" method="post">
+                        <input class="form-submit" type="submit" value="Cancel" />
+                    </form>
                 </div>
                 <div class="order__content">
                     <div class="order__info2">

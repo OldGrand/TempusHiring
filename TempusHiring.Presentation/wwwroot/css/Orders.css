@@ -42,6 +42,9 @@
 .order__number {
     padding: 20px;
     border-bottom: 2px dashed #5f5f5f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .order__info2 {
