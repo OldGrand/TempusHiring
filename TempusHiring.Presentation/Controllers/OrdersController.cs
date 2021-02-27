@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -46,6 +47,16 @@ namespace TempusHiring.Presentation.Controllers
 
             var orderDto = _mapper.Map<OrderDTO>(createOrder);
             _orderService.CreateOrder(orderDto, userId);
+
+            return RedirectToAction(nameof(Items), CONTROLLER_NAME);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteColor(int orderId)
+        {
+            var colorDto = await _orderService.ReadAsync(orderId);
+            _orderService.Delete(colorDto);
+            await _orderService.SaveChangesAsync();
 
             return RedirectToAction(nameof(Items), CONTROLLER_NAME);
         }

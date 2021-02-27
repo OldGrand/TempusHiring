@@ -3,20 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using TempusHiring.BusinessLogic.DataTransferObjects.Order;
+using TempusHiring.BusinessLogic.Services.Implementation.Common;
 using TempusHiring.BusinessLogic.Services.Interfaces;
 using TempusHiring.DataAccess.Core;
 using TempusHiring.DataAccess.Entities;
+using TempusHiring.DataAccess.Repository.Interfaces;
+using TempusHiring.DataAccess.UnitOfWork.Interfaces;
 
 namespace TempusHiring.BusinessLogic.Services.Implementation
 {
-    public class OrderService : IOrderService
+    public class OrderService : CrudService<Order, OrderDTO>, IOrderService
     {
         private readonly TempusHiringDbContext _context;
         private readonly IMapper _mapper;
 
         private const string ERROR_MESSAGE = "Items not found";
 
-        public OrderService(TempusHiringDbContext context, IMapper mapper)
+        public OrderService(IRepository<Order> repository,
+            IUnitOfWork unitOfWork,
+            TempusHiringDbContext context, 
+            IMapper mapper) : base(repository, unitOfWork, mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -57,12 +63,13 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
                     item.Watch.CountInStock -= item.Count;
                 }
 
+                _context.SaveChanges();
                 transaction.Commit();
-                //_context.SaveChanges();
             }
             catch
             {
                 transaction.Rollback();
+                throw;
             }
             finally
             {
