@@ -52,9 +52,10 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
 
                 foreach (OrderWatchLink item in orderWatchLinks)
                 {
-                    item.Order = orderEntity;
+                    orderEntity.OrderWatchLinks.Add(item);
                 }
-                
+
+                _context.Orders.Add(orderEntity);
                 _context.OrderWatchLinks.AddRange(orderWatchLinks);
                 _context.ShoppingCarts.RemoveRange(checkedItemsInCart);
 
