@@ -5,7 +5,7 @@ namespace TempusHiring.BusinessLogic.Services.Interfaces
 {
     public interface IOrderService
     {
-        void AddItemsToOrder(int userId);
+        void CreateOrder(OrderDTO orderDto, int userId);
         IEnumerable<OrderDTO> GetOrders(int userId);
     }
 }

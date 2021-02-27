@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TempusHiring.BusinessLogic.Extensions;
 using TempusHiring.BusinessLogic.Services.Interfaces;
-using TempusHiring.Presentation.Models.ViewModels;
 using TempusHiring.Presentation.Models.ViewModels.Order;
 
 namespace TempusHiring.Presentation.Controllers
@@ -22,6 +21,7 @@ namespace TempusHiring.Presentation.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
         public IActionResult Items()
         {
             var userId = User.GetId();
@@ -31,7 +31,17 @@ namespace TempusHiring.Presentation.Controllers
             return View(orderViewModels);
         }
 
+        [HttpGet]
         public IActionResult CreateOrder()
+        {
+            var userId = User.GetId();
+            _orderService.AddItemsToOrder(userId);
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateOrder(CreateOrderViewModel createOrder)
         {
             var userId = User.GetId();
             _orderService.AddItemsToOrder(userId);

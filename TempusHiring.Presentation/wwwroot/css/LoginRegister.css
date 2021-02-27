@@ -4,7 +4,6 @@
     align-items: center;
     background-color: #222222;
     width: 100vw;
-    height: 100vh;
 }
 
 .login-register__container {
@@ -15,6 +14,7 @@
     padding: 25px;
     position: relative;
     background-color: #252525;
+    margin: 20px 0px 20px 0px;
 }
 
 .login-register__header {

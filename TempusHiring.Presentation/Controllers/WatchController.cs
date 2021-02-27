@@ -1,13 +1,10 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TempusHiring.BusinessLogic.DataTransferObjects;
-using TempusHiring.BusinessLogic.DataTransferObjects.Admin;
 using TempusHiring.BusinessLogic.Pagination;
 using TempusHiring.BusinessLogic.Services.Interfaces;
-using TempusHiring.Common;
 using TempusHiring.Presentation.Models.ViewModels;
 using TempusHiring.Presentation.Models.ViewModels.Watch;
 
@@ -42,20 +39,20 @@ namespace TempusHiring.Presentation.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> DeleteWatch(int mechanismId)
+        public async Task<IActionResult> DeleteWatch(int watchId)
         {
-            var mechanismDto = await _watchService.ReadAsync(mechanismId);
-            _watchService.Delete(mechanismDto);
+            var watchDto = await _watchService.ReadAsync(watchId);
+            _watchService.Delete(watchDto);
             await _watchService.SaveChangesAsync();
 
             return RedirectToAction(nameof(GetWatchList), CURRENT_CONTROLLER_NAME);
         }
 
         [HttpGet]
-        public async Task<IActionResult> EditWatch(int mechanismId)
+        public async Task<IActionResult> EditWatch(int watchId)
         {
-            var mechanismDto = await _watchService.ReadAsync(mechanismId);
-            var editWatchViewModel = _mapper.Map<EditWatchViewModel>(mechanismDto);
+            var watchDto = await _watchService.ReadAsync(watchId);
+            var editWatchViewModel = _mapper.Map<EditWatchViewModel>(watchDto);
 
             return View(editWatchViewModel);
         }
@@ -68,8 +65,8 @@ namespace TempusHiring.Presentation.Controllers
                 return View(editWatchViewModel);
             }
 
-            var mechanismDto = _mapper.Map<WatchDTO>(editWatchViewModel);
-            _watchService.Update(mechanismDto);
+            var watchDto = _mapper.Map<WatchDTO>(editWatchViewModel);
+            _watchService.Update(watchDto);
             await _watchService.SaveChangesAsync();
 
             return RedirectToAction(nameof(GetWatchList), CURRENT_CONTROLLER_NAME);
@@ -89,8 +86,8 @@ namespace TempusHiring.Presentation.Controllers
                 return View(createWatchViewModel);
             }
 
-            var mechanismDto = _mapper.Map<WatchDTO>(createWatchViewModel);
-            await _watchService.AddAsync(mechanismDto);
+            var watchDto = _mapper.Map<WatchDTO>(createWatchViewModel);
+            await _watchService.AddAsync(watchDto);
             await _watchService.SaveChangesAsync();
 
             return RedirectToAction(nameof(GetWatchList), CURRENT_CONTROLLER_NAME);

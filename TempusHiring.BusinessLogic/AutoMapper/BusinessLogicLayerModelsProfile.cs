@@ -14,6 +14,8 @@ namespace TempusHiring.BusinessLogic.AutoMapper
             CreateMap<User, RegisterDTO>().ForMember(_ => _.Password, opt => opt.Ignore())
                 .ReverseMap();
 
+            CreateMap<ShoppingCart, OrderWatchLink>().ReverseMap();
+            CreateMap<Order, OrderDTO>().ReverseMap();
             CreateMap<BodyMaterial, BodyMaterialDTO>().ReverseMap();
             CreateMap<Color, ColorDTO>().ReverseMap();
             CreateMap<GlassMaterial, GlassMaterialDTO>().ReverseMap();
@@ -26,7 +28,6 @@ namespace TempusHiring.BusinessLogic.AutoMapper
             CreateMap<ShoppingCart, ShoppingCartDTO>().ReverseMap();
             CreateMap<Photo, PhotoDTO>().ReverseMap();
             CreateMap<User, UserDTO>().ReverseMap();
-            CreateMap<Order, OrderDTO>().ReverseMap();
             CreateMap<OrderWatchLink, OrderWatchLinkDTO>().ReverseMap();
         }
     }

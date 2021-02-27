@@ -44,13 +44,16 @@ namespace TempusHiring.DataAccess.Core
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Watch>().Property(p => p.Gender)
+            builder.Entity<Watch>().Property(_ => _.Gender)
                 .HasConversion<string>();
 
-            builder.Entity<Mechanism>().Property(p => p.MechanismType)
+            builder.Entity<Mechanism>().Property(_ => _.MechanismType)
                 .HasConversion<string>();
 
-            builder.Entity<Manufacturer>().Property(p => p.Country)
+            builder.Entity<Manufacturer>().Property(_ => _.Country)
+                .HasConversion<string>();
+
+            builder.Entity<Order>().Property(_ => _.PaymentMethod)
                 .HasConversion<string>();
 
             base.OnModelCreating(builder);

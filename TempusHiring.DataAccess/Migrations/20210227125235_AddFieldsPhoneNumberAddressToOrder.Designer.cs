@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TempusHiring.DataAccess.Core;
 
 namespace TempusHiring.DataAccess.Migrations
 {
     [DbContext(typeof(TempusHiringDbContext))]
-    partial class TempusHiringDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210227125235_AddFieldsPhoneNumberAddressToOrder")]
+    partial class AddFieldsPhoneNumberAddressToOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

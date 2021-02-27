@@ -108,7 +108,6 @@ namespace TempusHiring.Presentation.AutoMapper
             CreateMap<PagedResult<WristSizeDTO>, PagedResult<WristSizeViewModel>>().ReverseMap();
             CreateMap<PagedResult<StrapMaterialDTO>, PagedResult<StrapMaterialViewModel>>().ReverseMap();
             CreateMap<PagedResult<MechanismDTO>, PagedResult<MechanismViewModel>>().ReverseMap();
-            CreateMap<PagedResult<WatchDTO>, PagedResult<WatchViewModel>>().ReverseMap();
         }
     }
 }
