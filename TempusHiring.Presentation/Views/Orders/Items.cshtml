@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TempusHiring.Presentation.Models.ViewModels.Order.OrderViewModel>
+﻿@model IEnumerable<OrderViewModel>
 
 @{
     ViewData["Title"] = "Orders";
@@ -9,7 +9,7 @@
         <h1 class="orders__header-title">Orders</h1>
     </div>
     <div class="orders__list">
-        @if (Model is null || Model.Count() == 0)
+        @if (Model is null || !Model.Any())
         {
             <h3>Your Orders is empty</h3>
         }
@@ -24,6 +24,8 @@
                         <span class="order__info-item">Order date: @item.OrderDate</span>
                         <span class="order__info-item">Total count: @item.TotalCount</span>
                         <span class="order__info-item">Total price: @item.TotalPrice</span>
+                        <span class="order__info-item">Address: @item.Address</span>
+                        <span class="order__info-item">Is order completed: @item.IsOrderCompleted</span>
                     </div>
 
                     <div class="order__zakazi">
