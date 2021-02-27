@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TempusHiring.BusinessLogic.Extensions;
 using TempusHiring.BusinessLogic.Services.Interfaces;
-using TempusHiring.Presentation.Models.ViewModels;
 using TempusHiring.Presentation.Models.ViewModels.Order;
 using TempusHiring.Presentation.Models.ViewModels.ShoppingCart;
 
@@ -15,6 +14,8 @@ namespace TempusHiring.Presentation.Controllers
     {
         private readonly IShoppingCartService _shoppingCartService;
         private readonly IMapper _mapper;
+
+        private const string CONTROLLER_NAME = "ShoppingCart";
 
         public ShoppingCartController(IShoppingCartService cartService, IMapper mapper)
         {
@@ -74,7 +75,7 @@ namespace TempusHiring.Presentation.Controllers
             var userId = User.GetId();
             _shoppingCartService.UpdateSelection(userId, watchId, isChecked);
 
-            return Json(Url.Action(nameof(Items), "ShoppingCart"));
+            return Json(Url.Action(nameof(Items), CONTROLLER_NAME));
         }
 
         public IActionResult Buy()
@@ -87,13 +88,13 @@ namespace TempusHiring.Presentation.Controllers
             var userId = User.GetId();
             _shoppingCartService.ChangeItemsCountInCart(userId, watchId, count);
 
-            return RedirectToAction(nameof(Items), "ShoppingCart");
+            return RedirectToAction(nameof(Items), CONTROLLER_NAME);
         }
 
         public IActionResult Remove(int cartId)
         {
             _shoppingCartService.DeleteFromCart(cartId);
-            return RedirectToAction(nameof(Items), "ShoppingCart");
+            return RedirectToAction(nameof(Items), CONTROLLER_NAME);
         }
     }
 }
