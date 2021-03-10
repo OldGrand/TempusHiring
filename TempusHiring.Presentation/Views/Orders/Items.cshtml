@@ -28,7 +28,7 @@
                         <span class="order__info-item">Total count: @item.TotalCount</span>
                         <span class="order__info-item">Total price: @item.TotalPrice</span>
                         <span class="order__info-item">Address: @item.Address</span>
-                        <span class="order__info-item">Is order completed: @item.IsOrderCompleted</span>
+                        <span class="order__info-item">Status: @(item.IsOrderCompleted ? "Completed" : "Performed") </span>
                     </div>
 
                     <div class="order__zakazi">

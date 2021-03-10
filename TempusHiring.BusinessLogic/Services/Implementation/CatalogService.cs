@@ -155,5 +155,18 @@ namespace TempusHiring.BusinessLogic.Services.Implementation
             ReadWomen().OrderByDescending(_ => _.SaledCount);
         private IQueryable<WatchDTO> ReadWomenOrderedByPopularityAsc() =>
             ReadWomen().OrderBy(_ => _.SaledCount);
+
+        //private IQueryable<WatchDTO> ReadMostPopularManufacturers()
+        //{
+        //    _context.Watches.GroupBy(_ => _.Manufacturer)
+        //        .Select(g => new
+        //        {
+        //            CompanyName = g.Select(_ => _.Manufacturer.Title),
+        //            Count = g.Sum(_ => _.SaledCount)
+        //        })
+        //        .OrderByDescending(_ => _.Count)
+        //        .Take(3);
+        //}
+            
     }
 }
