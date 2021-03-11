@@ -4,25 +4,25 @@ namespace TempusHiring.Presentation.Models.ViewModels
 {
     public enum FilterViewModel
     {
-        [Display(Name = "По умолчанию")]
+        [Display(Name = "Default")]
         Deafult,
         
-        [Display(Name = "Самые продоваемые")]
+        [Display(Name = "Sort by popularity descending")]
         SortByPopularityDesc,
 
-        [Display(Name = "Наименее продоваемые")]
+        [Display(Name = "Sort by popularity ascending")]
         SortByPopularityAsc,
 
-        [Display(Name = "Новизна : самые старые")]
+        [Display(Name = "Sort by novelty ascending")]
         SortByNoveltyAsc,
 
-        [Display(Name = "Новизна : самые новые")]
+        [Display(Name = "Sort by novelty descending")]
         SortByNoveltyDesc,
 
-        [Display(Name = "Цена : по возрастанию")]
+        [Display(Name = "Price: order by ascending")]
         OrderByPriceAsc,
 
-        [Display(Name = "Цена : по убыванию")]
+        [Display(Name = "Price: order by descending")]
         OrderByPriceDesc
     }
 }
