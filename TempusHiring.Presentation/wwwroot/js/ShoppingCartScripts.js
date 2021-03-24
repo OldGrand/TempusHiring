@@ -3,6 +3,37 @@
         .forEach(elem => elem.addEventListener("click", OnChangeCheckbox));
 });
 
+let confirmWindow = document.querySelector(".confirm");
+let confirmBgc = document.querySelector(".confirm__background");
+let cartId;
+
+document.querySelector(".confirm-window__cancel").addEventListener("click", () => {
+    confirmWindow.hidden = true;
+    confirmBgc.hidden = true;
+});
+
+document.querySelector(".confirm-window__confirm").addEventListener("click", () => {
+    confirmWindow.hidden = true;
+    confirmBgc.hidden = true;
+
+    console.log(cartId);
+    $.ajax({
+        type: "POST",
+        url: "/ShoppingCart/Remove",
+        data: `cartId=${cartId}`,
+        success: function (response) {
+            window.location.reload();
+        }
+    });
+});
+
+const showDeleteNotificationWindow = e => {
+    cartId = e.target.getAttribute("shoppingCardId");
+    confirmWindow.hidden = false;
+    confirmBgc.hidden = false;
+}
+document.querySelectorAll(".deleteRef").forEach(elem => elem.addEventListener("click", showDeleteNotificationWindow));
+
 const getWatchPrice = watchId => {
     return $.get("/ShoppingCart/GetWatchPrice", { watchId: watchId });
 }

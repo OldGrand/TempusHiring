@@ -150,4 +150,5 @@
 .delete-svg {
     height: 25px;
     fill: #fff;
+    pointer-events: none;
 }

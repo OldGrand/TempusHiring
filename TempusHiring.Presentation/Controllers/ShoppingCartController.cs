@@ -91,6 +91,7 @@ namespace TempusHiring.Presentation.Controllers
             return RedirectToAction(nameof(Items), CONTROLLER_NAME);
         }
 
+        [HttpPost]
         public IActionResult Remove(int cartId)
         {
             _shoppingCartService.DeleteFromCart(cartId);

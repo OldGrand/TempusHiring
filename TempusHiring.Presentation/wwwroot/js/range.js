@@ -2,7 +2,6 @@
 document.querySelector(".zalupa").addEventListener("click", e => {
     let start = document.querySelector("#first").innerHTML.replace(/\s/g, "");
     let end = document.querySelector("#second").innerHTML.replace(/\s/g, "");
-    console.log("It works");
     $.ajax({
         type: "POST",
         url: "/Catalog/UpdatePriceRange",
