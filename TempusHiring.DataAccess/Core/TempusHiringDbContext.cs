@@ -42,6 +42,7 @@ namespace TempusHiring.DataAccess.Core
                 Console.ResetColor();
             }, new[] { RelationalEventId.CommandExecuted });
         }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Watch>().Property(_ => _.Gender)
